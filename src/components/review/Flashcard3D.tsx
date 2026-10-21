@@ -6,6 +6,7 @@ import { useEffect, useRef, type ReactNode, type Ref } from "react";
 import { topicTitle } from "@/lib/content";
 import type { Flashcard, Unit } from "@/lib/content-types";
 import type { ReviewKind } from "@/lib/srs/scheduler";
+import { useUi } from "@/store/ui";
 import { UnitCode } from "@/components/ui/UnitTag";
 
 const KIND_LABEL: Record<ReviewKind, { text: string; className: string }> = {
@@ -20,6 +21,7 @@ function Face({ side, hidden, children, ref }: { side: "front" | "back"; hidden:
     <div
       ref={ref}
       tabIndex={-1}
+      data-focus-return
       aria-hidden={hidden}
       inert={hidden}
       className={`card flex min-h-72 flex-col p-6 outline-none backface-hidden [grid-area:stack] sm:min-h-80 sm:p-8 ${side === "back" ? "rotate-y-180 border-accent/30" : ""}`}
@@ -41,7 +43,8 @@ export function Flashcard3D({ card, unit, kind, revealed, takeFocus, onReveal }:
 
   useEffect(() => {
     if (revealed) back.current?.focus({ preventScroll: true });
-    else if (takeFocus) front.current?.focus({ preventScroll: true });
+    // Never pull focus behind an open level-up dialog; it hands focus back here when dismissed.
+    else if (takeFocus && useUi.getState().levelUp === null) front.current?.focus({ preventScroll: true });
   }, [revealed, takeFocus]);
   const header = (
     <div className="flex flex-wrap items-center gap-2 text-xs">

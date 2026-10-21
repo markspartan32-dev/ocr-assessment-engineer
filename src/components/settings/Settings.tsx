@@ -3,36 +3,52 @@
 import { Download, RotateCcw, Upload } from "lucide-react";
 import { useEffect, useId, useRef, useState, type ChangeEvent } from "react";
 import { useShallow } from "zustand/react/shallow";
-import { ALL_CARD_IDS, ALL_QUESTION_IDS } from "@/lib/content";
+import { ALL_CARD_IDS, QUESTION_MARKS } from "@/lib/content";
 import { toDayKey } from "@/lib/date";
-import { exportProgress, parseProgressFile, SETTINGS_LIMITS, type ProgressData } from "@/lib/progress-schema";
+import { exportProgress, MAX_IMPORT_BYTES, parseProgressFile, SETTINGS_LIMITS, type ProgressData } from "@/lib/progress-schema";
 import { useProgress, useProgressHydrated } from "@/store/progress";
 import { useUi } from "@/store/ui";
 import { Dialog } from "@/components/ui/Dialog";
 import { PageSkeleton } from "@/components/ui/Skeleton";
 
 const CARD_IDS = new Set(ALL_CARD_IDS);
-const QUESTION_IDS = new Set(ALL_QUESTION_IDS);
 
+/** Edits a draft and commits on blur or Enter, so typing "10" is never clamped mid-way to "5". */
 function NumberSetting({ label, help, value, limits, onChange }: { label: string; help: string; value: number; limits: readonly [number, number]; onChange: (v: number) => void }) {
   const id = useId();
+  const [draft, setDraft] = useState<string | null>(null);
+  const parsed = Number(draft);
+  const invalid = draft !== null && (draft.trim() === "" || !Number.isInteger(parsed) || parsed < limits[0] || parsed > limits[1]);
+  const commit = () => {
+    if (draft === null) return;
+    if (draft.trim() !== "" && Number.isFinite(parsed)) onChange(parsed); // the store clamps to the allowed range
+    setDraft(null);
+  };
   return (
-    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
       <div>
         <label htmlFor={id} className="text-sm font-semibold">{label}</label>
         <p id={`${id}-help`} className="mt-0.5 text-xs text-fg-muted">{help}</p>
       </div>
-      <input
-        id={id}
-        type="number"
-        inputMode="numeric"
-        min={limits[0]}
-        max={limits[1]}
-        value={value}
-        aria-describedby={`${id}-help`}
-        onChange={(e) => e.target.value !== "" && onChange(Number(e.target.value))}
-        className="w-28 rounded-xl border border-line-strong bg-canvas/60 px-3 py-2 font-mono text-sm outline-none focus:border-accent"
-      />
+      <div className="sm:text-right">
+        <input
+          id={id}
+          type="number"
+          inputMode="numeric"
+          min={limits[0]}
+          max={limits[1]}
+          value={draft ?? String(value)}
+          aria-describedby={`${id}-help ${id}-error`}
+          aria-invalid={invalid}
+          onChange={(e) => setDraft(e.target.value)}
+          onBlur={commit}
+          onKeyDown={(e) => e.key === "Enter" && commit()}
+          className="w-28 rounded-xl border border-line-strong bg-canvas/60 px-3 py-2 font-mono text-sm outline-none focus:border-accent aria-invalid:border-bad"
+        />
+        <p id={`${id}-error`} className="mt-1 text-xs text-bad">
+          {invalid ? `Use a whole number from ${limits[0]} to ${limits[1]}.` : ""}
+        </p>
+      </div>
     </div>
   );
 }
@@ -47,6 +63,7 @@ export function Settings() {
   const [message, setMessage] = useState<{ tone: "ok" | "bad"; text: string } | null>(null);
   const fileInput = useRef<HTMLInputElement>(null);
   const fileId = useId();
+  const shortcutsId = useId();
 
   // The command palette's "Reset progress…" links to /settings#reset.
   useEffect(() => {
@@ -77,7 +94,11 @@ export function Settings() {
     const file = event.target.files?.[0];
     event.target.value = "";
     if (!file) return;
-    const result = parseProgressFile(await file.text(), CARD_IDS, QUESTION_IDS);
+    if (file.size > MAX_IMPORT_BYTES) {
+      setMessage({ tone: "bad", text: "Import failed: the file is too large to be a DataCommand backup." });
+      return;
+    }
+    const result = parseProgressFile(await file.text(), CARD_IDS, QUESTION_MARKS);
     if (result.ok) setPendingImport(result.data);
     else setMessage({ tone: "bad", text: `Import failed: ${result.error}` });
   };
@@ -102,6 +123,23 @@ export function Settings() {
           limits={SETTINGS_LIMITS.newCardsPerDay}
           onChange={(newCardsPerDay) => updateSettings({ newCardsPerDay })}
         />
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <label htmlFor={shortcutsId} className="text-sm font-semibold">Single-key shortcuts</label>
+            <p id={`${shortcutsId}-help`} className="mt-0.5 text-xs text-fg-muted">
+              0–5 to grade a revealed card and Shift+F for Focus mode. Turn off if they clash with speech input or other assistive tech. ⌘K / Ctrl+K always works.
+            </p>
+          </div>
+          <input
+            id={shortcutsId}
+            type="checkbox"
+            role="switch"
+            checked={settings.shortcuts}
+            aria-describedby={`${shortcutsId}-help`}
+            onChange={(e) => updateSettings({ shortcuts: e.target.checked })}
+            className="mt-1 size-5 shrink-0 accent-accent"
+          />
+        </div>
       </section>
 
       <section aria-labelledby="data-settings" className="card space-y-4 p-6">
@@ -118,11 +156,9 @@ export function Settings() {
             <input ref={fileInput} id={fileId} type="file" accept="application/json,.json" onChange={readFile} className="sr-only" />
           </label>
         </div>
-        {message && (
-          <p role="status" className={`text-sm ${message.tone === "ok" ? "text-ok" : "text-bad"}`}>
-            {message.text}
-          </p>
-        )}
+        <p role="status" className={`text-sm empty:hidden ${message?.tone === "bad" ? "text-bad" : "text-ok"}`}>
+          {message?.text ?? ""}
+        </p>
       </section>
 
       <section aria-labelledby="danger" className="card space-y-4 border-bad/30 p-6">

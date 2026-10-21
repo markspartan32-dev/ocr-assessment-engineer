@@ -1,7 +1,8 @@
 /*
  * DataCommand service worker: offline-first app shell.
  *
- * - install:  precache every route's HTML plus the hashed /_next/static assets each page references.
+ * - install:  precache every route's HTML plus the hashed /_next/static assets each page references
+ *             (all or nothing: a failed fetch abandons the update and keeps the previous worker).
  * - fetch:    pages are network-first, with the cached copy used when offline;
  *             /_next/static is cache-first (content-hashed, so it never changes);
  *             other same-origin GETs (RSC payloads, icons) are network-first with a cache fallback.
@@ -23,25 +24,31 @@ const ROUTES = [
 const STATIC_FILES = ["/manifest.json", "/icon.svg", "/icons/icon-192.png", "/icons/icon-512.png", "/icons/maskable-512.png", "/icons/apple-touch-icon.png"];
 const ASSET_PATTERN = /(?:src|href)="(\/_next\/static\/[^"]+)"/g;
 
+/**
+ * All-or-nothing precache: everything is fetched before anything is written, and any failure
+ * rejects the install. On a flaky connection the update is then abandoned, and the previous
+ * worker keeps serving its complete caches instead of activating with holes in them.
+ */
 async function precache() {
-  const pages = await caches.open(PAGES);
-  const assetCache = await caches.open(ASSETS);
-  await assetCache.addAll(STATIC_FILES).catch(() => undefined);
-  const assets = new Set();
-  await Promise.all(
+  const assets = new Set(STATIC_FILES);
+  const pages = await Promise.all(
     ROUTES.map(async (route) => {
-      try {
-        const response = await fetch(route, { credentials: "same-origin" });
-        if (!response.ok) return;
-        const html = await response.clone().text();
-        for (const match of html.matchAll(ASSET_PATTERN)) assets.add(match[1].replace(/&amp;/g, "&"));
-        await pages.put(route, response);
-      } catch {
-        // A route that fails to precache is cached later at runtime.
-      }
+      const response = await fetch(route, { credentials: "same-origin", cache: "no-cache" });
+      if (!response.ok) throw new Error(`precache ${route}: HTTP ${response.status}`);
+      const html = await response.clone().text();
+      for (const match of html.matchAll(ASSET_PATTERN)) assets.add(match[1].replace(/&amp;/g, "&"));
+      return [route, response];
     }),
   );
-  await Promise.all([...assets].map((url) => assetCache.add(url).catch(() => undefined)));
+  const files = await Promise.all(
+    [...assets].map(async (url) => {
+      const response = await fetch(url, { credentials: "same-origin" });
+      if (!response.ok) throw new Error(`precache ${url}: HTTP ${response.status}`);
+      return [url, response];
+    }),
+  );
+  const [pageCache, assetCache] = await Promise.all([caches.open(PAGES), caches.open(ASSETS)]);
+  await Promise.all([...pages.map(([url, r]) => pageCache.put(url, r)), ...files.map(([url, r]) => assetCache.put(url, r))]);
 }
 
 self.addEventListener("install", (event) => {

@@ -33,6 +33,8 @@ export interface Settings {
   dailyGoal: number;
   /** New cards introduced per day across all units. */
   newCardsPerDay: number;
+  /** Single-key shortcuts (0–5 to grade, Shift+F for Focus mode). Can be turned off (WCAG 2.1.4). */
+  shortcuts: boolean;
 }
 
 export interface ProgressData {
@@ -45,7 +47,7 @@ export interface ProgressData {
   settings: Settings;
 }
 
-export const DEFAULT_SETTINGS: Settings = { dailyGoal: 20, newCardsPerDay: 15 };
+export const DEFAULT_SETTINGS: Settings = { dailyGoal: 20, newCardsPerDay: 15, shortcuts: true };
 export const SETTINGS_LIMITS = { dailyGoal: [5, 200], newCardsPerDay: [0, 70] } as const;
 export const MAX_LOG_ENTRIES = 5000;
 export const EXPORT_FORMAT = "datacommand-progress";
@@ -103,9 +105,9 @@ function parseCard(v: unknown): CardProgress | null {
   };
 }
 
-function parseExam(v: unknown): ExamRecord | null {
+function parseExam(v: unknown, tariff: number): ExamRecord | null {
   if (!isObject(v)) return null;
-  if (!isInt(v.max, 1, 20) || !isInt(v.best, 0, v.max as number) || !isInt(v.last, 0, v.max as number)) return null;
+  if (v.max !== tariff || !isInt(v.best, 0, tariff) || !isInt(v.last, 0, tariff)) return null;
   if (!isInt(v.attempts, 1, 1_000_000) || typeof v.lastAt !== "string" || Number.isNaN(Date.parse(v.lastAt))) return null;
   return { attempts: v.attempts as number, best: v.best as number, max: v.max as number, last: v.last as number, lastAt: new Date(v.lastAt).toISOString() };
 }
@@ -118,10 +120,11 @@ function parseDaily(v: unknown): DailyStat | null {
 }
 
 /**
- * Validates an exported progress file. `cardIds` and `questionIds` are the ids in the
- * current content; anything else is dropped rather than imported.
+ * Validates an exported progress file. `cardIds` and `questionMarks` (question id → mark
+ * tariff) describe the current content; unknown ids are dropped rather than imported, and an
+ * exam record must match its question's real tariff.
  */
-export function parseProgressFile(text: string, cardIds: ReadonlySet<string>, questionIds: ReadonlySet<string>): Result<ProgressData> {
+export function parseProgressFile(text: string, cardIds: ReadonlySet<string>, questionMarks: ReadonlyMap<string, number>): Result<ProgressData> {
   if (text.length > MAX_IMPORT_BYTES) return { ok: false, error: "File is too large to be a DataCommand backup." };
   let raw: unknown;
   try {
@@ -145,8 +148,9 @@ export function parseProgressFile(text: string, cardIds: ReadonlySet<string>, qu
     data.cards[id] = card;
   }
   for (const [id, value] of Object.entries(d.exams)) {
-    if (!questionIds.has(id)) continue;
-    const exam = parseExam(value);
+    const tariff = questionMarks.get(id);
+    if (tariff === undefined) continue;
+    const exam = parseExam(value, tariff);
     if (!exam) return { ok: false, error: `Question ${id} has an invalid exam record.` };
     data.exams[id] = exam;
   }
@@ -171,9 +175,10 @@ export function parseProgressFile(text: string, cardIds: ReadonlySet<string>, qu
   data.streak = { current: s.current, longest: Math.max(s.longest, s.current), lastActive: s.lastActive as DayKey | null };
 
   if (isObject(d.settings)) {
-    const { dailyGoal, newCardsPerDay } = d.settings;
+    const { dailyGoal, newCardsPerDay, shortcuts } = d.settings;
     if (isInt(dailyGoal, ...SETTINGS_LIMITS.dailyGoal)) data.settings.dailyGoal = dailyGoal;
     if (isInt(newCardsPerDay, ...SETTINGS_LIMITS.newCardsPerDay)) data.settings.newCardsPerDay = newCardsPerDay;
+    if (typeof shortcuts === "boolean") data.settings.shortcuts = shortcuts;
   }
   return { ok: true, data };
 }

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useShallow } from "zustand/react/shallow";
 import { getUnit, topicTitle } from "@/lib/content";
+import { hashId } from "@/lib/dom";
 import type { UnitCode as Code } from "@/lib/content-types";
 import { cardMastery, cardStatus, percent, type CardStatus } from "@/lib/mastery";
 import { useMasteries, useStudyReady, useUnitQueues } from "@/hooks/useStudy";
@@ -31,10 +32,12 @@ export function UnitDetail({ code }: { code: Code }) {
   // Deep links from search (#F203-FC04): open that card and bring it into view.
   useEffect(() => {
     if (!today) return;
-    const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+    const id = hashId();
+    if (!id || !unit.flashcards.some((c) => c.id === id)) return;
+    const target = document.getElementById(id);
     if (target instanceof HTMLDetailsElement) target.open = true;
     target?.scrollIntoView({ block: "center" });
-  }, [today]);
+  }, [today, unit]);
 
   if (!today || !queues) return <PageSkeleton label={`Loading ${code}`} />;
   const m = masteries[code];

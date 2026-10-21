@@ -33,7 +33,7 @@ export function MasteryRadar({ masteries, height = 340, compact = false }: { mas
             <PolarAngleAxis dataKey="axis" tick={{ fill: "var(--color-fg-muted)", fontSize: compact ? 11 : 12 }} />
             <PolarRadiusAxis domain={[0, 100]} tickCount={5} angle={64} tick={{ fill: "var(--color-fg-subtle)", fontSize: 10 }} axisLine={false} tickFormatter={(v) => (v ? `${v}%` : "")} />
             {SERIES.map((s) => (
-              <Radar key={s.key} name={s.name} dataKey={s.key} stroke={s.color} strokeWidth={2} fill={s.color} fillOpacity={0.14} dot={{ r: 3, strokeWidth: 0, fill: s.color }} isAnimationActive />
+              <Radar key={s.key} name={s.name} dataKey={s.key} stroke={s.color} strokeWidth={2} fill={s.color} fillOpacity={0.14} dot={{ r: 3, strokeWidth: 0, fill: s.color }} />
             ))}
             <Tooltip
               content={({ active, payload }) => (

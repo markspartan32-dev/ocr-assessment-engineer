@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useId, useMemo, useState } from "react";
 import { COMMAND_WORD_MEANINGS } from "@/lib/command-words";
 import { getUnit, topicTitle } from "@/lib/content";
+import { focusSoon, hashId } from "@/lib/dom";
 import type { ExamQuestion, UnitCode } from "@/lib/content-types";
 import { matchPoints, suggestMarks } from "@/lib/marking";
 import { useStudyReady } from "@/hooks/useStudy";
@@ -20,7 +21,7 @@ function MarkScheme({ question, matches }: { question: ExamQuestion; matches: bo
     <section aria-labelledby={`${question.id}-ms`} className="card space-y-5 p-5 sm:p-6">
       <div className="flex items-center gap-2">
         <ClipboardCheck aria-hidden="true" className="size-5 text-accent" />
-        <h3 id={`${question.id}-ms`} className="font-semibold">
+        <h3 id={`${question.id}-ms`} tabIndex={-1} className="font-semibold outline-none">
           Mark scheme · {markScheme.type === "levels" ? "levels of response" : "points-based"}
         </h3>
       </div>
@@ -86,29 +87,29 @@ function MarkScheme({ question, matches }: { question: ExamQuestion; matches: bo
 
 function SelfMark({ question, suggested, onSave }: { question: ExamQuestion; suggested: number; onSave: (marks: number) => void }) {
   const [marks, setMarks] = useState(suggested);
-  const groupId = useId();
+  const name = useId();
   const values = Array.from({ length: question.marks + 1 }, (_, i) => i);
   return (
     <div className="card p-5 sm:p-6">
-      <h3 id={groupId} className="font-semibold">Mark your answer</h3>
-      <p className="mt-1 text-sm text-fg-muted">
-        Keyword estimate: <span className="font-mono font-semibold text-fg">{suggested}</span>/{question.marks}. This is a starting point only; judge your answer against the mark scheme.
-      </p>
-      <div role="radiogroup" aria-labelledby={groupId} className="mt-4 flex flex-wrap gap-2">
-        {values.map((v) => (
-          <button
-            key={v}
-            type="button"
-            role="radio"
-            aria-checked={marks === v}
-            aria-label={`${v} mark${v === 1 ? "" : "s"}`}
-            onClick={() => setMarks(v)}
-            className={`size-11 rounded-xl border font-mono text-sm font-semibold transition-colors ${marks === v ? "border-accent bg-accent text-ink" : "border-line-strong bg-surface-2 text-fg-muted hover:text-fg"}`}
-          >
-            {v}
-          </button>
-        ))}
-      </div>
+      <fieldset>
+        <legend className="font-semibold">Mark your answer</legend>
+        <p className="mt-1 text-sm text-fg-muted">
+          Keyword estimate: <span className="font-mono font-semibold text-fg">{suggested}</span>/{question.marks}. This is a starting point only; judge your answer against the mark scheme.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {values.map((v) => (
+            <label key={v} className="relative">
+              <input type="radio" name={name} value={v} checked={marks === v} onChange={() => setMarks(v)} className="peer sr-only" aria-label={`${v} mark${v === 1 ? "" : "s"}`} />
+              <span
+                aria-hidden="true"
+                className="grid size-11 cursor-pointer place-items-center rounded-xl border border-line-strong bg-surface-2 font-mono text-sm font-semibold text-fg-muted transition-colors peer-checked:border-accent peer-checked:bg-accent peer-checked:text-ink peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent hover:text-fg"
+              >
+                {v}
+              </span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
       <button type="button" onClick={() => onSave(marks)} className="btn btn-primary mt-5">
         <Save aria-hidden="true" className="size-4" /> Save {marks}/{question.marks}
       </button>
@@ -127,12 +128,13 @@ export function ExamPractice({ unitCode }: { unitCode: UnitCode }) {
   const [markedAnswer, setMarkedAnswer] = useState<Record<string, string>>({});
   const [savedNote, setSavedNote] = useState<string | null>(null);
   const answerId = useId();
+  const countId = useId();
 
   // Deep links from the command palette and unit pages: /exam/F200#F200-Q03
   useEffect(() => {
     const pick = () => {
-      const id = decodeURIComponent(window.location.hash.slice(1));
-      if (unit.questions.some((q) => q.id === id)) setSelected(id);
+      const id = hashId();
+      if (id && unit.questions.some((q) => q.id === id)) setSelected(id);
     };
     pick();
     window.addEventListener("hashchange", pick);
@@ -146,14 +148,19 @@ export function ExamPractice({ unitCode }: { unitCode: UnitCode }) {
   const isRevealed = snapshot !== undefined;
   const matches = useMemo(() => (snapshot !== undefined ? matchPoints(snapshot, question.markScheme.points) : []), [snapshot, question]);
   const suggested = useMemo(() => (snapshot !== undefined ? suggestMarks(question, matches, snapshot) : 0), [snapshot, question, matches]);
-  const markAnswer = () => setMarkedAnswer((m) => ({ ...m, [question.id]: answer }));
+  const markAnswer = () => {
+    setMarkedAnswer((m) => ({ ...m, [question.id]: answer }));
+    // The button that was pressed disappears; take the student to the mark scheme it revealed.
+    focusSoon(`${question.id}-ms`);
+  };
   const words = answer.trim().split(/\s+/).filter(Boolean).length;
   const record = exams[question.id];
 
-  const select = (id: string) => {
+  const select = (id: string, moveFocus = false) => {
     setSelected(id);
     setSavedNote(null);
     window.history.replaceState(null, "", `#${id}`);
+    if (moveFocus) focusSoon(`${id}-q`);
   };
 
   const save = (marks: number) => {
@@ -230,7 +237,7 @@ export function ExamPractice({ unitCode }: { unitCode: UnitCode }) {
             {question.context && (
               <p className="mt-5 rounded-xl border-l-2 border-accent/60 bg-surface-2 px-4 py-3 text-sm leading-6 text-fg-muted">{question.context}</p>
             )}
-            <h2 id={`${question.id}-q`} className="mt-5 text-lg font-semibold leading-relaxed sm:text-xl">
+            <h2 id={`${question.id}-q`} tabIndex={-1} className="mt-5 text-lg font-semibold leading-relaxed outline-none sm:text-xl">
               {question.question}
             </h2>
             {COMMAND_WORD_MEANINGS[question.commandWord] && (
@@ -250,10 +257,11 @@ export function ExamPractice({ unitCode }: { unitCode: UnitCode }) {
               onChange={(e) => setAnswers((a) => ({ ...a, [question.id]: e.target.value }))}
               rows={Math.min(10, 3 + question.marks)}
               placeholder="Write your answer as you would in the exam…"
+              aria-describedby={countId}
               className="mt-2 w-full resize-y rounded-xl border border-line-strong bg-canvas/60 p-4 text-[0.95rem] leading-7 text-fg outline-none transition-colors placeholder:text-fg-subtle focus:border-accent"
             />
             <div className="mt-2 flex flex-wrap items-center justify-between gap-3 text-xs text-fg-subtle">
-              <span aria-live="polite">
+              <span id={countId}>
                 {words} word{words === 1 ? "" : "s"} · aim for about {question.marks * (question.markScheme.type === "levels" ? 25 : 15)}
               </span>
               {record && <span>Best so far: {record.best}/{record.max} · {record.attempts} attempt{record.attempts === 1 ? "" : "s"}</span>}
@@ -285,13 +293,13 @@ export function ExamPractice({ unitCode }: { unitCode: UnitCode }) {
         )}
 
         <nav aria-label="Question navigation" className="flex items-center justify-between gap-2">
-          <button type="button" className="btn btn-ghost" disabled={index === 0} onClick={() => select(unit.questions[index - 1].id)}>
+          <button type="button" className="btn btn-ghost" disabled={index === 0} onClick={() => select(unit.questions[index - 1].id, true)}>
             <ChevronLeft aria-hidden="true" className="size-4" /> Previous
           </button>
           <Link href={`/review/${unit.code}`} className="text-sm text-fg-muted underline-offset-4 hover:text-fg hover:underline">
             Review {unit.code} flashcards
           </Link>
-          <button type="button" className="btn btn-ghost" disabled={index === unit.questions.length - 1} onClick={() => select(unit.questions[index + 1].id)}>
+          <button type="button" className="btn btn-ghost" disabled={index === unit.questions.length - 1} onClick={() => select(unit.questions[index + 1].id, true)}>
             Next <ChevronRight aria-hidden="true" className="size-4" />
           </button>
         </nav>

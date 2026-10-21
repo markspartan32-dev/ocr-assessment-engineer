@@ -3,7 +3,7 @@ import { exportProgress, parseProgressFile, emptyProgress } from "@/lib/progress
 import { gradeCard } from "@/lib/srs/scheduler";
 
 const cards = new Set(["F200-FC01", "F200-FC02"]);
-const questions = new Set(["F200-Q01"]);
+const questions = new Map([["F200-Q01", 1]]);
 
 function sample() {
   const data = emptyProgress();
@@ -45,8 +45,14 @@ describe("progress import", () => {
   });
 
   it("ignores settings outside the allowed range", () => {
-    const file = exportProgress({ ...sample(), settings: { dailyGoal: 100000, newCardsPerDay: 5 } });
+    const file = exportProgress({ ...sample(), settings: { dailyGoal: 100000, newCardsPerDay: 5, shortcuts: false } });
     const result = parseProgressFile(JSON.stringify(file), cards, questions);
-    expect(result.ok && result.data.settings).toEqual({ dailyGoal: 20, newCardsPerDay: 5 });
+    expect(result.ok && result.data.settings).toEqual({ dailyGoal: 20, newCardsPerDay: 5, shortcuts: false });
+  });
+
+  it("rejects exam records that do not match the question's real tariff", () => {
+    const file = exportProgress(sample()) as { data: { exams: Record<string, unknown> } };
+    file.data.exams["F200-Q01"] = { attempts: 1, best: 20, max: 20, last: 20, lastAt: "2026-10-20T10:00:00.000Z" };
+    expect(parseProgressFile(JSON.stringify(file), cards, questions)).toMatchObject({ ok: false, error: expect.stringContaining("F200-Q01") });
   });
 });

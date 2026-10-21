@@ -47,6 +47,7 @@ export const QUESTION_INDEX = new Map<string, { question: ExamQuestion; unit: Un
 
 export const ALL_CARD_IDS = UNITS.flatMap((u) => u.flashcards.map((c) => c.id));
 export const ALL_QUESTION_IDS = UNITS.flatMap((u) => u.questions.map((q) => q.id));
+export const QUESTION_MARKS: ReadonlyMap<string, number> = new Map(UNITS.flatMap((u) => u.questions.map((q) => [q.id, q.marks] as const)));
 
 export function topicTitle(unit: Unit, topicArea: number): string {
   return unit.topicAreas.find((t) => t.id === topicArea)?.title ?? `Topic area ${topicArea}`;

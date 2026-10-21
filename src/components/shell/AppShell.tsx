@@ -2,7 +2,8 @@
 
 import { Command, Focus, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { focusIsLost } from "@/lib/dom";
 import { useUi } from "@/store/ui";
 import { PlayerStats } from "@/components/stats/PlayerStats";
 import { ConnectivityPill } from "./ConnectivityPill";
@@ -44,6 +45,20 @@ export function AppShell({ children }: { children: ReactNode }) {
   const focusMode = useUi((s) => s.focusMode);
   const setFocusMode = useUi((s) => s.setFocusMode);
   const setPaletteOpen = useUi((s) => s.setPaletteOpen);
+  const exitButton = useRef<HTMLButtonElement>(null);
+  const focusButton = useRef<HTMLButtonElement>(null);
+  const firstRender = useRef(true);
+
+  // Toggling Focus mode unmounts the control that was focused; hand focus to its counterpart.
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    if (!focusIsLost()) return;
+    const target = focusMode ? exitButton.current : focusButton.current?.offsetParent ? focusButton.current : document.getElementById("main");
+    target?.focus({ preventScroll: true });
+  }, [focusMode]);
 
   return (
     <div className="flex min-h-dvh">
@@ -58,7 +73,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <SidebarLinks />
           </nav>
           <div className="mt-auto space-y-3">
-            <button type="button" onClick={() => setFocusMode(true)} className="btn btn-ghost w-full justify-between">
+            <button ref={focusButton} type="button" onClick={() => setFocusMode(true)} className="btn btn-ghost w-full justify-between">
               <span className="flex items-center gap-2">
                 <Focus aria-hidden="true" className="size-4" /> Focus mode
               </span>
@@ -78,7 +93,7 @@ export function AppShell({ children }: { children: ReactNode }) {
               <Focus aria-hidden="true" className="size-4 text-accent" /> Focus mode
             </span>
             <FocusTimer />
-            <button type="button" onClick={() => setFocusMode(false)} className="btn btn-ghost px-3 py-1.5">
+            <button ref={exitButton} type="button" onClick={() => setFocusMode(false)} className="btn btn-ghost px-3 py-1.5">
               <X aria-hidden="true" className="size-4" /> Exit <span className="kbd hidden sm:inline-flex">Esc</span>
             </button>
           </div>

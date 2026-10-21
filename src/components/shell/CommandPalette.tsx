@@ -18,6 +18,8 @@ interface PaletteItem {
   run: () => void;
 }
 
+const GROUP_ORDER: PaletteItem["group"][] = ["Navigate", "Units", "Actions", "Flashcards", "Exam questions"];
+
 const normalise = (s: string) => s.toLowerCase().normalize("NFKD").replace(/[^\p{L}\p{N}\s]/gu, " ");
 
 /** Every query token must appear; label prefix matches rank first. */
@@ -46,7 +48,8 @@ function PalettePanel() {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const input = useRef<HTMLInputElement>(null);
-  const list = useRef<HTMLUListElement>(null);
+  const list = useRef<HTMLDivElement>(null);
+  const panel = useRef<HTMLDivElement>(null);
   const listId = useId();
 
   const baseItems = useMemo<PaletteItem[]>(() => {
@@ -102,16 +105,28 @@ function PalettePanel() {
         perGroup.set(item.group, n + 1);
         return n < 6;
       })
-      .map((r) => r.item);
+      .map((r) => r.item)
+      // Results are shown in labelled groups, so keep each group contiguous (the sort is stable).
+      .sort((a, b) => GROUP_ORDER.indexOf(a.group) - GROUP_ORDER.indexOf(b.group));
   }, [query, baseItems, contentItems]);
 
-  // Focus the search box on open and hand focus back to whatever opened the palette on close.
+  const groups = useMemo(() => {
+    const map = new Map<PaletteItem["group"], { item: PaletteItem; index: number }[]>();
+    results.forEach((item, index) => map.set(item.group, [...(map.get(item.group) ?? []), { item, index }]));
+    return [...map];
+  }, [results]);
+
+  // Focus the search box on open. On close, hand focus back to whatever opened the palette,
+  // unless the chosen command has already put focus somewhere meaningful (e.g. a dialog).
   useEffect(() => {
     const returnFocus = document.activeElement as HTMLElement | null;
+    const node = panel.current;
     const frame = requestAnimationFrame(() => input.current?.focus());
     return () => {
       cancelAnimationFrame(frame);
-      returnFocus?.focus?.();
+      const now = document.activeElement;
+      const lost = !now || now === document.body || Boolean(node?.contains(now));
+      if (lost && returnFocus?.isConnected) returnFocus.focus();
     };
   }, []);
 
@@ -155,6 +170,7 @@ function PalettePanel() {
     <div className="fixed inset-0 z-50 flex items-start justify-center px-4 pt-[12vh]">
       <motion.div aria-hidden="true" className="absolute inset-0 bg-black/70 backdrop-blur-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setOpen(false)} />
       <motion.div
+        ref={panel}
         role="dialog"
         aria-modal="true"
         aria-label="Command palette"
@@ -187,38 +203,47 @@ function PalettePanel() {
           />
           <span className="kbd">Esc</span>
         </div>
-        <ul ref={list} id={listId} role="listbox" aria-label="Results" className="max-h-[55vh] overflow-y-auto p-2">
-          {results.length === 0 && <li className="px-3 py-8 text-center text-sm text-fg-muted">No matches for “{query}”.</li>}
-          {results.map((item, index) => {
-            const heading = index === 0 || results[index - 1].group !== item.group ? item.group : null;
-            const Icon = item.icon;
-            const selected = index === active;
-            return (
-              <li key={item.id} role="presentation">
-                {heading && <div role="presentation" className="eyebrow px-3 pb-1 pt-3">{heading}</div>}
-                <div
-                  id={`${listId}-${item.id}`}
-                  role="option"
-                  aria-selected={selected}
-                  data-index={index}
-                  onMouseMove={() => setActive(index)}
-                  onMouseDown={(e) => e.preventDefault()}
-                  onClick={() => run(item)}
-                  className={`flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm ${selected ? "bg-accent/15 text-fg" : "text-fg-muted"}`}
-                >
-                  <Icon aria-hidden={true} className={`size-4 shrink-0 ${selected ? "text-accent" : ""}`} />
-                  <span className="line-clamp-1 flex-1">{item.label}</span>
-                  {item.hint && <span className="shrink-0 font-mono text-xs text-fg-subtle">{item.hint}</span>}
-                  {selected && <CornerDownLeft aria-hidden="true" className="size-3.5 shrink-0 text-fg-subtle" />}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+        <div ref={list} id={listId} role="listbox" aria-label="Results" className="max-h-[55vh] overflow-y-auto p-2 empty:hidden">
+          {groups.map(([group, entries]) => (
+            <div key={group} role="group" aria-labelledby={`${listId}-${group.replace(/\s+/g, "-")}`}>
+              <div id={`${listId}-${group.replace(/\s+/g, "-")}`} className="eyebrow px-3 pb-1 pt-3">
+                {group}
+              </div>
+              {entries.map(({ item, index }) => {
+                const Icon = item.icon;
+                const selected = index === active;
+                return (
+                  <div
+                    key={item.id}
+                    id={`${listId}-${item.id}`}
+                    role="option"
+                    aria-selected={selected}
+                    data-index={index}
+                    onMouseMove={() => setActive(index)}
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={() => run(item)}
+                    className={`flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm ${selected ? "bg-accent/15 text-fg" : "text-fg-muted"}`}
+                  >
+                    <Icon aria-hidden={true} className={`size-4 shrink-0 ${selected ? "text-accent" : ""}`} />
+                    <span className="line-clamp-1 flex-1">{item.label}</span>
+                    {item.hint && <span className="shrink-0 font-mono text-xs text-fg-subtle">{item.hint}</span>}
+                    {selected && <CornerDownLeft aria-hidden="true" className="size-3.5 shrink-0 text-fg-subtle" />}
+                  </div>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+        {results.length === 0 && <p className="px-3 py-8 text-center text-sm text-fg-muted">No matches for “{query}”.</p>}
+        <div role="status" className="sr-only">
+          {query ? (results.length ? `${results.length} result${results.length === 1 ? "" : "s"}` : "No matches") : ""}
+        </div>
         <div className="flex items-center gap-4 border-t border-line px-4 py-2 text-xs text-fg-subtle">
           <span><span className="kbd">↑</span> <span className="kbd">↓</span> move</span>
           <span><span className="kbd">↵</span> open</span>
-          <span className="ml-auto">{results.length} result{results.length === 1 ? "" : "s"}</span>
+          <span aria-hidden="true" className="ml-auto">
+            {results.length} result{results.length === 1 ? "" : "s"}
+          </span>
         </div>
       </motion.div>
     </div>

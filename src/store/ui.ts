@@ -27,6 +27,13 @@ interface UiState {
 }
 
 let toastId = 0;
+// Live regions only speak when their text changes, so alternate an invisible suffix to make a
+// repeated message (e.g. two "+10 XP. Good" in a row) announce again.
+let parity = false;
+const fresh = (message: string) => {
+  parity = !parity;
+  return parity ? message : `${message}\u200B`;
+};
 
 export const useUi = create<UiState>()((set) => ({
   paletteOpen: false,
@@ -42,10 +49,10 @@ export const useUi = create<UiState>()((set) => ({
   pushXp: (amount, label) => {
     toastId += 1;
     const id = toastId;
-    set((s) => ({ toasts: [...s.toasts.slice(-3), { id, amount, label }], announcement: `+${amount} XP. ${label}` }));
+    set((s) => ({ toasts: [...s.toasts.slice(-3), { id, amount, label }], announcement: fresh(`+${amount} XP. ${label}`) }));
   },
   dropToast: (id) => set((s) => ({ toasts: s.toasts.filter((t) => t.id !== id) })),
-  announce: (announcement) => set({ announcement }),
+  announce: (announcement) => set({ announcement: fresh(announcement) }),
 }));
 
 /** Shows the feedback for a reward returned by a progress action. */

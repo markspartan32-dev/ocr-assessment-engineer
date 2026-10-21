@@ -37,7 +37,10 @@ export function LevelUpOverlay() {
     return () => {
       window.clearTimeout(timer);
       window.removeEventListener("keydown", onKey, true);
-      previous?.focus?.();
+      // The grade button that triggered the level-up has usually unmounted by now, so fall back
+      // to the visible flashcard face, then to <main>.
+      const fallback = document.querySelector<HTMLElement>("[data-focus-return]:not([inert])") ?? document.getElementById("main");
+      (previous?.isConnected ? previous : fallback)?.focus({ preventScroll: true });
     };
   }, [level, dismiss, announce]);
 

@@ -18,11 +18,16 @@ export function ConnectivityPill() {
   // covers a page that the service worker loaded while the device was already offline.
   const nextOffline = useOffline();
   const browserOffline = useSyncExternalStore(subscribe, () => !navigator.onLine, () => false);
-  if (!nextOffline && !browserOffline) return null;
+  const offline = nextOffline || browserOffline;
+  // The status region stays mounted so the change is announced; only its content toggles.
   return (
-    <div role="status" className="flex items-center gap-1.5 rounded-full border border-xp/40 bg-xp/10 px-2.5 py-1 text-xs font-medium text-xp">
-      <WifiOff aria-hidden="true" className="size-3.5" />
-      <span>Offline<span className="hidden sm:inline"> · progress saved on this device</span></span>
+    <div role="status">
+      {offline && (
+        <span className="flex items-center gap-1.5 rounded-full border border-xp/40 bg-xp/10 px-2.5 py-1 text-xs font-medium text-xp">
+          <WifiOff aria-hidden="true" className="size-3.5" />
+          <span>Offline<span className="hidden sm:inline"> · progress saved on this device</span></span>
+        </span>
+      )}
     </div>
   );
 }

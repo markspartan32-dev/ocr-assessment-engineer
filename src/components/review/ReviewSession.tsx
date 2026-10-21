@@ -3,10 +3,11 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, BookOpenCheck, CheckCircle2, Dumbbell, PenLine, RotateCcw } from "lucide-react";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { CARD_INDEX, UNITS, getUnit } from "@/lib/content";
 import type { UnitCode } from "@/lib/content-types";
 import { addDays } from "@/lib/date";
+import { focusIsLost, isInteractiveTarget } from "@/lib/dom";
 import { buildPracticeQueue, dueForecast, requeueAfter, type QueueItem } from "@/lib/srs/scheduler";
 import { QUALITY_LABELS, type Quality } from "@/lib/srs/sm2";
 import { useQueue, useStudyReady } from "@/hooks/useStudy";
@@ -35,6 +36,19 @@ interface Session {
 const isTyping = (target: EventTarget | null) =>
   target instanceof HTMLElement && (target.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName));
 
+/** A view heading that takes focus when it replaces the control the student was using. */
+function FocusHeading({ active, className, children }: { active: boolean; className: string; children: ReactNode }) {
+  const ref = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    if (active && focusIsLost()) ref.current?.focus();
+  }, [active]);
+  return (
+    <h2 ref={ref} tabIndex={-1} className={`outline-none ${className}`}>
+      {children}
+    </h2>
+  );
+}
+
 function UnitFilter({ current }: { current?: UnitCode }) {
   const chip = (href: string, label: string, active: boolean) => (
     <Link
@@ -61,7 +75,11 @@ export function ReviewSession({ unitCode }: { unitCode?: UnitCode }) {
   const queue = useQueue(cardIds, today);
   const cards = useProgress((s) => s.cards);
   const focusMode = useUi((s) => s.focusMode);
+  const shortcuts = useProgress((s) => s.settings.shortcuts);
+  const root = useRef<HTMLDivElement>(null);
   const [started, setStarted] = useState<Session | null>(null);
+  /** Set once the student acts, so views it causes may take focus (never on first page load). */
+  const [interacted, setInteracted] = useState(false);
   // Until the first interaction the session mirrors the live queue; the first reveal freezes it,
   // so grading cards never reshuffles the session in progress.
   const session = useMemo<Session | null>(
@@ -76,11 +94,15 @@ export function ReviewSession({ unitCode }: { unitCode?: UnitCode }) {
   const current = session && session.index < session.items.length ? session.items[session.index] : null;
   const entry = current ? CARD_INDEX.get(current.cardId) : undefined;
 
-  const reveal = useCallback(() => setSession((s) => ({ ...s, revealed: true })), [setSession]);
+  const reveal = useCallback(() => {
+    setInteracted(true);
+    setSession((s) => ({ ...s, revealed: true }));
+  }, [setSession]);
 
   const grade = useCallback(
     (q: Quality) => {
       if (!session || !current || !entry || !session.revealed) return;
+      setInteracted(true);
       const result = useProgress.getState().gradeCard(current.cardId, q, new Date(), session.mode === "practice");
       const progress = useProgress.getState().cards[current.cardId];
       const changes = progress && (result.kind === "new" || result.kind === "review");
@@ -99,24 +121,28 @@ export function ReviewSession({ unitCode }: { unitCode?: UnitCode }) {
     [session, current, entry, setSession],
   );
 
+  // Space/Enter reveal and 0–5 grade, but only when focus is in the session (or nowhere), never
+  // on a link or button that owns those keys. Digits can be turned off in Settings (WCAG 2.1.4).
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey || isTyping(event.target)) return;
+      if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey || isTyping(event.target) || isInteractiveTarget(event.target)) return;
       if (useUi.getState().paletteOpen || useUi.getState().levelUp !== null) return;
-      if (!session?.revealed && (event.key === " " || event.key === "Enter") && current) {
-        if (event.target instanceof HTMLButtonElement && event.key === "Enter") return;
+      const inSession = event.target === document.body || (event.target instanceof Node && root.current?.contains(event.target));
+      if (!inSession || !current) return;
+      if (!session?.revealed && (event.key === " " || event.key === "Enter")) {
         event.preventDefault();
         reveal();
-      } else if (session?.revealed && /^[0-5]$/.test(event.key)) {
+      } else if (session?.revealed && shortcuts && /^[0-5]$/.test(event.key)) {
         event.preventDefault();
         grade(Number(event.key) as Quality);
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [session?.revealed, current, reveal, grade]);
+  }, [session?.revealed, current, reveal, grade, shortcuts]);
 
   const practise = () => {
+    setInteracted(true);
     const ids = [...cardIds].sort(() => Math.random() - 0.5);
     setSession({ mode: "practice", items: buildPracticeQueue(ids), index: 0, revealed: false, graded: [] });
   };
@@ -147,11 +173,13 @@ export function ReviewSession({ unitCode }: { unitCode?: UnitCode }) {
   if (session.items.length === 0) {
     const forecast = dueForecast(cards, today, 8).slice(1).find((d) => d.due > 0);
     return (
-      <div>
+      <div ref={root}>
         {header}
         <div className="card mx-auto max-w-xl p-8 text-center">
           <CheckCircle2 aria-hidden="true" className="mx-auto size-12 text-ok" />
-          <h2 className="mt-4 text-xl font-semibold">All caught up</h2>
+          <FocusHeading active={interacted} className="mt-4 text-xl font-semibold">
+            All caught up
+          </FocusHeading>
           <p className="mt-2 text-sm leading-6 text-fg-muted">
             No cards are due{unit ? ` in ${unit.code}` : ""} and today&apos;s new-card allowance is used up.
             {forecast ? ` ${forecast.due} card${forecast.due === 1 ? " is" : "s are"} due ${forecast.day === addDays(today, 1) ? "tomorrow" : `on ${forecast.day}`}.` : ""}
@@ -177,11 +205,13 @@ export function ReviewSession({ unitCode }: { unitCode?: UnitCode }) {
     const unique = new Set(session.graded.map((g) => g.cardId)).size;
     const tomorrow = dueForecast(cards, today, 2)[1]?.due ?? 0;
     return (
-      <div>
+      <div ref={root}>
         {header}
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="card mx-auto max-w-xl p-8">
           <p className="eyebrow">Session complete</p>
-          <h2 className="mt-2 text-2xl font-semibold">Nice work.</h2>
+          <FocusHeading active={interacted} className="mt-2 text-2xl font-semibold">
+            Nice work.
+          </FocusHeading>
           <dl className="mt-6 grid grid-cols-3 gap-3 text-center">
             {[
               ["Cards", unique],
@@ -206,7 +236,14 @@ export function ReviewSession({ unitCode }: { unitCode?: UnitCode }) {
             <Link href={unit ? `/exam/${unit.code}` : "/exam"} className="btn btn-ghost">
               <PenLine aria-hidden="true" className="size-4" /> Exam practice
             </Link>
-            <button type="button" onClick={() => setSession(null)} className="btn btn-ghost">
+            <button
+              type="button"
+              onClick={() => {
+                setInteracted(true);
+                setSession(null);
+              }}
+              className="btn btn-ghost"
+            >
               <RotateCcw aria-hidden="true" className="size-4" /> Check for more
             </button>
           </div>
@@ -216,7 +253,7 @@ export function ReviewSession({ unitCode }: { unitCode?: UnitCode }) {
   }
 
   return (
-    <div>
+    <div ref={root}>
       {header}
       <div className="mx-auto max-w-2xl space-y-4">
         <AnimatePresence mode="wait" initial={false}>
@@ -227,7 +264,7 @@ export function ReviewSession({ unitCode }: { unitCode?: UnitCode }) {
             exit={{ opacity: 0, x: -24 }}
             transition={{ duration: 0.18 }}
           >
-            <Flashcard3D card={entry.card} unit={entry.unit} kind={current.kind} revealed={session.revealed} takeFocus={session.graded.length > 0} onReveal={reveal} />
+            <Flashcard3D card={entry.card} unit={entry.unit} kind={current.kind} revealed={session.revealed} takeFocus={interacted} onReveal={reveal} />
           </motion.div>
         </AnimatePresence>
         <AnimatePresence>

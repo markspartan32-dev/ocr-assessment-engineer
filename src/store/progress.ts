@@ -9,7 +9,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { toDayKey, type DayKey } from "@/lib/date";
 import { levelFromXp, recordActivity, xpForCard, xpForExam, XP_DAILY_GOAL_BONUS } from "@/lib/gamification";
-import { emptyProgress, MAX_LOG_ENTRIES, SETTINGS_LIMITS, type DailyStat, type ProgressData, type Settings } from "@/lib/progress-schema";
+import { DEFAULT_SETTINGS, emptyProgress, MAX_LOG_ENTRIES, SETTINGS_LIMITS, type DailyStat, type ProgressData, type Settings } from "@/lib/progress-schema";
 import { gradeCard as sm2Grade, type CardProgress, type ReviewKind } from "@/lib/srs/scheduler";
 import { isCorrect, needsRepeat, type Quality } from "@/lib/srs/sm2";
 import { localForageStorage } from "./storage";
@@ -113,6 +113,7 @@ export const useProgress = create<ProgressState>()(
           settings: {
             dailyGoal: patch.dailyGoal === undefined ? current.dailyGoal : clamp(patch.dailyGoal, SETTINGS_LIMITS.dailyGoal),
             newCardsPerDay: patch.newCardsPerDay === undefined ? current.newCardsPerDay : clamp(patch.newCardsPerDay, SETTINGS_LIMITS.newCardsPerDay),
+            shortcuts: patch.shortcuts === undefined ? current.shortcuts : Boolean(patch.shortcuts),
           },
         });
       },
@@ -126,6 +127,11 @@ export const useProgress = create<ProgressState>()(
       version: 1,
       storage: createJSONStorage(() => localForageStorage),
       partialize: ({ cards, exams, xp, streak, daily, log, settings }): ProgressData => ({ cards, exams, xp, streak, daily, log, settings }),
+      // Fill settings added after a student's data was first saved.
+      merge: (persisted, current) => {
+        const saved = (persisted ?? {}) as Partial<ProgressData>;
+        return { ...current, ...saved, settings: { ...DEFAULT_SETTINGS, ...saved.settings } };
+      },
     },
   ),
 );
