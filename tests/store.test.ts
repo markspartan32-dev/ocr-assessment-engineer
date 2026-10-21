@@ -50,3 +50,19 @@ describe("progress store", () => {
     expect(state.settings.dailyGoal).toBe(5);
   });
 });
+
+describe("practice mode", () => {
+  beforeEach(() => useProgress.getState().resetProgress());
+
+  it("never creates or changes an SM-2 schedule", () => {
+    const store = useProgress.getState();
+    const unseen = store.gradeCard("F202-FC01", 5, day(20), true);
+    expect(unseen).toMatchObject({ kind: "practice", xp: 2 });
+    expect(useProgress.getState().cards["F202-FC01"]).toBeUndefined();
+
+    store.gradeCard("F202-FC02", 4, day(20));
+    const before = useProgress.getState().cards["F202-FC02"];
+    store.gradeCard("F202-FC02", 0, day(20), true);
+    expect(useProgress.getState().cards["F202-FC02"]).toEqual({ ...before, reviews: before.reviews + 1 });
+  });
+});

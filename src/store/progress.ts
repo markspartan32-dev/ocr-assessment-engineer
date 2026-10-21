@@ -10,8 +10,8 @@ import { createJSONStorage, persist } from "zustand/middleware";
 import { toDayKey, type DayKey } from "@/lib/date";
 import { levelFromXp, recordActivity, xpForCard, xpForExam, XP_DAILY_GOAL_BONUS } from "@/lib/gamification";
 import { emptyProgress, MAX_LOG_ENTRIES, SETTINGS_LIMITS, type DailyStat, type ProgressData, type Settings } from "@/lib/progress-schema";
-import { gradeCard as sm2Grade, type ReviewKind } from "@/lib/srs/scheduler";
-import type { Quality } from "@/lib/srs/sm2";
+import { gradeCard as sm2Grade, type CardProgress, type ReviewKind } from "@/lib/srs/scheduler";
+import { isCorrect, needsRepeat, type Quality } from "@/lib/srs/sm2";
 import { localForageStorage } from "./storage";
 
 export interface Reward {
@@ -29,7 +29,8 @@ export interface CardResult extends Reward {
 }
 
 interface ProgressActions {
-  gradeCard: (cardId: string, q: Quality, now?: Date) => CardResult;
+  /** Grades a card. `practice` answers (voluntary cramming) never change the SM-2 schedule. */
+  gradeCard: (cardId: string, q: Quality, now?: Date, practice?: boolean) => CardResult;
   recordExam: (questionId: string, marks: number, maxMarks: number, now?: Date) => Reward & { improved: boolean };
   updateSettings: (patch: Partial<Settings>) => void;
   resetProgress: () => void;
@@ -62,16 +63,19 @@ export const useProgress = create<ProgressState>()(
     (set, get) => ({
       ...emptyProgress(),
 
-      gradeCard: (cardId, q, now = new Date()) => {
+      gradeCard: (cardId, q, now = new Date(), practice = false) => {
         const state = get();
         const today = toDayKey(now);
-        const outcome = sm2Grade(state.cards[cardId], q, today);
+        const existing = state.cards[cardId];
+        const outcome: { kind: ReviewKind; correct: boolean; requeue: boolean; progress: CardProgress | undefined } = practice
+          ? { kind: "practice", correct: isCorrect(q), requeue: needsRepeat(q), progress: existing && { ...existing, reviews: existing.reviews + 1 } }
+          : sm2Grade(existing, q, today);
         const previous = state.daily[today] ?? emptyDay();
         const day: DailyStat = { ...previous, reviews: previous.reviews + 1, correct: previous.correct + (outcome.correct ? 1 : 0) };
         const { patch, reward } = award(state, today, xpForCard(outcome.kind, q), day);
         set({
           ...patch,
-          cards: { ...state.cards, [cardId]: outcome.progress },
+          cards: outcome.progress ? { ...state.cards, [cardId]: outcome.progress } : state.cards,
           log: [...state.log, { at: now.getTime(), cardId, q, kind: outcome.kind }].slice(-MAX_LOG_ENTRIES),
         });
         return { ...reward, kind: outcome.kind, correct: outcome.correct, requeue: outcome.requeue };

@@ -1,0 +1,24 @@
+{
+  "id": "/",
+  "name": "DataCommand — OCR Data Analytics revision",
+  "short_name": "DataCommand",
+  "description": "Active-recall revision for the Cambridge OCR Level 3 Advanced National in IT: Data Analytics (F200–F206): SM-2 flashcards, exam practice and mastery analytics. Works offline.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#090b10",
+  "theme_color": "#090b10",
+  "lang": "en-GB",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Review due cards", "short_name": "Review", "url": "/review", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Exam practice", "short_name": "Exam", "url": "/exam", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Analytics", "short_name": "Analytics", "url": "/analytics", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

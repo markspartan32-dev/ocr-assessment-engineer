@@ -55,3 +55,12 @@ export function unitMastery(
 }
 
 export const percent = (ratio: number): number => Math.round(ratio * 100);
+
+export type CardStatus = "new" | "repeat" | "due" | "learning" | "mastered";
+
+export function cardStatus(progress: CardProgress | undefined, today: string): CardStatus {
+  if (!progress) return "new";
+  if (progress.dueDate <= today) return "due";
+  if (progress.pendingRepeat) return "repeat";
+  return progress.repetitions >= MASTERED_REPETITIONS ? "mastered" : "learning";
+}

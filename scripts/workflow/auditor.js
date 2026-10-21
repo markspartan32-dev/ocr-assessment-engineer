@@ -275,7 +275,9 @@ function scanSource(fileName, text, root = process.cwd()) {
       const hidden = get('aria-hidden') === 'true' || get('aria-hidden') === true || ['presentation', 'none'].includes(role);
       const keyboard = ['onKeyDown', 'onKeyUp', 'onKeyPress'].some((k) => attrs.map.has(k));
       const roleOk = role === undefined ? attrs.map.has('role') : INTERACTIVE_ROLES.has(role);
-      if (!hidden && !(keyboard && roleOk && attrs.map.has('tabIndex'))) {
+      // Listbox options are driven from their combobox via aria-activedescendant, not focused directly.
+      const managed = role === 'option';
+      if (!hidden && !managed && !(keyboard && roleOk && attrs.map.has('tabIndex'))) {
         report('a11y/click-events-have-key-events', opening, `<${tag} onClick> needs role, tabIndex and a key handler (or use <button>).`);
       }
     }
