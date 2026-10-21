@@ -1,0 +1,392 @@
+{
+  "code": "F204",
+  "title": "Data and the Internet of Everything (IoE)",
+  "assessment": "nea",
+  "summary": "This unit covers how the Internet of Everything links people, process, data and things across different sectors. It also covers how IoE data is collected, powered, processed, stored and transmitted; how HCIs, security, and legal and ethical issues shape an IoE solution; and how to document, propose and present that solution to a client.",
+  "flashcards": [
+    {
+      "id": "F204-FC01",
+      "topicArea": 1,
+      "front": "What is meant by the Internet of Everything (IoE)?",
+      "back": "The IoE is the networked connection of people, process, data and things. It goes beyond the Internet of Things because it also connects people and processes. It turns the data collected by devices into useful information and actions for people and organisations, in sectors such as health, the home, cities, industry and the environment.",
+      "keyTerms": [
+        "Internet of Everything",
+        "people",
+        "process",
+        "things"
+      ]
+    },
+    {
+      "id": "F204-FC02",
+      "topicArea": 1,
+      "front": "What are the four pillars of the IoE and what is the role of each?",
+      "back": "People are the users who interact with the system and act on its outputs. Data covers the raw data, the analysis of it, and the decisions and results that come from it. Process is how and when information is processed and delivered to the right person or device. Things are the collection devices, such as sensors, and the output devices, such as screens and actuators. Each pillar depends on the others to create a workable system.",
+      "keyTerms": [
+        "four pillars",
+        "people",
+        "data",
+        "things"
+      ]
+    },
+    {
+      "id": "F204-FC03",
+      "topicArea": 2,
+      "front": "Compare processing IoE data on the device, at the edge, in the fog and in the cloud.",
+      "back": "Device processing happens on the sensor itself, so the response is instant but the processing power is very limited. Edge processing happens on a nearby gateway, which keeps latency and bandwidth use low. Fog processing uses a local network layer of nodes between the edge and the cloud to combine data from many devices. Cloud processing uses remote data centres, which have huge scalable power and storage, but it depends on the internet connection and adds delay.",
+      "keyTerms": [
+        "edge",
+        "fog",
+        "cloud"
+      ]
+    },
+    {
+      "id": "F204-FC04",
+      "topicArea": 2,
+      "front": "What is the difference between SaaS, PaaS and IaaS?",
+      "back": "Software as a Service (SaaS) provides ready-made applications over the internet, such as a hosted IoE dashboard. Platform as a Service (PaaS) provides a platform and tools for developers to build and run their own applications without managing servers. Infrastructure as a Service (IaaS) provides virtual servers, storage and networking that the organisation configures and manages itself.",
+      "keyTerms": [
+        "SaaS",
+        "PaaS",
+        "IaaS"
+      ]
+    },
+    {
+      "id": "F204-FC05",
+      "topicArea": 2,
+      "front": "How do frequency of data collection and frequency of communication affect the power use of an IoE device?",
+      "back": "The more often a device takes readings, the more power it uses. Transmitting data usually uses even more power than sensing, so frequent communication drains a battery quickly. To make batteries last longer, devices can collect data less often, send data in batches, or send only when a reading changes. Energy harvesting, such as solar, motion or RF energy harvesting, can top up a battery where wired power is not available.",
+      "keyTerms": [
+        "frequency of data collection",
+        "frequency of communication",
+        "battery"
+      ]
+    },
+    {
+      "id": "F204-FC06",
+      "topicArea": 3,
+      "front": "What are P2P, P2D and D2D connections in the IoE? Give an example of each.",
+      "back": "Person to Person (P2P) connects people with each other through the system, for example a carer receiving a message from a patient's family. Person to Device (P2D) is a person interacting with a device, for example using a phone app to set a smart thermostat. Device to Device (D2D) is devices exchanging data without human input, for example a motion sensor telling smart lights to switch on.",
+      "keyTerms": [
+        "P2P",
+        "P2D",
+        "D2D"
+      ]
+    },
+    {
+      "id": "F204-FC07",
+      "topicArea": 3,
+      "front": "What four transmission considerations affect the choice of connectivity method for an IoE solution?",
+      "back": "Data size is how much data is sent each time; video needs far more bandwidth than a temperature reading. Transmission range is how far the data must travel; NFC covers a few centimetres, while mobile networks cover many kilometres. Transmission rate is how fast the data must be transferred. Frequency of transmission is how often data is sent, and it affects both power use and network load.",
+      "keyTerms": [
+        "data size",
+        "transmission range",
+        "transmission rate"
+      ]
+    },
+    {
+      "id": "F204-FC08",
+      "topicArea": 4,
+      "front": "What is the difference between learnability and memorability in HCI design?",
+      "back": "Learnability is how quickly a new user can work out how to use an interface the first time, helped by clear labels, familiar icons and simple navigation. Memorability is how easily a returning user remembers how to use it after a break, helped by consistent layouts and predictable controls. Both matter for occasional users of IoE systems, such as older people using home living aids.",
+      "keyTerms": [
+        "learnability",
+        "memorability"
+      ]
+    },
+    {
+      "id": "F204-FC09",
+      "topicArea": 5,
+      "front": "Name the mitigation methods that can protect IoE devices from threats such as brute force, spoofing and rootkits.",
+      "back": "The mitigation methods are deep packet inspection, firewalls, Intrusion Detection Systems, Intrusion Protection Systems, public key/private key encryption, root of trust and physical tampering protection. Protecting the device also helps to secure data in transit, because a trusted, uncompromised device is less likely to send data to an attacker or be used to impersonate a legitimate device.",
+      "keyTerms": [
+        "firewall",
+        "root of trust",
+        "Intrusion Detection Systems"
+      ]
+    },
+    {
+      "id": "F204-FC10",
+      "topicArea": 6,
+      "front": "What does each type of technical documentation show: a program flowchart, a data flow diagram and a wireframe?",
+      "back": "A program flowchart shows the processing steps, decisions and order of operations in the system, for example what happens when a sensor reading goes over a threshold. A data flow diagram shows where data comes from, how it moves between processes and where it is stored. A wireframe is a simple layout sketch of an HCI screen showing where navigation, buttons, text and images will go.",
+      "keyTerms": [
+        "program flowchart",
+        "data flow diagram",
+        "wireframe"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "F204-Q01",
+      "topicArea": 5,
+      "commandWord": "Identify",
+      "marks": 2,
+      "context": "A small business has fitted smart door locks and internet-connected security cameras to its offices.",
+      "question": "Identify two threats to the business's IoE devices.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Brute force (1)",
+          "Playback attack (1)",
+          "Rootkit (1)",
+          "Side channel attack (1)",
+          "Spoofing (1)",
+          "Zero day attack (1)"
+        ],
+        "guidance": "One mark for each valid threat, up to a maximum of 2. Accept 'replay attack' for playback attack. Do not accept threats to data in transit, such as man-in-the-middle or interception, as threats to devices. No explanation of how the threat works is needed."
+      },
+      "modelAnswer": "1. Brute force, for example against the login password of the smart door locks.\n2. Spoofing, for example a fake device pretending to be one of the office security cameras."
+    },
+    {
+      "id": "F204-Q02",
+      "topicArea": 4,
+      "commandWord": "State",
+      "marks": 2,
+      "context": "A family has installed a smart heating system. It collects temperature readings from sensors in each room and lets them control the heating using a phone app, including when they are away from home.",
+      "question": "State two output devices that the smart heating system could use to give information to, or act on behalf of, the family.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Screen, for example a wall-mounted touchscreen or a phone display showing the current temperature (1)",
+          "Speaker, for example a smart speaker announcing that the heating is on (1)",
+          "Actuator, for example a motorised radiator valve that opens or closes (1)"
+        ],
+        "guidance": "One mark for each valid output device, up to a maximum of 2. Do not accept input or collection devices such as a temperature sensor or a microphone."
+      },
+      "modelAnswer": "1. A screen, such as a touchscreen thermostat on the wall that shows the current room temperature.\n2. An actuator, such as a smart radiator valve that opens or closes to change the heat in a room."
+    },
+    {
+      "id": "F204-Q03",
+      "topicArea": 6,
+      "commandWord": "Outline",
+      "marks": 3,
+      "question": "Outline three features that should be included in an effective IoE solution proposal for a client.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "User requirements: what the users need the solution to do (1)",
+          "Purpose: the problem the solution solves or the aim it meets (1)",
+          "Stakeholder considerations: who benefits and how, for example the organisation, individuals, society or the environment (1)",
+          "Security issues: threats to devices and data and how they will be mitigated (1)",
+          "Legal and ethical considerations: for example how the solution will comply with the DPA 2018/UK GDPR and protect privacy (1)",
+          "Data to be collected: what data is collected and by which devices (1)",
+          "Connectivity and data transmission: how devices will connect and send data (1)",
+          "Processing required: where and how the data will be processed (1)",
+          "Outputs: what information is given to users and in what format (1)"
+        ],
+        "guidance": "One mark for each feature that has a brief outline, up to a maximum of 3. A feature named without any outline cannot be credited, so 'security' on its own gets 0 marks."
+      },
+      "modelAnswer": "1. User requirements: a summary of what the client's users need the IoE solution to do.\n2. Security issues: the threats to the devices and to data in transit, and the mitigations that will be used.\n3. Data to be collected: which data will be collected, which devices will collect it and how often."
+    },
+    {
+      "id": "F204-Q04",
+      "topicArea": 1,
+      "commandWord": "Describe",
+      "marks": 4,
+      "context": "A city council wants to reduce congestion and make it easier for residents to travel around the city centre.",
+      "question": "Describe two ways the council could use the IoE to manage traffic and transport in the city.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Sensors or cameras at junctions count vehicles or measure queue lengths (1)",
+          "The data is used to change traffic light timings automatically and reduce congestion (1)",
+          "GPS trackers on buses send their locations in real time (1)",
+          "Arrival times are shown on smart bus stop screens or apps so passengers can plan their journeys (1)",
+          "Parking bay sensors detect which spaces are free (1)",
+          "Drivers are directed to free spaces through an app or road signs, so less time is spent driving around looking for a space (1)"
+        ],
+        "guidance": "Two marks for each way, up to a maximum of 4: 1 mark for identifying the IoE use and 1 mark for describing how it helps traffic or transport. Accept other valid examples, such as smart ticketing or adaptive speed signs."
+      },
+      "modelAnswer": "1. The council could place sensors at busy junctions to count how many vehicles are queuing. This data could be used to change the timing of the traffic lights automatically, giving longer green lights to the busiest roads and reducing congestion.\n2. The council could fit GPS trackers to buses so that each bus sends its location in real time. Expected arrival times could then be shown on screens at bus stops and in an app, so residents know exactly when their bus will arrive and can plan their journeys."
+    },
+    {
+      "id": "F204-Q05",
+      "topicArea": 3,
+      "commandWord": "Compare",
+      "marks": 4,
+      "context": "A farm is installing battery-powered soil moisture sensors across several fields. Each sensor sends a small reading every 15 minutes to a hub in the farm office.",
+      "question": "Compare Zigbee and Wi-Fi as connectivity methods for the soil moisture sensors.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Zigbee uses very little power, while Wi-Fi uses much more, so Zigbee sensors' batteries will last longer (1)",
+          "Zigbee forms a mesh network where each sensor can pass data on to the next, extending range across the fields, while Wi-Fi devices usually connect directly to a router or access point, which limits range (1)",
+          "Zigbee has a low transmission rate, but this is enough for small moisture readings, while Wi-Fi's high transmission rate is not needed for this data size (1)",
+          "Wi-Fi can connect straight to the internet through an existing router, while Zigbee needs a hub or gateway to pass data to the internet (1)",
+          "Both are wireless, so no cabling is needed across the fields (1)"
+        ],
+        "guidance": "One mark for each valid comparison point, up to a maximum of 4. Each point must refer to both methods, either explicitly or by clear implication. A description of only one method gets no marks. Do not require exact range or speed figures."
+      },
+      "modelAnswer": "Zigbee is better suited to battery-powered sensors because it uses very little power, whereas Wi-Fi uses much more and would mean changing the batteries far more often. Zigbee sensors form a mesh network and pass readings on to each other, so data can travel across several fields to the hub, whereas a Wi-Fi sensor must be within range of a router or access point, which would be difficult in distant fields. Wi-Fi has a much higher transmission rate than Zigbee, but this is not needed because each moisture reading is very small and is only sent every 15 minutes. However, Wi-Fi can connect directly to the internet through the office router, whereas Zigbee needs a hub or gateway to pass the data on."
+    },
+    {
+      "id": "F204-Q06",
+      "topicArea": 2,
+      "commandWord": "Explain",
+      "marks": 4,
+      "context": "A factory has fitted sensors around a robotic arm. When a worker enters the danger zone, the arm must stop immediately.",
+      "question": "Explain two benefits to the factory of processing the sensor data at the edge rather than in the cloud.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Lower latency, because data does not travel to a remote data centre and back (1)",
+          "The arm can be stopped almost instantly, which reduces the risk of injury to workers (1)",
+          "The system keeps working if the internet connection fails (1)",
+          "Safety does not depend on an external network or cloud provider being available (1)",
+          "Less data needs to be sent over the internet (1)",
+          "This reduces bandwidth use and cloud costs, because only summaries or alerts are uploaded (1)",
+          "Raw data stays on site (1)",
+          "This reduces the chance of the data being intercepted in transit (1)"
+        ],
+        "guidance": "Two marks for each benefit, up to a maximum of 4: 1 mark for identifying the benefit and 1 mark for explaining it in the context of the factory. A generic answer with no link to the factory or worker safety gets a maximum of 2 marks."
+      },
+      "modelAnswer": "1. Processing at the edge gives much lower latency, because the sensor data is analysed on a gateway next to the machine instead of travelling to a remote cloud data centre and back. This means the robotic arm can be stopped almost instantly when a worker steps into the danger zone, which reduces the risk of serious injury.\n2. Edge processing does not depend on the internet connection. If the factory's connection to the cloud failed, the safety system would still detect workers and stop the arm, so production can carry on without putting staff at risk."
+    },
+    {
+      "id": "F204-Q07",
+      "topicArea": 2,
+      "commandWord": "Explain",
+      "marks": 4,
+      "context": "An environment agency is placing flood detection sensors along a remote riverbank. There is no mains electricity nearby, and engineers can only visit the sites a few times a year.",
+      "question": "Explain two ways the agency could make sure the flood sensors have enough power to keep working.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Fit each sensor with a small solar panel (1)",
+          "The riverbank is outdoors and gets daylight, and solar power does not need a mains supply (1)",
+          "Use a rechargeable battery alongside the solar panel (1)",
+          "The battery stores energy so the sensor keeps working at night or in cloudy weather (1)",
+          "Reduce how often readings are taken or sent when the river level is normal (1)",
+          "This saves energy, so the battery lasts between the infrequent engineer visits (1)",
+          "Send readings in batches, or only when the level changes significantly (1)",
+          "Transmitting uses a lot of power, so fewer transmissions extend battery life (1)"
+        ],
+        "guidance": "Two marks for each way, up to a maximum of 4: 1 mark for identifying the method and 1 mark for explaining why it suits the context. Do not credit wired mains power, because the context rules it out. Calculations and the physics of power generation are not needed."
+      },
+      "modelAnswer": "1. Each sensor could have a small solar panel connected to a rechargeable battery. The riverbank is outdoors with no mains supply, so solar panels can generate power during the day, and the battery stores energy so the sensor keeps working at night and in cloudy weather.\n2. The sensors could be set to take readings and transmit less often when the river level is normal, and more often only when the level starts rising. Transmitting data uses a lot of power, so this would make the battery last much longer, which matters because engineers can only visit a few times a year."
+    },
+    {
+      "id": "F204-Q08",
+      "topicArea": 5,
+      "commandWord": "Explain",
+      "marks": 4,
+      "context": "A hospital gives patients a wearable heart monitor. The monitor sends readings over the patient's home Wi-Fi to the hospital's cloud system, where doctors check them.",
+      "question": "Explain two methods the hospital could use to protect the patients' heart data while it is in transit.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Encrypt the data before it is sent (1)",
+          "If an attacker intercepts the readings, for example through a man-in-the-middle attack, they cannot read the sensitive health data (1)",
+          "Use public key/private key cryptography between the monitor and the hospital server (1)",
+          "This means the monitor only sends data to the genuine hospital server and attackers cannot pretend to be either side (1)",
+          "Protect the device with root of trust or physical tampering protection (1)",
+          "A compromised monitor could leak readings or send false data, so securing the device also protects data in transit (1)"
+        ],
+        "guidance": "Two marks for each method, up to a maximum of 4: 1 mark for identifying the method and 1 mark for explaining how it protects the patient data in this context. Students do not need to describe how encryption algorithms or attacks work."
+      },
+      "modelAnswer": "1. The hospital could encrypt the heart readings before they leave the monitor. If an attacker intercepted the data on the patient's home Wi-Fi, for example in a man-in-the-middle attack, they would not be able to read it, so the patient's sensitive health data would stay confidential.\n2. The hospital could use public key/private key cryptography so that the monitor and the hospital server confirm each other's identity. The monitor would then only send readings to the genuine hospital server, and an attacker could not impersonate the server or send fake readings to doctors."
+    },
+    {
+      "id": "F204-Q09",
+      "topicArea": 4,
+      "commandWord": "Analyse",
+      "marks": 6,
+      "context": "A housing association is installing a smart home system in flats for older residents. Residents control the lighting, heating and door entry using a tablet app. Many residents have poor eyesight, and some have little experience of using technology.",
+      "question": "Analyse how HCI principles could be used to make the tablet app user-friendly for the residents.",
+      "markScheme": {
+        "type": "levels",
+        "points": [
+          "Colour: use high-contrast colours, such as dark text on a light background, and avoid relying on red/green alone, so residents with poor eyesight can read controls",
+          "Layout: use a simple layout with a few large buttons per screen, which reduces mistakes for residents with poor eyesight or less steady hands",
+          "Navigation: use a consistent home button and shallow menus so residents cannot get lost",
+          "Learnability and memorability: use familiar icons with text labels and the same layout on every screen, so new users learn quickly and remember after time away",
+          "Messages: use clear, plain-English confirmations and error messages, such as 'Front door unlocked', rather than codes",
+          "Audio: use spoken feedback or voice control as an alternative for residents who struggle to read the screen",
+          "Haptic: give a vibration when a button is pressed to confirm the action",
+          "Accessibility: provide adjustable text size and screen-reader support",
+          "User perceptions: a calm, uncluttered design builds residents' trust and confidence, so they keep using the system"
+        ],
+        "levels": [
+          {
+            "level": 3,
+            "marks": [
+              5,
+              6
+            ],
+            "descriptor": "Detailed and accurate knowledge of a range of HCI principles. These are clearly applied to the needs of older residents with poor eyesight and limited experience of technology. The analysis is well developed and explains how each principle improves user-friendliness. The response is logically structured."
+          },
+          {
+            "level": 2,
+            "marks": [
+              3,
+              4
+            ],
+            "descriptor": "Sound knowledge of some relevant HCI principles. These are applied to the residents with some explanation of how they help, but the analysis may be uneven or only partly linked to the context. The response has some structure."
+          },
+          {
+            "level": 1,
+            "marks": [
+              1,
+              2
+            ],
+            "descriptor": "Basic knowledge of one or more HCI principles. There is little or no application to the residents and little or no analysis. The response may be a list and lacks structure."
+          }
+        ],
+        "guidance": "Award 0 marks for no creditworthy response. Answers that list principles without applying them to the residents cannot go above Level 1. For Level 3, look for at least three principles analysed in context."
+      },
+      "modelAnswer": "Colour and layout are especially important because many residents have poor eyesight. The app should use high-contrast colours, such as dark text on a pale background, and should not rely on red and green alone to show whether a light is on or off. Each screen should have only a few large, well-spaced buttons, for example one each for lighting, heating and door entry. This reduces the chance of a resident pressing the wrong control by mistake.\n\nBecause some residents have little experience of technology, learnability and memorability are key. Familiar icons, such as a light bulb or a padlock, should always appear with a clear text label, and every screen should keep the same layout with a home button in the same place. A resident can then work out the app on first use and still remember it after weeks of not opening the door entry screen. Navigation should be shallow, so no control is more than one or two taps away and residents do not get lost in menus.\n\nMessages should use plain English, such as 'Heating set to 21°C', rather than technical codes, so residents are confident the action has worked. Audio and haptic features would improve accessibility further. Spoken confirmations or voice commands help residents who cannot read the screen easily, and a short vibration confirms that a button has been pressed. Together, these principles make the app feel simple and trustworthy, which positively shapes users' perceptions so that residents keep using the system rather than avoiding it."
+    },
+    {
+      "id": "F204-Q10",
+      "topicArea": 5,
+      "commandWord": "Discuss",
+      "marks": 9,
+      "context": "A company is developing a smartwatch for children aged 6 to 11. It collects the child's GPS location and sends it to a cloud server. Parents can see the location in an app and receive an alert if the child leaves a chosen safe zone.",
+      "question": "Discuss the legal and ethical considerations the company must take into account when developing the smartwatch.",
+      "markScheme": {
+        "type": "levels",
+        "points": [
+          "Legal: location data about identifiable children is personal data, so the company must comply with the Data Protection Act 2018 and UK GDPR, for example by having a lawful basis, keeping data only as long as needed and keeping it secure",
+          "Legal: children's data needs extra care; if the company relies on consent, a parent must give it because the children are under 13, and privacy information must be clear and age-appropriate",
+          "Legal: the ICO's Age Appropriate Design Code (Children's Code) expects services used by children to have high privacy settings by default and to make it obvious to the child when location tracking is active",
+          "Legal: data subjects have rights over their data, such as access and erasure, and the ICO can fine the company for breaches",
+          "Legal: unauthorised access to the cloud server or the watch is an offence under the Computer Misuse Act 1990, but the company must still secure the system to prevent it",
+          "Data ownership: the company must make clear who owns the location history (the family or the company) and whether it is shared with or sold to third parties",
+          "Privacy: continuous tracking may invade the child's privacy and affect their independence and trust",
+          "Stalking: if the account or data is accessed by the wrong person, such as an estranged adult or a hacker, a child's live location could be used to stalk or harm them",
+          "Data access: strict controls are needed over who can view the location, such as only verified parents and limited company staff, using strong authentication and encryption",
+          "Balance: safety benefits for parents and children must be weighed against risks to privacy and of misuse"
+        ],
+        "levels": [
+          {
+            "level": 3,
+            "marks": [
+              7,
+              9
+            ],
+            "descriptor": "Detailed and accurate knowledge of both legal and ethical considerations, including relevant UK legislation. These are clearly and consistently applied to the children's smartwatch. The discussion is well developed, weighs benefits against risks, and reaches a supported conclusion. The response is logically structured and uses appropriate terminology."
+          },
+          {
+            "level": 2,
+            "marks": [
+              4,
+              6
+            ],
+            "descriptor": "Sound knowledge of some legal and/or ethical considerations. These are applied to the smartwatch with some explanation, but the discussion may be one-sided or lack depth. A conclusion may be given but is only partly supported. The response has some structure."
+          },
+          {
+            "level": 1,
+            "marks": [
+              1,
+              3
+            ],
+            "descriptor": "Basic knowledge of one or more legal or ethical considerations, with little application to the smartwatch. There is little or no discussion and no supported conclusion. The response lacks structure and may be a list."
+          }
+        ],
+        "guidance": "Award 0 marks for no creditworthy response. Answers that cover only legal or only ethical considerations cannot go above Level 2. Accept 'GDPR' for UK GDPR, but naming laws incorrectly limits credit. Do not credit a statement that consent is the only possible lawful basis, but do not penalise a candidate who assumes parental consent is used. Credit reference to the ICO's Age Appropriate Design Code or Children's Code, but it is not required. A response must reach a judgement to be awarded marks at the top of Level 3."
+      },
+      "modelAnswer": "The smartwatch collects the real-time location of identifiable children, so this is personal data and the company must comply with the Data Protection Act 2018 and UK GDPR. It needs a lawful basis for processing. If it relies on consent, a parent must give that consent because the children are under 13. It must give clear privacy information that parents and children can understand, collect only the location data needed for the safe zone feature, and delete location history once it is no longer needed. The ICO's Age Appropriate Design Code also expects the watch to have high privacy settings by default. Families also have rights, such as accessing or erasing their data, and the ICO could fine the company heavily for a breach. Because the data is stored in the cloud, the company must protect it with encryption and strong authentication. Hacking into the server would be an offence under the Computer Misuse Act 1990, but that does not remove the company's duty to prevent it.\n\nEthically, the biggest risk is stalking. If a hacker or an estranged adult gained access to a parent's account, they could see exactly where a child is at any moment, which could put the child in serious danger. Data access should therefore be limited to verified parents, with only a small number of company staff able to view location data and every access logged. Data ownership must also be clear: families should know that the company will not sell or share their child's location history with advertisers or other third parties.\n\nThere is also the child's own privacy to consider. Constant tracking may reduce children's independence and could damage trust between parent and child, especially for older children. The company could reduce this by making the watch show when location is being shared, and by recording only safe zone alerts rather than a full location history.\n\nOverall, the smartwatch has a strong safety benefit, but only if legal and ethical issues are built into the design from the start. I think the most important consideration is securing access to the location data. A breach would not just be a legal failure under UK GDPR; it could directly put a child in danger, which would outweigh every benefit the product offers."
+    }
+  ]
+}

@@ -1,0 +1,382 @@
+{
+  "code": "F203",
+  "title": "Relational database design",
+  "assessment": "nea",
+  "summary": "Covers relational database concepts, then planning a database solution: user requirements, normalisation to 3NF, ERDs, data dictionaries, forms, queries, macros and outputs. It also covers building the database with software tools, testing it against a test plan, and evaluating both the finished solution and the planning process.",
+  "flashcards": [
+    {
+      "id": "F203-FC01",
+      "topicArea": 1,
+      "front": "What is the difference between a relational and a non-relational database?",
+      "back": "A relational database stores data in tables of records (rows) and fields (columns), linked by primary and foreign keys. It suits structured data such as bookings or orders. A non-relational database stores data without fixed tables, for example as documents, key-value pairs or graphs. It suits large volumes of unstructured or frequently changing data such as social media posts.",
+      "keyTerms": [
+        "relational database",
+        "non-relational database"
+      ]
+    },
+    {
+      "id": "F203-FC02",
+      "topicArea": 1,
+      "front": "How do primary, foreign and composite keys differ?",
+      "back": "A primary key is a field that uniquely identifies each record in a table, for example PetID. A foreign key is a field in one table that is the primary key of another table, and it creates the link between the two. A composite key is a primary key made by combining two or more fields, often used in a link table, for example PetID + VetID.",
+      "keyTerms": [
+        "primary key",
+        "foreign key",
+        "composite key"
+      ]
+    },
+    {
+      "id": "F203-FC03",
+      "topicArea": 1,
+      "front": "Why is referential integrity enforced on relationships between tables?",
+      "back": "Referential integrity makes sure every foreign key value matches an existing primary key in the linked table. It stops orphan records, such as an appointment for a pet that does not exist. It also prevents a parent record from being deleted while linked child records still exist, and it can cascade updates or deletes so that linked data stays consistent and reliable.",
+      "keyTerms": [
+        "referential integrity",
+        "foreign key",
+        "orphan records"
+      ]
+    },
+    {
+      "id": "F203-FC04",
+      "topicArea": 1,
+      "front": "What is data redundancy and how can it be resolved?",
+      "back": "Data redundancy is the unnecessary repetition of the same data in more than one place, for example an owner's address stored with every appointment. It wastes storage and causes inconsistencies when one copy is updated but the others are not. It is resolved by normalising the data into separate related tables, so each fact is stored once and linked using primary and foreign keys.",
+      "keyTerms": [
+        "data redundancy",
+        "normalising"
+      ]
+    },
+    {
+      "id": "F203-FC05",
+      "topicArea": 2,
+      "front": "What does each stage of normalisation from 1NF to 3NF remove?",
+      "back": "1NF removes repeating groups, so every field is atomic and each record has a primary key. 2NF must already be in 1NF and removes partial dependencies, so non-key fields depend on the whole of a composite key. 3NF must already be in 2NF and removes transitive dependencies, so non-key fields depend only on the key and not on another non-key field.",
+      "keyTerms": [
+        "1NF",
+        "2NF",
+        "3NF",
+        "transitive dependencies"
+      ]
+    },
+    {
+      "id": "F203-FC06",
+      "topicArea": 2,
+      "front": "What is the purpose of a data dictionary and what does it contain?",
+      "back": "A data dictionary records the planned structure of every table so that the database can be built accurately and consistently. For each field it records the field name, data type, field size, format, default value and whether the field is required (Y/N). It also records validation such as input masks or rules, which fields are primary keys, and the reference table for any foreign key.",
+      "keyTerms": [
+        "data dictionary",
+        "field size",
+        "input masks"
+      ]
+    },
+    {
+      "id": "F203-FC07",
+      "topicArea": 2,
+      "front": "How do functional and non-functional requirements affect database design?",
+      "back": "Functional requirements state what the database must do. They include user needs, such as booking appointments or printing invoices, and security needs, such as passwords. They decide which tables, forms, queries and reports are needed. Non-functional requirements set constraints, such as performance, record retention, backup arrangements and development time. These affect archiving, storage and how much can realistically be built.",
+      "keyTerms": [
+        "functional requirements",
+        "non-functional requirements",
+        "record retention"
+      ]
+    },
+    {
+      "id": "F203-FC08",
+      "topicArea": 3,
+      "front": "Why might a developer create a form with a wizard and then edit it in design view?",
+      "back": "A wizard quickly creates a basic working object, such as a form linked to the correct table or query, which saves time and avoids set-up errors. Design view is then used to improve it: applying house style, rearranging the layout, and adding labels, instructions, combo boxes, calculated fields and navigation buttons that the wizard does not provide.",
+      "keyTerms": [
+        "wizard",
+        "design view",
+        "house style"
+      ]
+    },
+    {
+      "id": "F203-FC09",
+      "topicArea": 4,
+      "front": "What is the difference between technical testing and usability testing of a database?",
+      "back": "Technical testing checks that the database works correctly: validation rules, field sizes, data types, calculations, query results and the content of outputs. Usability testing checks that the solution is practical to use: that navigation features work and lead to the right place, and that forms and reports are clearly laid out. The developer carries out both, following a test plan.",
+      "keyTerms": [
+        "technical testing",
+        "usability testing",
+        "test plan"
+      ]
+    },
+    {
+      "id": "F203-FC10",
+      "topicArea": 5,
+      "front": "How does evaluating the database solution differ from evaluating the planning process?",
+      "back": "Evaluating the solution judges the finished product. It asks how well the database meets the client's requirements and design intentions for layout, menus, interface, outputs and house style, and how efficient it is in terms of validation, lack of duplication and effective queries. Evaluating planning judges the process: how useful the requirements, ERD, normalisation, data dictionary and designs were, and what lessons learnt would change a similar future project.",
+      "keyTerms": [
+        "design intentions",
+        "lessons learnt"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "F203-Q01",
+      "topicArea": 1,
+      "commandWord": "Identify",
+      "marks": 1,
+      "context": "Harbourside Vets is building a relational database. Each owner can register several pets, but each pet is registered to only one owner.",
+      "question": "Identify the type of relationship between the Owner table and the Pet table.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "One-to-many (1)"
+        ],
+        "guidance": "Accept 1:M or 'one owner to many pets'. Do not accept one-to-one or many-to-many."
+      },
+      "modelAnswer": "One-to-many: one owner can have many pets, but each pet has only one owner."
+    },
+    {
+      "id": "F203-Q02",
+      "topicArea": 2,
+      "commandWord": "Outline",
+      "marks": 2,
+      "context": "At Harbourside Vets, each pet can be treated by many vets and each vet treats many pets.",
+      "question": "Outline how this many-to-many relationship should be resolved in the database design.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Create a new link (junction) table between Pet and Vet, e.g. Treatment (1)",
+          "The link table holds PetID and VetID as foreign keys (1)",
+          "This creates two one-to-many relationships, from Pet and from Vet to the link table (1)",
+          "The foreign keys can be combined to form a composite primary key (1)"
+        ],
+        "guidance": "Award a maximum of 2 marks. The first mark is for the idea of a new link table."
+      },
+      "modelAnswer": "Create a new link table, such as Treatment, between Pet and Vet. It holds PetID and VetID as foreign keys, which replaces the many-to-many relationship with two one-to-many relationships."
+    },
+    {
+      "id": "F203-Q03",
+      "topicArea": 4,
+      "commandWord": "Classify",
+      "marks": 3,
+      "context": "In the Harbourside Vets database, the Weight field in the Pet table has the validation rule Between 0.1 And 90 (kilograms).",
+      "question": "Classify each of the following test data items as valid, invalid or extreme for the Weight field: 45, 90, -3.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "45 is valid (1)",
+          "90 is extreme (1)",
+          "-3 is invalid (1)"
+        ],
+        "guidance": "Accept 'erroneous' for invalid. Accept 'boundary' for extreme. One mark for each correct classification."
+      },
+      "modelAnswer": "45 is valid, because it lies well inside the accepted range of 0.1 to 90 kg.\n90 is extreme, because it is on the upper boundary of the range and should still be accepted.\n-3 is invalid (erroneous), because it is outside the range and should be rejected with an error message."
+    },
+    {
+      "id": "F203-Q04",
+      "topicArea": 1,
+      "commandWord": "Describe",
+      "marks": 4,
+      "context": "At Harbourside Vets, receptionists and vets update appointment and payment records at the same time from different computers.",
+      "question": "Describe two of the ACID properties and how each helps keep the clinic's data valid.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Atomicity: a transaction is all-or-nothing (1)",
+          "e.g. if a payment is recorded but the appointment is not updated, the whole transaction is rolled back (1)",
+          "Consistency: a transaction moves the database from one valid state to another (1)",
+          "e.g. validation rules and referential integrity are never broken by a transaction (1)",
+          "Isolation: concurrent transactions do not interfere with each other and behave as if run one after another (1)",
+          "e.g. if two receptionists book the same slot at once, the second sees it is already taken, so it is not double-booked (1)",
+          "Durability: once a transaction is committed, it is permanently saved (1)",
+          "e.g. a confirmed booking survives a power cut or system crash (1)"
+        ],
+        "guidance": "For each property, award 1 mark for a correct description and 1 mark for applying it to the clinic. Maximum 2 marks per property, 4 marks in total."
+      },
+      "modelAnswer": "Atomicity: a transaction is treated as a single unit that either completes fully or not at all. If the system crashes after a payment is recorded but before the appointment is marked as paid, the whole transaction is rolled back, so the records never contradict each other.\nIsolation: transactions that run at the same time do not interfere with each other and are processed as if one ran after the other. If two receptionists try to book the same 10:00 slot at once, the second transaction sees that the slot is already taken, so the slot cannot be double-booked."
+    },
+    {
+      "id": "F203-Q05",
+      "topicArea": 2,
+      "commandWord": "Explain",
+      "marks": 4,
+      "context": "In the Harbourside Vets database, the Owner table stores a UK postcode and a phone number. The Pet table stores the species, which must be dog, cat, rabbit or bird.",
+      "question": "Explain two validation methods that would be appropriate for fields in the Owner or Pet table.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "An input mask on Postcode or Phone controls the pattern of characters entered (1)",
+          "so wrongly formatted data, such as letters in a phone number, cannot be stored (1)",
+          "A lookup or built-in list on Species restricts entry to dog, cat, rabbit or bird (1)",
+          "which prevents misspellings, so queries that group or count by species are accurate (1)",
+          "A validation rule, e.g. DateOfBirth <= Date(), checks that values fall within allowed limits (1)",
+          "so impossible values, such as future birth dates, are rejected (1)",
+          "Setting Required to Yes (a presence check) on the phone field (1)",
+          "ensures every owner can be contacted (1)",
+          "A clear error message tells the user what is wrong and how to correct it (1)"
+        ],
+        "guidance": "For each method, award 1 mark for identifying a method suited to a named field and 1 mark for explaining why it helps. Maximum 4 marks."
+      },
+      "modelAnswer": "An input mask could be used on the Postcode field to control the pattern of characters entered, such as letters and numbers in the correct positions, with optional characters so that both short and long UK postcode formats are accepted. This stops badly formatted postcodes from being stored, so letters and appointment reminders reach the correct address.\nA lookup list could be used for the Species field, so the receptionist chooses dog, cat, rabbit or bird from a drop-down list. This prevents typing errors and inconsistent spellings, so queries that count pets by species return accurate totals."
+    },
+    {
+      "id": "F203-Q06",
+      "topicArea": 3,
+      "commandWord": "Compare",
+      "marks": 4,
+      "context": "Harbourside Vets needs an appointment booking form for its receptionists that matches the clinic's house style.",
+      "question": "Compare using the form wizard with using form design view to create the appointment booking form.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "The wizard is quicker, because it automatically places the chosen fields on a form (1)",
+          "The wizard needs less technical skill than design view (1)",
+          "Design view gives more control over the layout and position of controls (1)",
+          "Design view allows house style, labels and instructions to be applied (1)",
+          "Design view allows extra controls, such as combo boxes, calculated fields and navigation buttons (1)",
+          "Wizard forms have a generic layout that usually needs improving in design view (1)",
+          "Both methods produce a form bound to a table or query (1)"
+        ],
+        "guidance": "Maximum 4 marks. For full marks the answer must refer to both methods. A reasoned recommendation, such as using the wizard first and then improving the form in design view, may be credited within the points above but is not required for full marks."
+      },
+      "modelAnswer": "The form wizard is much quicker than design view, because it automatically places all the chosen fields from the Appointment table on a form, and it needs little technical skill. However, design view gives far more control: the developer can position controls exactly, apply the clinic's house style, and add features the wizard does not provide, such as a combo box to select the vet, a calculated field and navigation buttons. A sensible approach is to create the form with the wizard and then improve it in design view."
+    },
+    {
+      "id": "F203-Q07",
+      "topicArea": 4,
+      "commandWord": "Explain",
+      "marks": 4,
+      "context": "During testing of the Harbourside Vets database, the query to find all appointments on a chosen date returned no records, even though appointments existed for that date.",
+      "question": "Explain how the student should record this test and retest the solution.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Record the test in the test plan with a test number, description, test data and expected result (1)",
+          "Record the actual result (no records returned) and mark the test as failed (1)",
+          "Provide evidence, such as a screenshot of the output (1)",
+          "Identify and correct the cause, e.g. query criteria or date format not matching the AppointmentDate field (1)",
+          "Retest with the same test data after the fix so the results can be compared (1)",
+          "Record the retest result and link it to the original test (1)",
+          "Re-run related tests in case the fix has affected other parts of the solution (1)"
+        ],
+        "guidance": "Maximum 4 marks. Answers must address both recording and retesting for full marks."
+      },
+      "modelAnswer": "The student should record the test in the test plan with a test number, a description of what is being tested, the test data used (for example 14/03/2026), the expected result (all appointments on that date) and the actual result (no records returned). They should mark the test as failed and attach a screenshot as evidence. They should then find and correct the cause, for example query criteria or a date format that did not match how the AppointmentDate field is stored. After fixing it, they should retest with the same test data, record the new actual result and reference the original test, so the correction is clearly shown."
+    },
+    {
+      "id": "F203-Q08",
+      "topicArea": 3,
+      "commandWord": "Examine",
+      "marks": 5,
+      "context": "Harbourside Vets wants its receptionists, who have little IT experience, to use the database without seeing the tables or the navigation pane.",
+      "question": "Examine how a switchboard and macros could be used to meet this requirement.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Create a switchboard or main menu form with clearly labelled buttons for each task (1)",
+          "Set the main menu to load on start-up, e.g. as the start-up form or through an AutoExec macro (1)",
+          "Hide the navigation pane so users cannot see or change the tables directly (1)",
+          "Attach macros to buttons to open forms, run queries or print reports in one click (1)",
+          "Users need no knowledge of the database structure, which reduces errors and training time (1)",
+          "Include a button on each form that returns to the main menu, for consistent navigation (1)",
+          "Use conditional macro actions, e.g. a message box if required data is missing before saving (1)"
+        ],
+        "guidance": "Maximum 5 marks. Answers must show how each feature meets the requirement, not just list features. Macros may be described in words or as steps; SQL is not required."
+      },
+      "modelAnswer": "A switchboard or main menu form could be created with clearly labelled buttons such as Book Appointment, Find Owner and Print Invoices. Setting this as the start-up form, or using an AutoExec macro, means the menu loads as soon as the database opens and the navigation pane can be hidden, so receptionists never see or accidentally change the tables. Each button would run a macro that opens a form, runs a query or prints a report in a single click. Staff therefore do not need to understand how the database is structured, which reduces mistakes and training time. Every form would also have a button that returns to the main menu, giving consistent navigation. Macros could also include conditions, such as showing a message box if a required field is left empty before a record is saved."
+    },
+    {
+      "id": "F203-Q09",
+      "topicArea": 2,
+      "commandWord": "Analyse",
+      "marks": 6,
+      "context": "Harbourside Vets' paper booking sheet records OwnerName, OwnerPhone, PetName and Species, followed by a repeating list of AppointmentDate, VetName and Treatment for each visit.",
+      "question": "Analyse how normalising this data to third normal form (3NF) would improve the clinic's database.",
+      "markScheme": {
+        "type": "levels",
+        "points": [
+          "UNF: the booking sheet contains a repeating group of appointment details for each owner and pet",
+          "1NF: remove repeating groups, make every field atomic (e.g. split OwnerName) and identify a primary key, such as PetID + AppointmentDate",
+          "2NF: remove partial dependencies; pet and owner details depend only on PetID, not the whole composite key, so they move into a Pet table, leaving an Appointment table with PetID as a foreign key",
+          "3NF: remove transitive dependencies; owner details depend on OwnerID rather than directly on PetID, and vet details depend on VetID rather than on the appointment, so separate Owner and Vet tables are created",
+          "Result: Owner, Pet, Vet and Appointment tables linked by primary and foreign keys",
+          "Each fact is stored once, which reduces redundancy and prevents update, insertion and deletion anomalies",
+          "Referential integrity can be enforced, improving data integrity and reliability",
+          "Drawback: more tables mean multi-table queries and sub-forms are needed, which adds complexity"
+        ],
+        "levels": [
+          {
+            "level": 3,
+            "marks": [
+              5,
+              6
+            ],
+            "descriptor": "Detailed and accurate knowledge of normalisation through UNF, 1NF, 2NF and 3NF, clearly applied to the clinic's booking data. Well-developed reasoning explains how each stage reduces redundancy and anomalies, and explores the consequences, including any drawbacks. The answer is logically structured."
+          },
+          {
+            "level": 2,
+            "marks": [
+              3,
+              4
+            ],
+            "descriptor": "Sound knowledge of some normalisation stages, with some application to the clinic's data. Reasoning is partly developed, and links between normalisation and the improvements may be stated rather than explained. The answer has some structure."
+          },
+          {
+            "level": 1,
+            "marks": [
+              1,
+              2
+            ],
+            "descriptor": "Basic knowledge, such as stating that normalisation splits data into tables or reduces duplication, with little or no application to the clinic. Reasoning is minimal and information is poorly organised."
+          }
+        ],
+        "guidance": "Award 0 marks for no creditworthy response. Candidates do not need to name every attribute, but higher levels require accurate use of the terms partial and transitive dependency, applied to the scenario. Accept owner details being removed at 2NF or 3NF provided the dependency is correctly explained."
+      },
+      "modelAnswer": "In its unnormalised form, the booking sheet contains a repeating group: each owner and pet has several appointment dates, vets and treatments. This makes it difficult to identify each record uniquely and difficult to search the data.\nTo reach 1NF, the repeating group is removed so each appointment becomes its own record. Every field is made atomic, for example by splitting OwnerName into FirstName and Surname, and a primary key is identified, such as PetID with AppointmentDate. However, owner and pet details would now be repeated on every appointment row.\nTo reach 2NF, partial dependencies are removed. PetName, Species, OwnerName and OwnerPhone depend only on PetID, not on the whole composite key, so they move into a Pet table. This leaves an Appointment table holding PetID as a foreign key, along with AppointmentDate, VetName and Treatment.\nTo reach 3NF, transitive dependencies are removed. In the Pet table, the owner's name and phone number depend on the owner rather than directly on the pet, so an Owner table is created with OwnerID as its key, and OwnerID is kept in Pet as a foreign key. In the Appointment table, the vet's details depend on the vet rather than on the appointment, so a Vet table is created with VetID as its key, and VetID is stored in Appointment as a foreign key.\nThe result is four linked tables: Owner, Pet, Vet and Appointment. Because each fact is stored only once, redundancy is reduced and update anomalies are avoided. For example, if an owner changes their phone number, it is updated in one record rather than on every past appointment. Referential integrity can then be enforced between the tables, making the data more reliable. The trade-off is that forms and reports must draw on several tables, so the clinic will need more complex multi-table queries and sub-forms. This is outweighed by more accurate and consistent data."
+    },
+    {
+      "id": "F203-Q10",
+      "topicArea": 5,
+      "commandWord": "Evaluate",
+      "marks": 9,
+      "context": "A student's database for Harbourside Vets has a main menu that loads on start-up and uses the clinic's blue house style throughout. Only two of the five planned reports were created. Postcodes have no input mask, and the owner search query sometimes lists the same owner twice.",
+      "question": "Evaluate how successful the database solution is in relation to its design intentions.",
+      "markScheme": {
+        "type": "levels",
+        "points": [
+          "The main menu loads on start-up, which meets the design intention for a simple, controlled interface and hides the tables from users",
+          "The consistent blue house style meets the design intention and gives a professional, familiar appearance",
+          "Only two of the five planned reports exist, so the planned outputs and some client requirements are not met",
+          "With no input mask on Postcode, validation is weaker than intended and inconsistent formats reduce data accuracy",
+          "The duplicate owner in the query suggests duplicated records or an incorrect join, so the query is less effective than intended",
+          "Efficiency is therefore only partly achieved across validation, lack of duplication and effectiveness of queries",
+          "A supported judgement, e.g. partially successful: a strong interface but incomplete outputs and efficiency",
+          "Improvements: build the missing reports, add an input mask to Postcode, correct the query and then retest"
+        ],
+        "levels": [
+          {
+            "level": 3,
+            "marks": [
+              7,
+              9
+            ],
+            "descriptor": "Detailed and accurate knowledge of how a solution is evaluated against its design intentions (layout, menus, interface, outputs, house style and efficiency). Strengths and weaknesses from the scenario are clearly applied and well developed, leading to a balanced, well-supported judgement about overall success, possibly with justified improvements. The answer is logically structured."
+          },
+          {
+            "level": 2,
+            "marks": [
+              4,
+              6
+            ],
+            "descriptor": "Sound knowledge with some application to the scenario. Both strengths and weaknesses are considered, but one side may be limited or explanations only partly developed. A judgement is given but is only partly supported. The answer has some structure."
+          },
+          {
+            "level": 1,
+            "marks": [
+              1,
+              3
+            ],
+            "descriptor": "Basic knowledge, identifying one or two strengths or weaknesses with little explanation or application to the scenario. There is little or no judgement and limited structure."
+          }
+        ],
+        "guidance": "Award 0 marks for no creditworthy response. To reach Level 3, an answer must weigh strengths against weaknesses and reach a reasoned conclusion about overall success."
+      },
+      "modelAnswer": "The solution is successful in terms of its interface and menus. The main menu loads on start-up, so receptionists can use the system without seeing the tables or the navigation pane, which matches the design intention of a simple, controlled interface. The clinic's blue house style is used throughout, giving a consistent, professional appearance and making the forms feel familiar, so this part of the design has been followed closely.\nHowever, the outputs fall well short of the design. Only two of the five planned reports were created, so the clinic may be unable to produce outputs it needs, such as daily appointment lists or unpaid invoices. This is a significant weakness, because outputs are what staff and managers actually use to make decisions, and the missing reports mean some requirements are not met at all.\nEfficiency has also only been partly achieved. Without an input mask on the Postcode field, receptionists could enter postcodes in inconsistent formats, which reduces data accuracy and makes searches by area unreliable. The owner search query listing the same owner twice suggests one of two problems. There may be duplicate owner records, which would show that duplication has not been fully prevented. Alternatively, the query may join tables incorrectly, for example by including the Pet table so that an owner appears once for each pet. Either way, the query is not as effective as intended and could mislead staff.\nOverall, the solution is only partially successful. Its navigation, start-up menu and house style meet the design intentions well, but the missing outputs, weak validation and unreliable query mean it does not yet work as efficiently or completely as planned. The most important improvements would be to build the three remaining reports, add an input mask to the Postcode field and correct the query, for example by removing the unneeded table or grouping the results. These areas should then be retested before the clinic relies on the system."
+    }
+  ]
+}

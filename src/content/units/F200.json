@@ -1,0 +1,363 @@
+{
+  "code": "F200",
+  "title": "Fundamentals of data analytics",
+  "assessment": "exam",
+  "summary": "This unit covers the basics of data analytics. It looks at what data, information and knowledge are, file formats and data types, and how data is managed through its lifecycle and the analytics pipeline. It also covers how data is accessed securely across platforms, the UK laws that govern data use, and the job roles and attributes found in data analytics.",
+  "flashcards": [
+    {
+      "id": "F200-FC01",
+      "topicArea": 1,
+      "front": "What are the differences between data, information and knowledge?",
+      "back": "Data is raw facts and figures with no context, for example 18. Information is data that has been processed and given context so that it has meaning, for example 18°C in London at noon. Knowledge is understanding gained by applying experience to information so it can guide decisions, for example knowing to stock more cold drinks when it is warm.",
+      "keyTerms": [
+        "data",
+        "information",
+        "knowledge"
+      ]
+    },
+    {
+      "id": "F200-FC02",
+      "topicArea": 1,
+      "front": "What is big data, and what do organisations use it for?",
+      "back": "Big data is a collection of data so large, fast-arriving and varied that traditional data processing tools cannot handle it. It usually mixes structured, semi-structured and unstructured data from sources such as social media, sensors and transactions. Organisations use it to spot trends, personalise services, detect fraud and make predictions.",
+      "keyTerms": [
+        "big data",
+        "unstructured"
+      ]
+    },
+    {
+      "id": "F200-FC03",
+      "topicArea": 1,
+      "front": "What is the difference between structured and unstructured data?",
+      "back": "Structured data follows a fixed format, such as rows and columns with defined fields and data types, so it is easy to search, sort and analyse, for example a sales table. Unstructured data has no predefined model, for example emails, images, videos or social media posts, so it is harder to process and usually needs specialist tools.",
+      "keyTerms": [
+        "structured",
+        "unstructured"
+      ]
+    },
+    {
+      "id": "F200-FC04",
+      "topicArea": 2,
+      "front": "What are the five phases of data lifecycle management (DLM)?",
+      "back": "The five phases are:\n1. Creation: data is generated or captured.\n2. Storage: data is saved securely and backed up.\n3. Usage: data is processed, analysed and shared.\n4. Archival: data no longer in active use is moved to long-term storage.\n5. Destruction: data that is no longer needed is permanently and securely removed.",
+      "keyTerms": [
+        "creation",
+        "storage",
+        "archival",
+        "destruction"
+      ]
+    },
+    {
+      "id": "F200-FC05",
+      "topicArea": 2,
+      "front": "Name the five phases of the data analytics pipeline in order.",
+      "back": "The five phases, in order, are:\n1. Capture (data ingestion): data is collected from its sources.\n2. Process (data transformation): data is cleaned and converted into a usable format.\n3. Data storage (data stores): data is held, for example in a database or data warehouse.\n4. Analysis: data is examined to find patterns and insights.\n5. Use (visualisation): findings are presented to decision makers.\nThe phases can repeat when new data or new questions arise.",
+      "keyTerms": [
+        "data ingestion",
+        "data transformation",
+        "visualisation"
+      ]
+    },
+    {
+      "id": "F200-FC06",
+      "topicArea": 2,
+      "front": "What are the characteristics of the three data states?",
+      "back": "Data at rest is stored and not moving, for example in a database or on a hard drive. Data in transit (motion) is moving across a network, for example an email being sent. Data in use is being actively accessed or processed, for example open in a spreadsheet. Each state needs different protection, such as encryption at rest and secure protocols in transit.",
+      "keyTerms": [
+        "data at rest",
+        "data in transit",
+        "data in use"
+      ]
+    },
+    {
+      "id": "F200-FC07",
+      "topicArea": 2,
+      "front": "What is the difference between validation and verification?",
+      "back": "Validation is an automatic check that data is sensible and follows set rules, for example a range check or a format check. Verification checks that data has been copied or entered correctly and matches its source, for example by double entry or by checking it against the original document. Valid data can still be wrong, so the two checks are often used together.",
+      "keyTerms": [
+        "validation",
+        "verification"
+      ]
+    },
+    {
+      "id": "F200-FC08",
+      "topicArea": 3,
+      "front": "What is the difference between mandatory access control (MAC) and discretionary access control (DAC)?",
+      "back": "In MAC, a central authority gives data security labels and gives users clearance levels. Users cannot change permissions, so MAC suits high-security settings such as defence. In DAC, the owner of a file or resource decides who can access it and what they can do. This is flexible, but less secure because owners may share access carelessly.",
+      "keyTerms": [
+        "MAC",
+        "DAC",
+        "permissions"
+      ]
+    },
+    {
+      "id": "F200-FC09",
+      "topicArea": 4,
+      "front": "What is the role of the Information Commissioner's Office (ICO)?",
+      "back": "The ICO is the UK's independent regulator for information rights. It enforces the Data Protection Act 2018, UK GDPR, PECR 2003 and the Freedom of Information Act 2000. It publishes guidance, handles complaints, investigates data breaches and audits organisations. It can take action against organisations that break the law, including enforcement notices and fines.",
+      "keyTerms": [
+        "ICO",
+        "regulator",
+        "UK GDPR"
+      ]
+    },
+    {
+      "id": "F200-FC10",
+      "topicArea": 5,
+      "front": "How does a data analyst contribute to the data analytics pipeline?",
+      "back": "A data analyst works mainly in the analysis and use (visualisation) phases. They take data that has already been cleaned and stored, query and examine it to find trends and patterns, and then present the findings in reports, charts and dashboards. This helps managers make evidence-based decisions. To do this well they need strong analytical skills and must communicate clearly.",
+      "keyTerms": [
+        "data analyst",
+        "analysis",
+        "dashboards"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "F200-Q01",
+      "topicArea": 2,
+      "commandWord": "State",
+      "marks": 1,
+      "question": "State the phase of data lifecycle management that comes directly after storage.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Usage (1)"
+        ],
+        "guidance": "Accept 'use'. Do not accept 'analysis' or 'processing' on their own."
+      },
+      "modelAnswer": "Usage is the phase that comes directly after storage."
+    },
+    {
+      "id": "F200-Q02",
+      "topicArea": 1,
+      "commandWord": "Identify",
+      "marks": 2,
+      "context": "A gym stores details of its members in a database. Two of the fields are 'MembershipPaid' and 'MonthlyFee'.",
+      "question": "Identify the most appropriate data type for each of the following fields: MembershipPaid, which records whether the member has paid this month, and MonthlyFee, which records the fee in pounds and pence.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "MembershipPaid: Boolean (1)",
+          "MonthlyFee: Real (1)"
+        ],
+        "guidance": "Accept 'float' or 'decimal' for Real. Do not accept Integer for MonthlyFee, because the fee includes pence. Do not accept String for either field."
+      },
+      "modelAnswer": "MembershipPaid: Boolean, because it only needs to store true or false.\nMonthlyFee: Real, because the fee includes pence, for example 24.99."
+    },
+    {
+      "id": "F200-Q03",
+      "topicArea": 3,
+      "commandWord": "Outline",
+      "marks": 2,
+      "context": "A hospital stores patient records and appointment data. Doctors, nurses and receptionists all need to use the system, but each needs access to different data.",
+      "question": "Outline how role-based access control (RBAC) could be used to control access to the hospital's data.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Access permissions are assigned to roles or job titles rather than to individual users (1)",
+          "Each member of staff is given a role and inherits that role's permissions (1)",
+          "An example in context, such as receptionists being able to view appointment data but not clinical records (1)",
+          "When a member of staff changes job, their access can be updated simply by changing their role (1)"
+        ],
+        "guidance": "Maximum 1 mark for a generic answer with no reference to the hospital."
+      },
+      "modelAnswer": "With RBAC, the hospital would set up roles such as doctor, nurse and receptionist, and give each role only the permissions it needs. Every member of staff is assigned a role. For example, a receptionist could view and edit appointment data but could not open patients' clinical records, while a doctor could read and edit those records."
+    },
+    {
+      "id": "F200-Q04",
+      "topicArea": 5,
+      "commandWord": "Describe",
+      "marks": 3,
+      "question": "Describe the role of a data engineer in the data analytics pipeline.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Designs, builds and maintains the pipelines that capture or ingest data from different sources (1)",
+          "Transforms and cleans data into a consistent, usable format (1)",
+          "Loads data into data stores such as databases or data warehouses (1)",
+          "Makes sure data is reliable and available so that analysts and data scientists can use it (1)"
+        ],
+        "guidance": "Award 1 mark per valid descriptive point, up to 3 marks. Do not credit descriptions of analysing or visualising data, because these belong to the data analyst."
+      },
+      "modelAnswer": "A data engineer builds and maintains the systems that capture data from sources such as websites, sensors and transaction systems. They transform the data by cleaning it and converting it into a consistent format. They then load it into data stores such as a data warehouse, which makes sure that reliable data is available for data analysts and data scientists to analyse."
+    },
+    {
+      "id": "F200-Q05",
+      "topicArea": 2,
+      "commandWord": "Explain",
+      "marks": 3,
+      "context": "A cinema chain's online booking form uses a range check to make sure that customers enter a date of birth that gives an age between 12 and 100.",
+      "question": "Explain why validation alone cannot guarantee that the dates of birth entered are accurate.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Validation only checks that data is reasonable or follows set rules (1)",
+          "It cannot check whether the data is actually correct or true (1)",
+          "An example in context, such as a customer typing 12/03/2005 instead of 21/03/2005, which still passes the range check (1)",
+          "Verification, such as checking against ID or double entry, is needed to confirm that data matches its source (1)"
+        ],
+        "guidance": "Award up to 3 marks. At least one mark must come from an applied example to reach full marks."
+      },
+      "modelAnswer": "Validation only checks that the data is sensible and within the rules set, here an age between 12 and 100. It cannot tell whether the date entered is the customer's real date of birth. For example, if a customer mistypes 21/03/2005 as 12/03/2005, the date still passes the range check, so inaccurate data is accepted. Verification, such as checking the date against photo ID, would be needed to confirm accuracy."
+    },
+    {
+      "id": "F200-Q06",
+      "topicArea": 1,
+      "commandWord": "Compare",
+      "marks": 4,
+      "context": "An online retailer needs to send its product catalogue to a developer who is building the company's new mobile app. Some products come in several sizes and colours.",
+      "question": "Compare CSV and JSON as file formats for sending the retailer's product catalogue.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Both are plain text formats that people can read and that many systems can open (1)",
+          "CSV stores flat, tabular data in rows, with fields separated by commas (1)",
+          "JSON stores data as key-value pairs and can nest data, such as several sizes and colours inside one product (1)",
+          "CSV is simpler and can be opened directly in a spreadsheet (1)",
+          "JSON is widely used by web and mobile apps and APIs, so the app can process it easily (1)",
+          "CSV struggles to show hierarchical data, and commas inside the data can break fields unless the values are put in quotation marks (1)"
+        ],
+        "guidance": "Maximum 2 marks if only one format is described. To reach full marks the answer must include a similarity or difference that is applied to the product catalogue."
+      },
+      "modelAnswer": "CSV and JSON are both plain text formats, so the catalogue would be readable by people and by many programs. CSV stores data as flat rows with comma-separated fields, which is simple and opens directly in a spreadsheet. However, it cannot easily show that one product has several sizes and colours. JSON uses key-value pairs and can nest those options inside each product. It is also the format most web and mobile apps expect, so JSON is better suited to the developer building the app."
+    },
+    {
+      "id": "F200-Q07",
+      "topicArea": 2,
+      "commandWord": "Describe",
+      "marks": 4,
+      "context": "A leisure centre plans to email an online questionnaire to all its members to find out why fewer people are attending fitness classes.",
+      "question": "Describe two limitations of using a questionnaire to gather this data.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "The response rate may be low (1), so the results may not represent all members, especially those who have stopped attending (1)",
+          "Closed questions limit the depth of answers (1), so the centre may not find out the real reasons attendance has fallen (1)",
+          "Respondents may misunderstand questions or answer dishonestly (1), which leads to inaccurate data (1)",
+          "Badly worded or leading questions can introduce bias (1), which skews the results (1)"
+        ],
+        "guidance": "For each limitation, award 1 mark for identifying it and 1 mark for a linked description, up to 2 limitations. Accept other valid limitations, such as members not checking email."
+      },
+      "modelAnswer": "One limitation is that many members may not complete the questionnaire. Members who have stopped attending classes are probably the least likely to reply, so the results may not represent the people the centre most needs to hear from.\nA second limitation is that questionnaires often use closed, tick-box questions. These give limited detail, so the centre may learn that members are unhappy without finding out exactly why, for example whether the problem is class times or instructors."
+    },
+    {
+      "id": "F200-Q08",
+      "topicArea": 4,
+      "commandWord": "Explain",
+      "marks": 4,
+      "context": "An online clothing retailer stores customers' names, addresses, email addresses and order histories.",
+      "question": "Explain two actions the retailer must take to comply with the Data Protection Act 2018 and UK GDPR.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Provide a privacy notice that tells customers what data is collected and why (1), so that processing is transparent and has a lawful basis (1)",
+          "Keep the data secure, for example with encryption and access controls (1), to protect it from unauthorised access or a breach (1)",
+          "Only collect the data needed to process orders (1), which reduces the risk and follows data minimisation (1)",
+          "Delete data when it is no longer needed, for example closed accounts (1), so it is not kept longer than necessary (1)",
+          "Report personal data breaches that are likely to put customers at risk to the ICO within 72 hours of becoming aware of them (1), so the risk to customers can be managed (1)",
+          "Respond to customers' requests to access or erase their data (1), which respects their rights (1)"
+        ],
+        "guidance": "For each action, award 1 mark for identifying it and 1 mark for explaining it, up to 2 actions. Do not credit actions that relate to the Computer Misuse Act or FOIA."
+      },
+      "modelAnswer": "First, the retailer must keep customer data secure, for example by encrypting stored addresses and limiting which staff can access them. This protects customers from harm if hackers attack the website, because stolen data would be unreadable.\nSecond, the retailer must not keep data longer than necessary. For example, it should delete the details of customers whose accounts have been closed for a set period, which reduces the amount of personal data at risk and follows the storage limitation principle."
+    },
+    {
+      "id": "F200-Q09",
+      "topicArea": 2,
+      "commandWord": "Analyse",
+      "marks": 6,
+      "context": "FreshWay is a supermarket chain that throws away a large amount of fresh food each week. It has several years of sales data, along with weather records and details of past promotions.",
+      "question": "Analyse how FreshWay could use different types of data analytics to reduce its food waste.",
+      "markScheme": {
+        "type": "levels",
+        "points": [
+          "Descriptive analytics summarises what has happened, for example how much of each product was thrown away in each store last month; it is easy to understand but does not explain why",
+          "Diagnostic analytics looks for why waste happened, for example by linking waste to promotions or weather; this needs more data and skill, and a correlation may not prove the cause",
+          "Predictive analytics uses historic sales, weather and holiday data to forecast demand, so stores order the right quantities; forecasts are probabilities and can be wrong when unexpected events occur",
+          "Prescriptive analytics recommends actions, such as the best order quantities or when to reduce prices on short-dated items; it is complex and costly and depends on accurate predictions",
+          "Cognitive analytics uses AI to learn from large or unstructured data, such as customer reviews, and improve recommendations over time; it is expensive and harder to explain",
+          "The types build on each other, from what happened to why it happened to what will happen to what to do about it",
+          "All types depend on accurate, timely data; poor-quality data leads to poor decisions and could increase waste"
+        ],
+        "levels": [
+          {
+            "level": 3,
+            "marks": [
+              5,
+              6
+            ],
+            "descriptor": "Shows detailed, accurate knowledge of several types of data analytics. Clearly applies each type to FreshWay's food waste problem and analyses its benefits and limitations with well-developed reasoning. The answer is logically structured and shows how the types link together."
+          },
+          {
+            "level": 2,
+            "marks": [
+              3,
+              4
+            ],
+            "descriptor": "Shows sound knowledge of at least two types of data analytics, with some application to FreshWay. Some benefits or limitations are explained, but the analysis may be uneven or partly developed. The structure is mostly logical."
+          },
+          {
+            "level": 1,
+            "marks": [
+              1,
+              2
+            ],
+            "descriptor": "Shows basic knowledge of one or more types of data analytics, with little or no application to FreshWay. Points are mainly descriptive and are not linked together. There is limited structure."
+          }
+        ],
+        "guidance": "Award 0 marks for no creditworthy response. Answers that only list types of analytics without applying them to FreshWay should not go above Level 1. To reach Level 3, an answer must analyse benefits and/or limitations, not just describe."
+      },
+      "modelAnswer": "FreshWay could start with descriptive analytics to summarise what has already happened, for example a dashboard showing which products and stores waste the most food each week. This is quick and easy for managers to understand, but it only shows the size of the problem and not its cause.\nDiagnostic analytics could then explain why the waste happens. By comparing waste with weather records and past promotions, FreshWay might find that salad is wasted during cold spells or after buy-one-get-one-free offers end. This targets the real causes, although a link between two factors does not always prove that one causes the other.\nPredictive analytics would use several years of sales, weather and holiday data to forecast demand for each product in each store. Stores could then order closer to what customers will actually buy, which directly reduces surplus stock. However, forecasts are only probabilities, and unexpected events such as a sudden heatwave can make them wrong.\nFinally, prescriptive analytics could recommend specific actions, such as the best order quantity for each item or when to reduce the price of short-dated food so that it sells. This gives the most practical benefit, but it is the most complex and expensive type to set up, and its advice is only as good as the predictions behind it.\nUsed together, these types move FreshWay from knowing what is wasted to acting to prevent it. They will only work if the sales and waste data is accurate and up to date."
+    },
+    {
+      "id": "F200-Q10",
+      "topicArea": 3,
+      "commandWord": "Discuss",
+      "marks": 6,
+      "context": "TravelNest is a holiday booking company. It wants other businesses, such as price comparison websites, to access its hotel availability and pricing data automatically through an API.",
+      "question": "Discuss whether TravelNest should provide this data through a public API or a partner API.",
+      "markScheme": {
+        "type": "levels",
+        "points": [
+          "A public API is open to any external developer, usually after simple registration for an API key",
+          "Public API benefit: wide reach, because many websites and apps can show TravelNest's hotels, which could increase bookings and brand awareness",
+          "Public API limitation: less control over who uses the data, so competitors could monitor TravelNest's prices; there is a greater risk of misuse and heavy traffic that must be managed",
+          "A partner API is only available to approved business partners under an agreement, with stronger authentication",
+          "Partner API benefit: greater control and security, and the agreement can set out how pricing data may be used, which protects commercially sensitive information",
+          "Partner API limitation: smaller reach, and setting up agreements and onboarding each partner takes time and money",
+          "A judgement may suggest a combination, such as a public API for non-sensitive data like hotel descriptions and a partner API for live pricing"
+        ],
+        "levels": [
+          {
+            "level": 3,
+            "marks": [
+              5,
+              6
+            ],
+            "descriptor": "Shows detailed, accurate knowledge of both public and partner APIs. Clearly applies this knowledge to TravelNest's data and business. Discusses benefits and limitations of both options with well-developed reasoning and reaches a supported judgement. The answer is logically structured."
+          },
+          {
+            "level": 2,
+            "marks": [
+              3,
+              4
+            ],
+            "descriptor": "Shows sound knowledge of public and/or partner APIs, with some application to TravelNest. The discussion may be one-sided or only partly developed. A judgement may be given but is only partly supported. The structure is mostly logical."
+          },
+          {
+            "level": 1,
+            "marks": [
+              1,
+              2
+            ],
+            "descriptor": "Shows basic knowledge of APIs, with little or no application to TravelNest. Points are mainly descriptive, and any judgement is missing or unsupported. There is limited structure."
+          }
+        ],
+        "guidance": "Award 0 marks for no creditworthy response. Do not expect technical detail about how APIs work. A Level 3 answer must include a reasoned conclusion that relates to TravelNest."
+      },
+      "modelAnswer": "A public API would let any developer register and access TravelNest's hotel availability and pricing. The main benefit is reach: many comparison sites and travel apps could show TravelNest's hotels, which could greatly increase bookings and make the brand better known. However, TravelNest would have little control over who uses the data. Competitors could also sign up and track its prices in real time to undercut them, and a high volume of requests could put strain on its systems.\nA partner API would only be available to businesses that TravelNest has approved and signed agreements with. This gives much more control, because each partner is authenticated and the agreement can limit how pricing data is used. This protects commercially sensitive information and reduces the risk of misuse. The drawback is that fewer businesses would show TravelNest's hotels, and agreeing terms with and onboarding each partner takes time and money.\nOverall, TravelNest should use a partner API for its live availability and pricing data. That data is commercially valuable, and the company's main aim is to work with specific businesses such as comparison websites rather than with anyone at all. TravelNest could still use a public API for non-sensitive data, such as hotel descriptions and photos, to gain some of the wider reach without exposing its prices to competitors."
+    }
+  ]
+}

@@ -1,0 +1,379 @@
+{
+  "code": "F201",
+  "title": "Big data and machine learning",
+  "assessment": "exam",
+  "summary": "This unit covers what big data is and how it is captured, stored, prepared and analysed, including the infrastructure and machine learning algorithms used. It also covers the legal and ethical issues of managing big data and how big data affects the environment and society.",
+  "flashcards": [
+    {
+      "id": "F201-FC01",
+      "topicArea": 1,
+      "front": "What is the difference between veracity and variability in the 6Vs of big data?",
+      "back": "Veracity is how accurate, trustworthy and reliable the data is, for example whether sensor readings contain errors or social media posts are fake. Variability is how inconsistent the data is. For example, the meaning of a word can change with context, or the rate data arrives can spike at certain times. Both affect how far an organisation can rely on its analysis.",
+      "keyTerms": [
+        "veracity",
+        "variability"
+      ]
+    },
+    {
+      "id": "F201-FC02",
+      "topicArea": 1,
+      "front": "What are the six steps for analysing big data, in order?",
+      "back": "1 Data collection: gathering data from sources. 2 Data storing: keeping it in suitable storage, such as a data lake. 3 Data cleaning: removing errors, duplicates and irrelevant data. 4 Data mining: searching the data for patterns. 5 Data analysis: interpreting the patterns to answer questions. 6 Data consumption: decision makers use the results, for example through reports and dashboards.",
+      "keyTerms": [
+        "data collection",
+        "data mining",
+        "data consumption"
+      ]
+    },
+    {
+      "id": "F201-FC03",
+      "topicArea": 2,
+      "front": "How does semi-structured data differ from structured and unstructured data?",
+      "back": "Structured data fits a fixed schema of rows and columns, such as a relational database table or transactional data. Unstructured data has no predefined model, such as videos, weather imagery or social media posts. Semi-structured data has no rigid table structure, but it contains tags or markers that organise it. Examples are XML files, emails with header fields, and web pages.",
+      "keyTerms": [
+        "semi-structured data",
+        "structured data",
+        "unstructured data"
+      ]
+    },
+    {
+      "id": "F201-FC04",
+      "topicArea": 2,
+      "front": "What is data wrangling and why is it used?",
+      "back": "Data wrangling is the process of transforming raw data from different sources into a clean, consistent format that is ready for analysis. It includes combining data sets, restructuring them, cleaning errors and enriching the data. It is used so that data mining and analysis produce accurate, reliable results, and so analysts spend less time fixing problems later.",
+      "keyTerms": [
+        "data wrangling"
+      ]
+    },
+    {
+      "id": "F201-FC05",
+      "topicArea": 2,
+      "front": "What is the difference between predictive and prescriptive data mining?",
+      "back": "Predictive data mining uses historical data to forecast what is likely to happen, such as which customers may stop buying. Prescriptive data mining goes further and recommends what action to take to get the best outcome, such as which offer to send each customer. Prescriptive mining is more directly useful for decisions, but it depends on the predictions being accurate.",
+      "keyTerms": [
+        "predictive",
+        "prescriptive"
+      ]
+    },
+    {
+      "id": "F201-FC06",
+      "topicArea": 2,
+      "front": "What is Monte Carlo simulation, and when might an organisation use it?",
+      "back": "Monte Carlo simulation runs a model thousands of times, using random values for the uncertain inputs, to show the range and probability of possible outcomes. It is used for risk analysis, for example when an insurer estimates possible claims or a retailer forecasts demand. Benefit: it shows the level of risk rather than a single answer. Limitation: the results are only as good as the assumptions used.",
+      "keyTerms": [
+        "Monte Carlo simulation",
+        "risk analysis"
+      ]
+    },
+    {
+      "id": "F201-FC07",
+      "topicArea": 3,
+      "front": "Why might a data scientist use a random forest instead of a single decision tree?",
+      "back": "A decision tree splits data using a series of questions. It is easy to explain, but it can overfit the training data. A random forest combines many decision trees, each built on a random sample of the data, and takes a majority vote or an average. This usually makes it more accurate and less prone to overfitting. However, it is slower and harder to interpret.",
+      "keyTerms": [
+        "decision tree",
+        "random forest",
+        "overfitting"
+      ]
+    },
+    {
+      "id": "F201-FC08",
+      "topicArea": 3,
+      "front": "What is K-Means and how is it used in machine learning?",
+      "back": "K-Means is an unsupervised machine learning algorithm that groups data points into a chosen number (k) of clusters. Each point goes into the cluster with the nearest centre, or mean. It is used for tasks such as customer segmentation. It is fast on large data sets, but k must be chosen in advance and outliers can distort the results.",
+      "keyTerms": [
+        "K-Means",
+        "clusters",
+        "customer segmentation"
+      ]
+    },
+    {
+      "id": "F201-FC09",
+      "topicArea": 4,
+      "front": "How does UK GDPR apply to automated decision making?",
+      "back": "Under UK GDPR, decisions made solely by automated processing, including profiling, that have legal or similarly significant effects on individuals, such as refusing credit, must have safeguards. Organisations must tell people the decision was automated, give meaningful information about the logic involved, and let them make representations, request human intervention and contest the decision. Stricter limits apply when special category data, such as health or ethnicity, is used.",
+      "keyTerms": [
+        "UK GDPR",
+        "automated processing",
+        "human intervention"
+      ]
+    },
+    {
+      "id": "F201-FC10",
+      "topicArea": 5,
+      "front": "What is the purpose of a smart city?",
+      "back": "A smart city uses data from sensors, IoE devices, cameras and citizens' smartphones to monitor and improve city operations such as traffic, energy, waste and public transport. Data is exchanged between systems so that services can respond in real time, improving efficiency, sustainability and quality of life. A limitation is the risk to privacy and security from constant data collection.",
+      "keyTerms": [
+        "smart city",
+        "IoE"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "F201-Q01",
+      "topicArea": 1,
+      "commandWord": "State",
+      "marks": 1,
+      "context": "FreshCart is a UK online grocery retailer. Its website and app record about two million customer clicks every hour, and its delivery vans stream GPS location data every few seconds.",
+      "question": "State which characteristic of big data describes the speed at which FreshCart's GPS data is generated and received.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Velocity (1)"
+        ],
+        "guidance": "Do not accept volume or variability."
+      },
+      "modelAnswer": "Velocity, which is the speed at which data such as the vans' GPS readings is generated and received."
+    },
+    {
+      "id": "F201-Q02",
+      "topicArea": 2,
+      "commandWord": "Identify",
+      "marks": 2,
+      "context": "FreshCart has built its customer database by merging records from its website, its app and its in-store loyalty scheme.",
+      "question": "Identify two data cleaning techniques FreshCart could use to prepare its merged customer data for analysis.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Removing duplicates (1)",
+          "Removing irrelevant data (1)",
+          "Converting data type (1)",
+          "Clear formatting (1)",
+          "Fix structural errors (1)",
+          "Fix missing data (1)",
+          "Validate data (1)",
+          "Language translation (1)"
+        ],
+        "guidance": "1 mark for each technique identified, maximum 2 marks. Accept clear equivalents, for example 'deleting repeated customer records' for removing duplicates. Do not accept data wrangling on its own."
+      },
+      "modelAnswer": "1 Removing duplicates, for example deleting a customer who appears in both the website and loyalty scheme records.\n2 Fixing missing data, for example filling in or flagging customer records that have no postcode."
+    },
+    {
+      "id": "F201-Q03",
+      "topicArea": 4,
+      "commandWord": "Outline",
+      "marks": 2,
+      "context": "FreshCart stores customers' names, addresses, payment details and order histories.",
+      "question": "Outline two rights that FreshCart's customers have as data subjects under UK GDPR.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Right to be informed: to be told how and why FreshCart uses their personal data (1)",
+          "Right of access: to request a copy of the personal data FreshCart holds about them (1)",
+          "Right to rectification: to have inaccurate data, such as a wrong address, corrected (1)",
+          "Right to erasure: to ask for their data to be deleted in certain circumstances (1)",
+          "Right to restrict processing: to limit how FreshCart uses their data (1)",
+          "Right to data portability: to obtain their data in a reusable format to move to another service (1)",
+          "Right to object: for example, to object to their data being used for direct marketing (1)",
+          "Rights related to automated decision making and profiling (1)"
+        ],
+        "guidance": "1 mark for each right with a brief outline, maximum 2 marks. If both rights are only named, with no outline, award a maximum of 1 mark."
+      },
+      "modelAnswer": "1 The right of access, which lets a customer request a copy of all the personal data FreshCart holds about them, such as their order history.\n2 The right to erasure, which lets a customer ask FreshCart to delete their personal data, for example after they close their account."
+    },
+    {
+      "id": "F201-Q04",
+      "topicArea": 2,
+      "commandWord": "Describe",
+      "marks": 3,
+      "context": "FreshCart collects written product reviews, customer photos of damaged deliveries and posts that mention the company on social media.",
+      "question": "Describe what is meant by unstructured data, using an example that FreshCart collects.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Data that has no predefined data model or schema (1)",
+          "It is not organised into rows and columns, so it cannot easily be stored in a relational database (1)",
+          "Example from the context, such as review text, photos of damaged deliveries or social media posts (1)",
+          "It is harder to search and analyse, and needs techniques such as natural language processing or AI to extract meaning (1)"
+        ],
+        "guidance": "Maximum 3 marks. Only 1 mark for the example, and it must come from the FreshCart context."
+      },
+      "modelAnswer": "Unstructured data is data that has no predefined data model, so it is not organised into rows and columns and cannot easily be stored in a relational database table. An example is the photos customers upload of damaged deliveries. FreshCart would need techniques such as AI image recognition to extract useful information from them."
+    },
+    {
+      "id": "F201-Q05",
+      "topicArea": 3,
+      "commandWord": "Explain",
+      "marks": 4,
+      "context": "FreshCart wants to predict which of its subscription customers are likely to cancel their weekly delivery plan.",
+      "question": "Explain how a decision tree algorithm could be used to make this prediction.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "The tree is trained on historical customer data labelled with whether each customer cancelled or not (1)",
+          "The data is split at each node using a test on an attribute, such as number of complaints or weeks since the last order (1)",
+          "Each branch leads to further splits until it reaches a leaf node that gives a prediction: cancel or stay (1)",
+          "A current customer's data follows the branches to classify them as likely or unlikely to cancel (1)",
+          "FreshCart can then target at-risk customers with retention offers (1)",
+          "The tree's rules are easy to explain to managers, so they understand why a customer is flagged (1)"
+        ],
+        "guidance": "Maximum 4 marks. Answers must explain how the algorithm works, not just state that it predicts. Award marks for points applied to FreshCart."
+      },
+      "modelAnswer": "FreshCart would train the decision tree on historical data about past subscribers, each labelled with whether they cancelled or stayed. The algorithm splits this data at each node using the attribute that best separates the two groups, for example 'has the customer made more than two complaints?' and then 'has the customer skipped a delivery in the last month?'. Each branch ends in a leaf node that predicts 'cancel' or 'stay'. A current customer's data is passed down the tree to classify them, so FreshCart can send at-risk customers a discount before they leave."
+    },
+    {
+      "id": "F201-Q06",
+      "topicArea": 2,
+      "commandWord": "Compare",
+      "marks": 4,
+      "context": "FreshCart is deciding where to store data from its sales system, delivery GPS feeds and social media monitoring.",
+      "question": "Compare a data lake and a data warehouse as places for FreshCart to store its data.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Both store large volumes of data from many sources so that it can be analysed (1)",
+          "A data lake stores raw data in its original format, including unstructured data such as social media posts, whereas a data warehouse stores processed, structured data such as cleaned sales records (1)",
+          "In a data lake a structure is applied when the data is read, whereas a data warehouse needs its structure defined before data is loaded (1)",
+          "A data lake suits data scientists exploring data or training machine learning models, whereas a data warehouse suits business reporting and dashboards (1)",
+          "Data in a warehouse is quicker to query and more reliable, whereas a poorly managed data lake can become a disorganised 'data swamp' (1)"
+        ],
+        "guidance": "Maximum 4 marks. For full marks the answer must refer to both storage areas; a one-sided answer can earn a maximum of 2 marks. Accept valid similarities. Do not credit references to named providers."
+      },
+      "modelAnswer": "Both a data lake and a data warehouse store large volumes of FreshCart's data from many sources for analysis. A data lake keeps data in its raw, original format, so it could hold the unstructured social media posts as well as the GPS feeds. A data warehouse only holds cleaned, structured data, such as processed sales records. The structure of a data warehouse is defined before the data is loaded, so managers can query it quickly for reliable sales reports. A data lake is better for FreshCart's data scientists exploring new patterns, but it can become a disorganised data swamp if it is not managed."
+    },
+    {
+      "id": "F201-Q07",
+      "topicArea": 1,
+      "commandWord": "Describe",
+      "marks": 4,
+      "context": "FreshCart wants to capture more big data about its customers and its delivery operation.",
+      "question": "Describe two data capture methods FreshCart could use to collect this big data.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Transactional records (1)",
+          "Each online order automatically records the items, quantities, prices, time and customer ID, producing structured data (1)",
+          "GPS signals (1)",
+          "Receivers in delivery vans send location, speed and time data, showing routes and delivery times (1)",
+          "Sensors / IoE connected devices (1)",
+          "Temperature sensors in chilled vans record readings continuously to check that food stays safe (1)",
+          "Social media sites (1)",
+          "Posts, comments and likes that mention FreshCart are collected, giving unstructured data about customer opinions (1)",
+          "Online surveys (1)",
+          "Customers answer questions after delivery, giving structured ratings and free-text feedback (1)"
+        ],
+        "guidance": "For each of two methods: 1 mark for identifying the method and 1 mark for describing how it captures data, or what data it produces, in the FreshCart context. Maximum 4 marks. Accept other valid methods from the specification, for example digital images and videos, natural language, or satellites."
+      },
+      "modelAnswer": "1 Transactional records: every time a customer places an order on the website or app, the system automatically records the items bought, quantities, prices, date and time, and the customer's ID. This builds a large structured data set of buying behaviour.\n2 Sensors: temperature sensors fitted inside the chilled delivery vans continuously record and transmit readings. FreshCart can then check that food is kept at a safe temperature throughout every delivery."
+    },
+    {
+      "id": "F201-Q08",
+      "topicArea": 5,
+      "commandWord": "Explain",
+      "marks": 4,
+      "context": "FreshCart has agreed to share anonymised GPS data from its delivery vans with the city council as part of a smart city project.",
+      "question": "Explain how this data could help the council improve traffic management in the city.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "The GPS data shows real-time van locations and speeds, revealing where congestion is building (1)",
+          "It can be combined with data from other sources, such as road sensors and traffic cameras, to give a fuller picture (1)",
+          "The council can adjust traffic light timings or send diversion alerts to reduce queues as they form (1)",
+          "Historical GPS data reveals recurring congestion hotspots and peak times, which can inform road layout or planning decisions (1)",
+          "Reduced congestion cuts journey times and vehicle emissions, improving air quality (1)"
+        ],
+        "guidance": "Maximum 4 marks. Answers must explain how the data leads to an improvement, not just state that it helps. Credit a limitation, for example that vans represent only part of the traffic, only if it is linked to how the council uses the data."
+      },
+      "modelAnswer": "FreshCart's vans send GPS data showing their location and speed every few seconds, so the council can see in real time where vehicles are slowing down and congestion is building. By combining this with data from road sensors and traffic cameras, the smart city system could automatically change traffic light timings or send diversion alerts to drivers before queues get worse. Over time, the historical data would show recurring hotspots at particular times of day, helping the council plan road changes that reduce journey times and emissions."
+    },
+    {
+      "id": "F201-Q09",
+      "topicArea": 4,
+      "commandWord": "Analyse",
+      "marks": 6,
+      "context": "FreshCart plans to launch a 'pay later' option. An algorithm trained on past customer data will approve or reject each application within seconds, with no human involvement.",
+      "question": "Analyse the impact on customers of FreshCart using automated decision making to approve or reject 'pay later' applications.",
+      "markScheme": {
+        "type": "levels",
+        "points": [
+          "Customers get a fast, consistent decision at any time of day, without waiting for a member of staff",
+          "Training data may contain historical bias, so the algorithm may unfairly reject some groups; for example, a postcode could act as a proxy for ethnicity or income",
+          "Customers with little data history, such as young people, may be rejected because the algorithm cannot judge them, leading to financial exclusion",
+          "A rejection has a significant effect, so UK GDPR requires FreshCart to inform customers, explain the logic involved and allow them to request human intervention and contest the decision",
+          "Complex algorithms can be a 'black box', so customers may not understand why they were rejected or how to improve",
+          "Profiling uses customers' personal data in ways they may not expect, raising privacy concerns and reducing trust in FreshCart",
+          "Consistent rules can remove individual human prejudice, which may make decisions fairer for some customers"
+        ],
+        "levels": [
+          {
+            "level": 3,
+            "marks": [
+              5,
+              6
+            ],
+            "descriptor": "Detailed and accurate knowledge and understanding of automated decision making. Clear, well-developed analysis of both positive and negative impacts on customers, applied consistently to FreshCart's 'pay later' scenario. Links to UK GDPR safeguards and to risks of bias are explained accurately. The response is logically structured, with reasoning that is clear and substantiated."
+          },
+          {
+            "level": 2,
+            "marks": [
+              3,
+              4
+            ],
+            "descriptor": "Sound knowledge and understanding with some inaccuracies. Some analysis of impacts on customers with some application to the scenario, but the reasoning may be one-sided or not fully developed. The response has some structure."
+          },
+          {
+            "level": 1,
+            "marks": [
+              1,
+              2
+            ],
+            "descriptor": "Basic knowledge and understanding. Impacts are mainly identified or described, with little analysis and little or no application to FreshCart. Information is poorly organised."
+          }
+        ],
+        "guidance": "0 marks: no creditworthy response. Indicative content is not exhaustive; credit any valid, relevant impacts on customers. Answers that focus only on impacts on FreshCart rather than on customers cannot go above Level 1."
+      },
+      "modelAnswer": "One positive impact is speed. Customers applying for 'pay later' get a decision within seconds at any time of day, so they can complete their grocery order straight away instead of waiting for staff to review it. Because the algorithm applies the same rules every time, it may also remove the individual prejudices a human reviewer might have.\n\nHowever, the algorithm is trained on past customer data, and any bias in that data will be repeated automatically and at scale. For example, if customers from certain postcodes were rejected more often in the past, the system may learn to reject them now, even though postcode can act as a proxy for ethnicity or income. Young customers with little order history may also be rejected simply because there is not enough data about them, which excludes them from the service unfairly.\n\nBeing refused credit is a decision with a significant effect on a person. UK GDPR therefore means FreshCart must tell customers that the decision was automated, give meaningful information about the logic used, and let them ask for a human to review and contest it. Without these safeguards, customers would face a 'black box' decision they cannot understand or challenge.\n\nOverall, automated decisions benefit customers through speed and consistency. But unless FreshCart checks the algorithm for bias and offers human review, some customers may be treated unfairly, and trust in the company could fall."
+    },
+    {
+      "id": "F201-Q10",
+      "topicArea": 2,
+      "commandWord": "Discuss",
+      "marks": 9,
+      "context": "FreshCart stores all its data on a private cloud in its own data centre. Data volumes are growing quickly, and orders spike sharply before Christmas. The board is considering moving its big data storage to a public cloud.",
+      "question": "Discuss whether FreshCart should move its big data storage to a public cloud.",
+      "markScheme": {
+        "type": "levels",
+        "points": [
+          "A public cloud is highly scalable, so storage and processing can expand quickly to cope with growing data volumes and the pre-Christmas spike",
+          "The cloud provider maintains the hardware, applies updates and provides backups, so FreshCart's IT staff can focus on analysis",
+          "Public cloud platforms often include built-in analytics, machine learning and data lake services that FreshCart's data scientists could use",
+          "Data can be accessed from anywhere with an internet connection, which supports remote teams and depot managers",
+          "A private cloud is dedicated to one organisation, giving FreshCart more control over security, configuration and where its data is held",
+          "A public cloud uses shared infrastructure run by a third party, so FreshCart has less direct control and may worry about the security of customer payment and personal data",
+          "Under UK GDPR, FreshCart remains responsible for personal data and must know where it is stored; transfers outside the UK need appropriate safeguards",
+          "There is dependence on the provider and on internet connectivity: outages or vendor lock-in could disrupt orders and analysis",
+          "A hybrid approach could keep sensitive customer data in the private cloud and use the public cloud for less sensitive, high-volume data such as GPS feeds"
+        ],
+        "levels": [
+          {
+            "level": 3,
+            "marks": [
+              7,
+              9
+            ],
+            "descriptor": "Detailed and accurate knowledge and understanding of public and private cloud storage. Applies this clearly and consistently to FreshCart's situation, including its growing data and seasonal demand. The discussion is well balanced and well developed, considering both benefits and limitations, and reaches a supported conclusion. The response is presented in a logical, well-structured way."
+          },
+          {
+            "level": 2,
+            "marks": [
+              4,
+              6
+            ],
+            "descriptor": "Sound knowledge and understanding with some inaccuracies. Some application to FreshCart, but it may be inconsistent. The discussion may be unbalanced or lack depth in places; a conclusion may be given but is only partly supported. The response has some structure."
+          },
+          {
+            "level": 1,
+            "marks": [
+              1,
+              3
+            ],
+            "descriptor": "Basic knowledge and understanding. Little or no application to FreshCart. Points are mainly descriptive or listed, with little or no discussion, and any conclusion is unsupported. Information is poorly organised."
+          }
+        ],
+        "guidance": "0 marks: no creditworthy response. Indicative content is not exhaustive; credit any valid, relevant points. A response with no conclusion cannot go above the middle of Level 2 (5 marks). Do not credit discussion of implementation costs or of named cloud providers."
+      },
+      "modelAnswer": "The strongest argument for moving to a public cloud is scalability. FreshCart's data volumes are growing quickly and orders spike sharply before Christmas. A public cloud can provide extra storage and processing power almost immediately when it is needed and scale back afterwards. With a private cloud in its own data centre, FreshCart has to install enough hardware in advance, which may not keep pace with growth and could fail under seasonal peaks.\n\nA public cloud would also reduce the maintenance burden. The provider looks after the hardware, applies security updates and runs backups, so FreshCart's IT team could spend more time analysing data. Many public cloud platforms also include ready-made analytics, data lake and machine learning services, which would help FreshCart develop projects such as predicting customer cancellations.\n\nHowever, there are important drawbacks. A public cloud runs on shared infrastructure managed by a third party, so FreshCart would have less control over how its data is secured. This matters because it holds customers' names, addresses and payment details. Under UK GDPR, FreshCart remains responsible for this personal data even when a provider stores it. It must know where the data is held and make sure any transfer outside the UK has appropriate safeguards, or it risks ICO fines and reputational damage. FreshCart would also depend on the provider and on its internet connection, so an outage at Christmas could stop orders being processed.\n\nIn conclusion, I think FreshCart should move to the public cloud, but not completely. A hybrid approach would be best. FreshCart should use the public cloud for high-volume, less sensitive data such as delivery GPS feeds and clickstream data, where scalability matters most. It should keep sensitive customer and payment data in its private cloud, where it has greater control. This gives FreshCart the flexibility to handle growth and seasonal spikes while reducing the security and compliance risks to its customers' personal data."
+    }
+  ]
+}

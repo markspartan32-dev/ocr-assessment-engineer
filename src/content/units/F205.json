@@ -1,0 +1,380 @@
+{
+  "code": "F205",
+  "title": "Data visualisation",
+  "assessment": "nea",
+  "summary": "This unit covers why organisations use data visualisation and data dashboards, and how to plan, prepare data for, build, communicate and interpret a dashboard for a client. It ends with evaluating how well the data preparation and the finished dashboard met the client's requirements.",
+  "flashcards": [
+    {
+      "id": "F205-FC01",
+      "topicArea": 1,
+      "front": "What is a data dashboard, and why is it useful for communicating complex data?",
+      "back": "A data dashboard is a single visual display, often interactive, that brings together key metrics, charts and tables from one or more data sources. It summarises large or complex data sets so that different stakeholders can monitor performance and spot problems at a glance. They do not need to analyse the raw data themselves.",
+      "keyTerms": [
+        "data dashboard",
+        "stakeholders",
+        "key metrics"
+      ]
+    },
+    {
+      "id": "F205-FC02",
+      "topicArea": 1,
+      "front": "Name the four types of data dashboard and state who each is mainly for.",
+      "back": "Operational dashboards monitor day-to-day processes in real time, so they suit frontline staff and supervisors. Strategic dashboards show high-level KPIs over long periods for senior managers. Analytical dashboards let analysts explore large amounts of historical data to find trends and make predictions. Informational dashboards present facts and figures to inform an audience, often the public, and have little interactivity.",
+      "keyTerms": [
+        "operational",
+        "strategic",
+        "analytical",
+        "informational"
+      ]
+    },
+    {
+      "id": "F205-FC03",
+      "topicArea": 1,
+      "front": "Give four challenges organisations face when managing large data sets.",
+      "back": "Possible challenges are: lack of understanding of what the data shows; difficulty representing very large data sets visually; data growth increasing storage needs and costs; a shortage of skilled data professionals; keeping the data secure; integrating data from a variety of sources in different formats; and selecting appropriate software analysis tools.",
+      "keyTerms": [
+        "data growth",
+        "data security",
+        "integrating data"
+      ]
+    },
+    {
+      "id": "F205-FC04",
+      "topicArea": 2,
+      "front": "What is the difference between constructive, destructive and structural data transformation?",
+      "back": "Constructive transformation adds to the data, for example by creating a calculated field or copying data. Destructive transformation removes data, such as deleting unneeded fields or duplicate records. Structural transformation reorganises the data without changing its values, for example by renaming, reordering, splitting or combining columns.",
+      "keyTerms": [
+        "constructive",
+        "destructive",
+        "structural"
+      ]
+    },
+    {
+      "id": "F205-FC05",
+      "topicArea": 2,
+      "front": "How are a storyboard, a mind map and a flowchart each used to plan a data dashboard?",
+      "back": "A storyboard sketches each page or screen, showing where visuals, controls and text will be positioned and how users move between pages. A mind map captures ideas and links, such as the client's needs, data requirements and audiences. A flowchart shows the sequence of processes and decisions, such as data preparation steps or what happens when a user applies a filter.",
+      "keyTerms": [
+        "storyboard",
+        "mind map",
+        "flowchart"
+      ]
+    },
+    {
+      "id": "F205-FC06",
+      "topicArea": 2,
+      "front": "What are the three HCI component types to consider when planning a dashboard layout?",
+      "back": "Input controls let users enter or select values, for example slicers, drop-down lists, date pickers and search boxes. Navigational components help users move around the dashboard, such as page tabs, buttons and breadcrumbs. Informational components display results and feedback, such as charts, KPI cards, tooltips and labels. All three should be consistent and easy for the target audience to use.",
+      "keyTerms": [
+        "input controls",
+        "navigational components",
+        "informational components"
+      ]
+    },
+    {
+      "id": "F205-FC07",
+      "topicArea": 3,
+      "front": "Why might a dashboard creator apply user access rights?",
+      "back": "User access rights control who can view, edit or share a dashboard and which data each user can see. For example, a regional manager might see only their own region's figures. Access rights keep personal or commercially sensitive data secure and support UK GDPR compliance. They also stop users accidentally changing the visuals.",
+      "keyTerms": [
+        "user access rights",
+        "UK GDPR"
+      ]
+    },
+    {
+      "id": "F205-FC08",
+      "topicArea": 4,
+      "front": "Give one benefit and one limitation of using an infographic to communicate dashboard findings.",
+      "back": "Benefit: an infographic combines simple graphics, icons and a few key figures, so a non-technical audience can understand the main message quickly and it is easy to share on social media or print. Limitation: it is static and simplified, so it cannot show the dashboard's interactivity. Detail and context may be lost, which risks the data being misinterpreted.",
+      "keyTerms": [
+        "infographic",
+        "non-technical",
+        "static"
+      ]
+    },
+    {
+      "id": "F205-FC09",
+      "topicArea": 4,
+      "front": "What is the difference between a trend, a pattern and a recommendation when interpreting a dashboard?",
+      "back": "A trend is the general direction of data over time, such as sales rising steadily over six months. A pattern is a regular or repeated feature or relationship, such as bookings peaking every January, or one variable falling as another rises. A recommendation is a justified action for the client based on those trends and patterns.",
+      "keyTerms": [
+        "trend",
+        "pattern",
+        "recommendation"
+      ]
+    },
+    {
+      "id": "F205-FC10",
+      "topicArea": 5,
+      "front": "What should you consider when evaluating how effective a finished data dashboard is?",
+      "back": "Compare the dashboard with each client requirement and judge how fully each one was met. Check how closely it matches the original plans and whether it follows HCI design conventions such as consistency and readable layout. Consider how effective the layout is for the client. Finally, suggest future improvements to the layout, functionality and content that would enhance the client experience.",
+      "keyTerms": [
+        "client requirement",
+        "HCI design conventions",
+        "future improvements"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "F205-Q01",
+      "topicArea": 1,
+      "commandWord": "Identify",
+      "marks": 2,
+      "context": "PeakFit runs a chain of 12 gyms and wants to understand its members' preferences before redesigning its class timetable.",
+      "question": "Identify two sources of data PeakFit could use to find out its members' preferences.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Survey responses, e.g. member feedback questionnaires (1)",
+          "Social media content or social network activity reports (1)",
+          "Text from customer emails (1)",
+          "Internet clickstream data or web server logs from the online booking system (1)",
+          "Machine data from sensors on gym equipment, e.g. usage counts (1)",
+          "Existing data, e.g. past class booking records (1)"
+        ],
+        "guidance": "1 mark for each valid source, up to a maximum of 2. Accept other reasonable sources if they are relevant to member preferences. Do not accept vague answers such as 'the internet'."
+      },
+      "modelAnswer": "1. Survey responses from members about which classes they would like.\n2. Clickstream data from PeakFit's online class booking website."
+    },
+    {
+      "id": "F205-Q02",
+      "topicArea": 3,
+      "commandWord": "Describe",
+      "marks": 2,
+      "question": "Describe what is meant by pinning a tile to a data dashboard.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "A visual or report element is fixed (published) onto the dashboard (1)",
+          "This highlights important information so the user sees it at a glance (1)",
+          "The user does not need to open the full report to see the information (1)",
+          "Selecting the tile can link the user back to the underlying report for more detail (1)"
+        ],
+        "guidance": "Award up to 2 marks. The answer must go beyond 'putting a chart on the dashboard' to earn the second mark."
+      },
+      "modelAnswer": "Pinning a tile means taking a visual, such as a chart or KPI card, from a report and fixing it onto the dashboard. This highlights the most important information so users can see it at a glance. They can select the tile to open the full report if they need more detail."
+    },
+    {
+      "id": "F205-Q03",
+      "topicArea": 2,
+      "commandWord": "Describe",
+      "marks": 3,
+      "context": "PeakFit's data analyst is planning a three-page dashboard for the company's regional managers.",
+      "question": "Describe how a storyboard could be used to plan the layout of PeakFit's dashboard.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "A sketch is drawn of each page or screen of the dashboard (1)",
+          "It shows where each chart, KPI card and input control will be positioned (1)",
+          "Annotations explain the purpose, visual type or data used for each element (1)",
+          "Arrows or links show how users navigate between the three pages (1)",
+          "It can be shown to the regional managers for feedback before the dashboard is built (1)"
+        ],
+        "guidance": "1 mark for each descriptive point, up to a maximum of 3. Credit points applied to PeakFit or its managers."
+      },
+      "modelAnswer": "The analyst would draw a frame for each of the three dashboard pages, showing where the charts, KPI cards and slicers will go. Each element would be annotated with its chart type and the data it uses. Arrows would show how managers move between pages. The storyboard can then be shown to the regional managers so they can give feedback before the dashboard is built."
+    },
+    {
+      "id": "F205-Q04",
+      "topicArea": 2,
+      "commandWord": "Explain",
+      "marks": 4,
+      "context": "PeakFit's member data set includes names, dates of birth, home addresses, medical notes and class attendance. It will be used to build an attendance dashboard.",
+      "question": "Explain two ways UK GDPR will affect how PeakFit prepares this data for its dashboard.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Data minimisation: fields not needed for the dashboard should be removed (1)",
+          "e.g. home addresses and medical notes are not needed to show attendance, so they should be deleted from the working data set (1)",
+          "Members' names should be anonymised or pseudonymised, e.g. replaced with member IDs (1)",
+          "so dashboard users cannot identify individuals, reducing the risk of a breach (1)",
+          "Accuracy: out-of-date or incorrect records should be cleansed or corrected (1)",
+          "Medical notes are special category data, so they need extra protection or should be excluded (1)",
+          "Security: access to the prepared data should be restricted to authorised staff (1)"
+        ],
+        "guidance": "For each of two ways: 1 mark for identifying the effect and 1 mark for explaining it in the context of PeakFit. Maximum 4 marks."
+      },
+      "modelAnswer": "Firstly, under the data minimisation principle PeakFit should only process data that is needed. Home addresses and medical notes are not needed to show class attendance, so they should be removed before the data is loaded into the dashboard.\n\nSecondly, members' names should be pseudonymised by replacing them with member ID numbers. Managers viewing the dashboard can then analyse attendance without being able to identify individual members, which protects the members' privacy."
+    },
+    {
+      "id": "F205-Q05",
+      "topicArea": 4,
+      "commandWord": "Compare",
+      "marks": 4,
+      "context": "PeakFit's analyst must communicate the findings of the new dashboard to the company's board of directors.",
+      "question": "Compare using an infographic with using a screen recording to communicate the dashboard's outputs to the board.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Similarity: both are visual and can be shared digitally with board members in advance (1)",
+          "An infographic gives a quick, simple summary of the key figures that is easy for busy directors to read (1)",
+          "but an infographic is static, so it cannot show how filters or drill-downs work (1)",
+          "A screen recording can demonstrate the dashboard's interactivity, e.g. applying a filter by gym (1)",
+          "but a screen recording takes longer to watch and cannot be skimmed easily (1)",
+          "An infographic simplifies the data, so detail may be lost, whereas a recording can show the full dashboard (1)"
+        ],
+        "guidance": "Award up to 4 marks. For full marks the answer must cover both methods and make at least one direct comparison, e.g. using 'whereas' or 'however'. Award a maximum of 2 marks if only one method is discussed."
+      },
+      "modelAnswer": "Both methods are visual and can be emailed to the board before a meeting. An infographic shows the key figures, such as total memberships and the best-performing gym, in a simple form that directors can read in seconds. However, it is static, so it cannot show how the dashboard can be filtered. A screen recording can demonstrate the interactive features, such as selecting a gym to update the charts, but it takes longer to watch and the board cannot skim it for the headline figures."
+    },
+    {
+      "id": "F205-Q06",
+      "topicArea": 3,
+      "commandWord": "Explain",
+      "marks": 4,
+      "context": "PeakFit has a spreadsheet of 40,000 class booking records. Each row contains the gym, class type, date and number of attendees.",
+      "question": "Explain how a pivot table could be used to summarise this data ready for visualisation.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Records can be grouped by a category such as gym or class type (1)",
+          "Values can be aggregated using functions such as sum, count or average, e.g. total attendees per class type (1)",
+          "This reduces 40,000 rows to a small summary table that is easier to understand (1)",
+          "The summary can be used directly as the source for a chart, e.g. a bar chart of attendance by gym (1)",
+          "Fields can be quickly rearranged or filtered, e.g. by month, to test different views of the data (1)"
+        ],
+        "guidance": "1 mark for each explanatory point, up to a maximum of 4. Answers must refer to summarising, not just 'making a table', to gain credit."
+      },
+      "modelAnswer": "A pivot table could group the 40,000 bookings by gym and class type and use the SUM function to total the number of attendees for each group. This reduces thousands of rows to a short summary table that shows clearly which classes are most popular. The summary can then be used directly as the data source for a bar chart on the dashboard. The analyst can also drag the date field into the pivot table to compare attendance month by month without changing the original data."
+    },
+    {
+      "id": "F205-Q07",
+      "topicArea": 5,
+      "commandWord": "Explain",
+      "marks": 4,
+      "context": "Before building the dashboard, PeakFit's analyst removed duplicates, filled blank cells and corrected inconsistent gym names in the booking data.",
+      "question": "Explain two ways the analyst could judge how effective the data cleansing process was.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Compare the number of errors or records before and after cleansing (1)",
+          "to show how many duplicates and blanks were actually removed or fixed (1)",
+          "Check the dashboard outputs for anomalies, e.g. a gym appearing twice under different names or impossible attendance values (1)",
+          "because any remaining anomalies show the cleansing was incomplete (1)",
+          "Check that valid records were not wrongly deleted, e.g. by sampling against the original data (1)",
+          "Review whether the methods used were efficient, e.g. automated tools against manual correction (1)"
+        ],
+        "guidance": "For each of two ways: 1 mark for identifying the method and 1 mark for explaining what it shows about effectiveness. Maximum 4 marks."
+      },
+      "modelAnswer": "Firstly, the analyst could count the duplicates, blank cells and inconsistent gym names before and after cleansing. If the counts after cleansing are zero, this shows the process successfully produced a complete and accurate data set.\n\nSecondly, the analyst could check the dashboard visuals for anomalies, for example the same gym appearing twice in a bar chart under slightly different names. Any anomaly like this would show that some errors were missed and the cleansing process needs improving."
+    },
+    {
+      "id": "F205-Q08",
+      "topicArea": 4,
+      "commandWord": "Interpret",
+      "marks": 4,
+      "context": "PeakFit's dashboard shows monthly class bookings from January to June. Spin: 820, 790, 760, 700, 650, 610. Yoga: 400, 450, 520, 560, 610, 660.",
+      "question": "Interpret these outputs and make one recommendation to PeakFit.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Spin bookings show a steady downward trend each month (1)",
+          "Spin falls by 210 bookings, about 26% (1)",
+          "Yoga bookings show a steady upward trend, rising by 260 or 65% (1)",
+          "Pattern: as spin falls yoga rises, and yoga overtakes spin in June (1)",
+          "Justified recommendation, e.g. move some spin timetable slots to yoga, or investigate why spin is declining (1)"
+        ],
+        "guidance": "Award up to 4 marks. A maximum of 3 marks if there is no recommendation. Accept accurate calculations of change. The recommendation must be linked to the trends identified."
+      },
+      "modelAnswer": "Spin bookings fell every month, from 820 to 610, a drop of 210 or about 26%. Over the same period yoga rose every month from 400 to 660, an increase of 65%. The pattern suggests members may be switching from spin to yoga, because yoga overtook spin for the first time in June. I recommend that PeakFit replaces some spin sessions with extra yoga classes to meet the growing demand, and surveys members to find out why spin is becoming less popular."
+    },
+    {
+      "id": "F205-Q09",
+      "topicArea": 2,
+      "commandWord": "Analyse",
+      "marks": 6,
+      "context": "PeakFit wants two dashboards: one for its data analysts and one for gym receptionists, who have little technical experience and use a small touchscreen at the front desk.",
+      "question": "Analyse how the target audience will affect the design of each dashboard.",
+      "markScheme": {
+        "type": "levels",
+        "points": [
+          "Technical audience (analysts) can cope with more detailed, complex visuals such as scatter graphs and tables of figures",
+          "Analysts need advanced interactivity such as drill-down, multiple filters, search and export options to explore the data",
+          "The analysts' dashboard can use more pages and denser layouts because the users understand analytics terminology",
+          "A non-technical audience (receptionists) needs simple visuals such as KPI cards and clear bar charts with plain-English labels",
+          "The receptionists' dashboard should have few input controls, large touch-friendly buttons and a single page to reduce errors",
+          "The receptionists' dashboard is likely to be operational, with real-time updates such as today's class capacity",
+          "The analysts' dashboard is likely to be analytical, using historical data to find trends",
+          "Consequences: a poor match to the audience leads to misinterpretation, or to a dashboard that is not used"
+        ],
+        "levels": [
+          {
+            "level": 3,
+            "marks": [
+              5,
+              6
+            ],
+            "descriptor": "Detailed and accurate analysis of how both audiences affect design. Points are clearly applied to PeakFit's analysts and receptionists and well developed with reasons and consequences. The answer is logically structured."
+          },
+          {
+            "level": 2,
+            "marks": [
+              3,
+              4
+            ],
+            "descriptor": "Some accurate analysis of how the audience affects design, with some application to PeakFit. One audience may be covered in more depth than the other, or the reasoning may be only partly developed. The answer has some structure."
+          },
+          {
+            "level": 1,
+            "marks": [
+              1,
+              2
+            ],
+            "descriptor": "Basic, mostly descriptive points about audiences or dashboard design, with little or no application to the context and little reasoning. The answer has limited structure."
+          }
+        ],
+        "guidance": "0 marks for no creditworthy response. Answers that cover only one audience cannot go above Level 2."
+      },
+      "modelAnswer": "The analysts are a technical audience, so their dashboard can be analytical and contain complex visuals such as scatter graphs and detailed tables. They will want to investigate why attendance changes, so the dashboard should include drill-down, multiple filters and export options so that they can explore the data and take it into other tools. Because they understand analytics terms, a multi-page layout with dense information is acceptable and gives them more insight.\n\nThe receptionists are non-technical and work at a small touchscreen while dealing with customers. Their dashboard should be operational, showing real-time information such as how many spaces are left in today's classes. It should use a single page with large KPI cards and simple bar charts in plain English. A few large, touch-friendly buttons should replace complex slicers. This reduces the chance of mistakes and means receptionists can answer member questions quickly.\n\nIf PeakFit gave receptionists the analysts' dashboard, they would probably misinterpret the data or stop using it. A simplified dashboard would frustrate analysts by hiding the detail they need. Designing each dashboard for its audience therefore makes both of them useful."
+    },
+    {
+      "id": "F205-Q10",
+      "topicArea": 5,
+      "commandWord": "Evaluate",
+      "marks": 9,
+      "context": "PeakFit required a dashboard that lets regional managers compare membership by gym, filter by month and use it on tablets. The dashboard produced has a gym slicer and a sorted bar chart, but no month filter. Its five-page layout uses small fonts that are hard to read on tablets.",
+      "question": "Evaluate how effective the dashboard is in meeting PeakFit's requirements.",
+      "markScheme": {
+        "type": "levels",
+        "points": [
+          "The requirement to compare membership by gym is met: the sorted bar chart makes it easy to rank gyms",
+          "The gym slicer gives useful interactivity and lets managers focus on their own gyms",
+          "The requirement to filter by month is not met, so managers cannot see seasonal trends such as January peaks",
+          "The tablet requirement is only partly met: small fonts break HCI conventions on readability",
+          "A five-page layout may require too much navigation on a small screen, reducing user-friendliness",
+          "Overall judgement, e.g. partially effective: the core comparison works but two of three requirements are not fully met",
+          "Future improvements: add a month or date slicer, enlarge fonts, use a responsive or mobile layout, reduce the number of pages, and pin key tiles to one summary page"
+        ],
+        "levels": [
+          {
+            "level": 3,
+            "marks": [
+              7,
+              9
+            ],
+            "descriptor": "Detailed and accurate evaluation of how far each requirement has been met, clearly applied to PeakFit's dashboard. Strengths and weaknesses are weighed with well-developed reasoning that refers to HCI conventions. A supported overall judgement is given, with relevant improvements. The answer is logically structured."
+          },
+          {
+            "level": 2,
+            "marks": [
+              4,
+              6
+            ],
+            "descriptor": "Some accurate evaluation of the dashboard against the requirements, with some application to the context. Strengths and weaknesses are identified but reasoning is only partly developed, and any judgement is limited or not fully supported. The answer has some structure."
+          },
+          {
+            "level": 1,
+            "marks": [
+              1,
+              3
+            ],
+            "descriptor": "Basic points about the dashboard that are mostly descriptive, with little application or reasoning and no clear judgement. The answer has limited structure."
+          }
+        ],
+        "guidance": "0 marks for no creditworthy response. To reach Level 3, an answer must give an overall judgement on effectiveness. An answer that only lists features without judging them against the requirements cannot go above Level 1."
+      },
+      "modelAnswer": "The dashboard fully meets the requirement to compare membership by gym. The bar chart is sorted in descending order, so regional managers can immediately see which gyms have the most and fewest members. The gym slicer adds useful interactivity by letting each manager focus on the gyms they are responsible for. This core purpose of the dashboard is therefore achieved well.\n\nHowever, the requirement to filter by month has not been met. Without a month or date filter, managers cannot see seasonal patterns, such as the rise in new memberships each January. They also cannot check whether a promotion in a particular month worked. This is a significant gap, because time-based comparison is a key part of how managers would use the data to make decisions.\n\nThe tablet requirement is only partly met. The dashboard opens on a tablet, but the small fonts break the HCI convention that text should be readable for the target device. Spreading the content across five pages means managers must keep navigating on a small screen, which makes the dashboard less user-friendly and could mean they stop using it.\n\nOverall, the dashboard is only partially effective. It does the main comparison task well, but one requirement is missing and another is poorly met, so it falls short of what PeakFit asked for. In future, adding a month slicer, increasing the font sizes, and pinning the key visuals to a single tablet-friendly summary page would make it fully meet the client's requirements."
+    }
+  ]
+}

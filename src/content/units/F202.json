@@ -1,0 +1,369 @@
+{
+  "code": "F202",
+  "title": "Spreadsheet data modelling",
+  "assessment": "nea",
+  "summary": "Covers the purposes and types of spreadsheet model and how a model is planned with design tools, built with formulae, validation and HCI features, then tested. It also covers analysing the model's outputs, writing technical and user documentation, and evaluating the model against user requirements.",
+  "flashcards": [
+    {
+      "id": "F202-FC01",
+      "topicArea": 1,
+      "front": "What are the four purposes of spreadsheet modelling?",
+      "back": "A spreadsheet model is used to store data in an organised structure and to manipulate it with formulae, sorting and filtering. It is used to analyse data to find trends and test what-if scenarios, and to share the analysis outcomes with others through charts, dashboards and reports so that decisions can be made.",
+      "keyTerms": [
+        "store",
+        "manipulate",
+        "analyse",
+        "share"
+      ]
+    },
+    {
+      "id": "F202-FC02",
+      "topicArea": 1,
+      "front": "What are the five stages of the spreadsheet modelling development cycle?",
+      "back": "1. Gather business requirements. 2. Identify the entities required. 3. Create the conceptual model of what is required. 4. Design the logical data model. 5. Create the physical data model. The designer moves from understanding what the client needs to building the working spreadsheet.",
+      "keyTerms": [
+        "business requirements",
+        "conceptual model",
+        "logical data model",
+        "physical data model"
+      ]
+    },
+    {
+      "id": "F202-FC03",
+      "topicArea": 1,
+      "front": "What are the six stages of the decision-making process that a spreadsheet model can support?",
+      "back": "1. Identify the problem. 2. Gather and analyse the most relevant data. 3. Identify the alternatives to solve the problem. 4. Select the best alternative. 5. Take action. 6. Evaluate and verify the decision. Spreadsheet features such as what-if scenarios, charts and pivot tables help a user compare the alternatives before choosing one.",
+      "keyTerms": [
+        "decision-making process",
+        "alternatives"
+      ]
+    },
+    {
+      "id": "F202-FC04",
+      "topicArea": 2,
+      "front": "What does SMART stand for when writing success criteria for a spreadsheet model?",
+      "back": "Specific, Measurable, Achievable, Realistic (or Relevant) and Time-bound. An example is: 'The model will automatically calculate each customer's monthly cost when a quantity is selected from a drop-down list, and it will be completed by 30 March.' Each criterion must link to the purpose of the model and the user requirements.",
+      "keyTerms": [
+        "SMART",
+        "success criteria"
+      ]
+    },
+    {
+      "id": "F202-FC05",
+      "topicArea": 2,
+      "front": "What four items does a data dictionary record for each variable in a spreadsheet model?",
+      "back": "The data dictionary records the variable name (a meaningful name for the data item) and its unit measurement (for example £, kg or days). It also records the acceptable values (the range or list that validation will allow) and a definition of the variable (what the item means and how it is used). This keeps inputs consistent and helps the designer plan validation.",
+      "keyTerms": [
+        "data dictionary",
+        "variable name",
+        "acceptable values"
+      ]
+    },
+    {
+      "id": "F202-FC06",
+      "topicArea": 2,
+      "front": "What is the difference between valid, extreme and invalid test data?",
+      "back": "Valid (normal) data is sensible data inside the accepted range, and the model should accept it. Extreme data sits exactly on the boundary of the range, such as 1 or 100 for a range of 1 to 100, and should also be accepted. Invalid (erroneous) data is outside the range or the wrong data type, and the model should reject it.",
+      "keyTerms": [
+        "valid",
+        "extreme",
+        "invalid"
+      ]
+    },
+    {
+      "id": "F202-FC07",
+      "topicArea": 3,
+      "front": "What is the difference between a relative and an absolute cell reference?",
+      "back": "A relative reference, such as B2, changes in line with its new position when a formula is copied. An absolute reference, such as $B$2, stays fixed when the formula is copied. Use an absolute reference for a single value that many formulae share, such as a VAT rate or a discount percentage.",
+      "keyTerms": [
+        "relative",
+        "absolute",
+        "$B$2"
+      ]
+    },
+    {
+      "id": "F202-FC08",
+      "topicArea": 3,
+      "front": "Name four types of data validation and give an example of when each is used.",
+      "back": "A range check makes sure a value is between set limits, for example an age from 16 to 99. A text length check sets the number of characters, for example a 7-character product code. A lookup checks the entry against a stored list, such as valid staff IDs. Limited choice means the user picks from set options, such as a drop-down list of departments.",
+      "keyTerms": [
+        "range check",
+        "text length",
+        "lookup",
+        "limited choice"
+      ]
+    },
+    {
+      "id": "F202-FC09",
+      "topicArea": 4,
+      "front": "What is the difference between technical documentation and user documentation?",
+      "back": "Technical documentation is written for people who maintain the model. It covers the hardware and software requirements, the formulae and functions used, the data validation and error messages, and a fault log. User documentation is written for end users in plain language. It covers the purpose and functions of the system and gives a step-by-step guide to installing, accessing and using the model.",
+      "keyTerms": [
+        "technical documentation",
+        "user documentation"
+      ]
+    },
+    {
+      "id": "F202-FC10",
+      "topicArea": 5,
+      "front": "What should an evaluation of a spreadsheet data model consider?",
+      "back": "An evaluation should judge whether the model meets the user requirements and client requirements, and how effectively the HCI features support users. It should also consider ease of use and accessibility, whether data is formatted appropriately, and the strengths of the model. Finally, it should suggest justified improvements that are linked to weaknesses found in testing or feedback.",
+      "keyTerms": [
+        "user requirements",
+        "HCI",
+        "improvements"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "F202-Q01",
+      "topicArea": 1,
+      "commandWord": "Identify",
+      "marks": 2,
+      "question": "Identify two purposes of spreadsheet modelling.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Store data (1)",
+          "Manipulate data (1)",
+          "Analyse data (1)",
+          "Share analysis outcomes (1)"
+        ],
+        "guidance": "Award 1 mark per purpose, up to a maximum of 2. Accept equivalent wording, such as 'sort and filter data' for manipulate, or 'present results to managers' for share. Do not accept types of model, such as 'financial'."
+      },
+      "modelAnswer": "1. To analyse data, for example to identify sales trends.\n2. To share analysis outcomes, for example through a dashboard sent to managers."
+    },
+    {
+      "id": "F202-Q02",
+      "topicArea": 2,
+      "commandWord": "Classify",
+      "marks": 3,
+      "context": "A cinema's booking model records the number of tickets in a single booking. The only valid entries are whole numbers from 1 to 10.",
+      "question": "Classify each of the following test values for the number of tickets as valid, extreme or invalid: 5, 10, 15.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "5 is valid (normal) data (1)",
+          "10 is extreme data because it is on the upper boundary of the range (1)",
+          "15 is invalid (erroneous) data because it is outside the range and should be rejected (1)"
+        ],
+        "guidance": "Accept 'normal' for valid and 'erroneous' for invalid. Each mark needs the correct classification for that value."
+      },
+      "modelAnswer": "5 is valid (normal) data.\n10 is extreme data because it is the highest value allowed.\n15 is invalid (erroneous) data because it is above the maximum of 10, so it should be rejected."
+    },
+    {
+      "id": "F202-Q03",
+      "topicArea": 3,
+      "commandWord": "Describe",
+      "marks": 3,
+      "context": "Staff at a garden centre type the product category for each sale into a spreadsheet model. Categories are often misspelt, so some sales are missing from the totals.",
+      "question": "Describe how a drop-down list could be used to improve the accuracy of the data entered by staff.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "The drop-down list is created with data validation (list) and linked to a range that holds the allowed categories (1)",
+          "Staff choose from a limited set of options instead of typing (1)",
+          "This stops spelling mistakes and inconsistent entries (1)",
+          "Entries then match the values used by formulae such as SUMIF or VLOOKUP, so the category totals are correct (1)",
+          "Any entry that is not on the list is rejected with an error message (1)"
+        ],
+        "guidance": "Award up to 3 marks. Answers should be applied to the garden centre's categories to reach full marks."
+      },
+      "modelAnswer": "I would use data validation to create a drop-down list in the category cell, linked to a range that holds the garden centre's categories, such as Plants, Tools and Furniture. Staff would then select a category instead of typing it, so misspellings like 'Plnts' could not be entered. Because every entry would exactly match the category names, the SUMIF formulae would include every sale and the category totals would be accurate."
+    },
+    {
+      "id": "F202-Q04",
+      "topicArea": 4,
+      "commandWord": "Describe",
+      "marks": 4,
+      "question": "Describe two items that should be included in the user documentation for a spreadsheet data model.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Description of the purpose of the system (1), so that users understand what problem the model solves and what it produces (1)",
+          "Step-by-step guide to using the model (1), for example with screenshots showing how to enter data and view the dashboard (1)",
+          "Hardware and/or software requirements (1), such as the spreadsheet software version needed and whether macros must be enabled (1)",
+          "Functions of the system (1), explaining what each worksheet or button does (1)",
+          "Instructions on installation or access (1), such as where the file is saved and how to enter the password (1)"
+        ],
+        "guidance": "For each item, award 1 mark for identifying it and 1 mark for describing it, up to a maximum of 2 marks per item. Installation or access, and use of the model, may be credited as two separate items if each is clearly described. A general 'step-by-step guide' given twice must not be credited twice. Do not accept items that belong only in technical documentation, such as the formulae used or a fault log."
+      },
+      "modelAnswer": "The first item is a step-by-step guide to using the model. It should take the user through each task in order, such as entering a new order and then viewing the summary dashboard, with screenshots so a beginner can follow it.\nThe second item is the hardware and software requirements. These tell the user what they need to run the model, for example a recent version of Microsoft Excel with macros enabled, so the navigation buttons work."
+    },
+    {
+      "id": "F202-Q05",
+      "topicArea": 1,
+      "commandWord": "Explain",
+      "marks": 4,
+      "question": "Explain two reasons why a designer should retain versions of a spreadsheet data model during development.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "The designer can roll back to an earlier working version if a change introduces errors (1), which saves the time it would take to rebuild or debug the model (1)",
+          "Versions give a record of what changed and when (1), which supports testing, the fault log and documentation (1)",
+          "Versions protect against the file becoming corrupted or work being accidentally overwritten or deleted (1), so development can continue without major loss (1)",
+          "Earlier versions can be shown to the client to compare designs (1), helping them confirm that the requirements are being met (1)"
+        ],
+        "guidance": "For each reason, award 1 mark for the reason and 1 mark for explaining it, up to a maximum of 2 marks per reason."
+      },
+      "modelAnswer": "Firstly, if the designer adds a complex nested IF that breaks other calculations, they can go back to the previous saved version that worked. This means they do not lose hours of work trying to find and undo the mistake.\nSecondly, keeping numbered versions creates a record of how the model has changed. This helps the designer link each change to its test results and keep the technical documentation accurate."
+    },
+    {
+      "id": "F202-Q06",
+      "topicArea": 2,
+      "commandWord": "Compare",
+      "marks": 4,
+      "question": "Compare the use of a flow chart and a wireframe when planning a spreadsheet data model.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "A flow chart shows the logic or sequence of a process, such as the decisions in a nested IF calculation (1)",
+          "A wireframe shows the layout of a worksheet or dashboard, such as where the inputs, outputs and buttons will go (1)",
+          "Both are visual planning tools that can be produced manually or digitally (1)",
+          "Flow charts use standard symbols such as terminator, process and decision, whereas wireframes use simple boxes and labels without colour or detail (1)",
+          "A flow chart is best for designing calculations, whereas a wireframe is best for designing the HCI and getting client feedback on the layout (1)"
+        ],
+        "guidance": "Award up to 4 marks. For full marks the answer must refer to both tools, including at least one similarity or a direct difference. Do not award separate descriptions that make no link between the two tools more than 3 marks."
+      },
+      "modelAnswer": "A flow chart shows the logic of a process using standard symbols such as decision diamonds. This makes it useful for planning how a calculation such as a discount using a nested IF will work. A wireframe instead shows the layout of a screen, such as where input cells, charts and navigation buttons will sit on a dashboard. A flow chart therefore plans what the model does, while a wireframe plans how it looks to the user. Both are visual tools that can be sketched on paper or drawn digitally and shown to the client before the model is built."
+    },
+    {
+      "id": "F202-Q07",
+      "topicArea": 3,
+      "commandWord": "Explain",
+      "marks": 4,
+      "context": "A sports shop's pricing model stores the VAT rate of 20% in cell B1. A formula in D4 calculates the price including VAT and is then copied down column D for every product.",
+      "question": "Explain why an absolute cell reference or a named range should be used for the VAT rate in this formula.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "When a formula is copied, relative references adjust to their new position (1)",
+          "So a reference to B1 would become B2, B3 and so on, which do not hold the VAT rate, giving incorrect prices (1)",
+          "An absolute reference ($B$1) stays fixed, so every product's formula uses the VAT rate (1)",
+          "A named range such as VAT_Rate makes the formula easier to read, check and maintain (1)",
+          "If the VAT rate changes, only B1 needs updating and every price recalculates automatically (1)"
+        ],
+        "guidance": "Award up to 4 marks. Answers should refer to copying the formula in this context."
+      },
+      "modelAnswer": "If the formula in D4 used a relative reference to B1, copying it down would change the reference to B2, B3 and so on. Those cells do not contain the VAT rate, so the prices would be wrong. Using $B$1 locks the reference, so every row multiplies by the same 20% rate. Naming B1 VAT_Rate would also make the formula easier to understand, for example =C4*(1+VAT_Rate). If the VAT rate changed, the shop would only need to update B1 and every price would recalculate."
+    },
+    {
+      "id": "F202-Q08",
+      "topicArea": 4,
+      "commandWord": "Explain",
+      "marks": 4,
+      "context": "A chain of three coffee shops records every sale, including the date, shop, product and value, in a worksheet that has 20,000 rows.",
+      "question": "Explain how a pivot table could help the manager identify trends in the sales data.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "A pivot table quickly summarises a large dataset by grouping it, for example total sales by month and by shop (1)",
+          "Fields can be rearranged or filtered to view the data in different ways without changing the source data (1)",
+          "Totals can be compared over time to show rising, falling or seasonal trends (1)",
+          "A pivot chart can be created from it to show the trend visually (1)",
+          "It can be refreshed when new sales are added, so the analysis stays up to date (1)"
+        ],
+        "guidance": "Award up to 4 marks. Answers should be applied to the coffee shops to reach full marks."
+      },
+      "modelAnswer": "The 20,000 rows are too many to read, but a pivot table can group them to show total sales for each shop in each month. The manager could then compare months to see whether sales are rising or falling, or whether some months, such as December, are seasonally busy. The manager could also drag the product field in to see which drinks are becoming more popular, without editing the original data. Creating a pivot chart from the table would make the trend easy to see as a line for each shop."
+    },
+    {
+      "id": "F202-Q09",
+      "topicArea": 2,
+      "commandWord": "Analyse",
+      "marks": 6,
+      "context": "A charity wants a spreadsheet dashboard so that its volunteers can enter donations and view fundraising totals. Many of the volunteers are older and have limited spreadsheet skills.",
+      "question": "Analyse how HCI features could be used to make the dashboard user-friendly for the volunteers.",
+      "markScheme": {
+        "type": "levels",
+        "points": [
+          "Navigation: buttons or hyperlinks on a menu sheet take users straight to the entry form or dashboard",
+          "Messages: input messages explain what to enter, and meaningful custom error messages explain what went wrong instead of a generic default alert",
+          "Layout: a consistent position for inputs and outputs improves learnability and memorability",
+          "Colour: input cells shaded consistently, high contrast, and not relying on red and green alone, to support colour-blind users",
+          "Accessibility: larger font sizes and clear labels for older volunteers",
+          "Macros: one-click buttons to save a donation, clear the form or print a report",
+          "User perceptions: too many features or colours can clutter the screen and confuse users"
+        ],
+        "levels": [
+          {
+            "level": 3,
+            "marks": [
+              5,
+              6
+            ],
+            "descriptor": "Detailed and accurate knowledge of a range of HCI features. The analysis is clearly applied to the charity and its volunteers, with well-developed reasoning that explains the effect of each feature on ease of use. The response is logically structured, and any specialist terms are used accurately."
+          },
+          {
+            "level": 2,
+            "marks": [
+              3,
+              4
+            ],
+            "descriptor": "Sound knowledge of some HCI features with some application to the volunteers. Reasoning is present but not fully developed, and some points are descriptive rather than analytical. The response has some structure."
+          },
+          {
+            "level": 1,
+            "marks": [
+              1,
+              2
+            ],
+            "descriptor": "Basic knowledge of one or two HCI features, mostly identified or described with little or no application to the context. There is little or no reasoning, and the response lacks structure."
+          }
+        ],
+        "guidance": "Award 0 marks for no creditworthy response. Answers that only list features cannot go above Level 1. For Level 3, the effects of the features on the volunteers must be analysed."
+      },
+      "modelAnswer": "Navigation is a key HCI feature for the volunteers. Buttons linked to macros or hyperlinks on a menu sheet would take them straight to the donation form or the totals dashboard, so they would not need to know how to move between worksheets. This reduces the chance of volunteers getting lost or typing on the wrong sheet.\nMessages also help users with limited skills. Input messages could explain what to type in each cell, such as 'Enter the donation in pounds'. If a volunteer enters something invalid, a meaningful custom error message would tell them exactly what is wrong, instead of a confusing default alert. Because the bad entry is rejected, it cannot cause formula errors such as #VALUE! in the totals. As a result, fewer incorrect donations would be recorded and the dashboard totals would stay accurate.\nA consistent layout and colour scheme improve learnability and memorability. If input cells are always shaded the same colour and placed in the same position, volunteers would quickly learn where to type and remember it next time, which reduces the training the charity needs to provide. Colours should have strong contrast and should not rely on red and green alone, so that colour-blind volunteers can still read the charts. Larger fonts would also help older users.\nFinally, macros can simplify tasks that are repeated often. For example, a 'Save donation' button could copy the entry to the data sheet and clear the form in one click. However, too many buttons or bright colours could clutter the dashboard and make it confusing. The features should therefore be kept simple so that volunteers see the system as easy to use."
+    },
+    {
+      "id": "F202-Q10",
+      "topicArea": 5,
+      "commandWord": "Evaluate",
+      "marks": 9,
+      "context": "Greenway Lettings asked for a model to forecast monthly rental income. The finished model uses drop-down lists, absolute references and a dashboard with conditional formatting. Agents find the dashboard clear, but several input fields lack validation, there is no user guide, and one worksheet has no navigation buttons.",
+      "question": "Evaluate the effectiveness of the spreadsheet data model for Greenway Lettings and suggest improvements that could be made.",
+      "markScheme": {
+        "type": "levels",
+        "points": [
+          "Strength: drop-down lists limit the choices agents can make, which reduces input errors and makes the model easier to use",
+          "Strength: absolute references keep forecast calculations accurate when formulae are copied",
+          "Strength: the dashboard with conditional formatting highlights key figures, which meets the requirement to view the forecast clearly",
+          "Weakness: missing validation allows invalid rents or dates, which could make the forecast inaccurate and reduce trust in it",
+          "Weakness: without a user guide, new agents may misuse the model, which increases the need for training",
+          "Weakness: a sheet without navigation buttons makes the HCI inconsistent and harder to learn",
+          "Improvements: add range checks with meaningful error messages, write a step-by-step user guide, and add consistent navigation buttons",
+          "Judgement: how far the model meets requirements overall, weighing its accurate outputs against its usability and reliability risks"
+        ],
+        "levels": [
+          {
+            "level": 3,
+            "marks": [
+              7,
+              9
+            ],
+            "descriptor": "Detailed and accurate evaluation of both strengths and weaknesses of the model, clearly applied to Greenway Lettings. Improvements are justified and linked directly to the weaknesses identified. A well-supported judgement on the overall effectiveness of the model is reached. The response is logically structured, with well-developed reasoning."
+          },
+          {
+            "level": 2,
+            "marks": [
+              4,
+              6
+            ],
+            "descriptor": "Sound evaluation with some application to the context. Strengths and weaknesses are both covered, but one may be underdeveloped. Improvements are suggested with some justification. A judgement may be given but is only partly supported. The response has some structure."
+          },
+          {
+            "level": 1,
+            "marks": [
+              1,
+              3
+            ],
+            "descriptor": "Basic points about the model, mostly descriptive, with limited application to the context. Improvements may be listed without justification. There is no judgement, or the judgement is unsupported, and the response lacks structure."
+          }
+        ],
+        "guidance": "Award 0 marks for no creditworthy response. For Level 3 the evaluation must cover the model as a whole, give justified improvements that relate to the evaluation, and reach a supported conclusion."
+      },
+      "modelAnswer": "The model has several strengths. The drop-down lists limit agents to valid choices, such as property type, which reduces typing errors and makes data entry quick even for less confident users. Absolute references mean that values such as the agency's commission rate are applied consistently when formulae are copied, so the forecast calculations are reliable. Agents find the dashboard clear, and its conditional formatting highlights months where income falls below target. This meets the main requirement of letting managers see the forecast at a glance.\nHowever, the model has weaknesses that reduce its effectiveness. Because several input fields have no validation, an agent could enter a monthly rent of 0 or a date in the wrong format. Formulae would still run on that bad data, making the forecast inaccurate and possibly leading to poor business decisions. The lack of a user guide means new agents would have to rely on colleagues to learn the model, and they may use it incorrectly. One worksheet also has no navigation buttons, so the HCI is inconsistent and users may get lost, which lowers the model's learnability.\nTo improve the model, range checks should be added to the rent and date fields, with meaningful error messages such as 'Rent must be between £300 and £5,000'. This would protect the accuracy of the forecast. A step-by-step user guide with screenshots should be written so that any agent can use the model independently. Navigation buttons should be added to the remaining worksheet so the interface is consistent throughout.\nOverall, the model is mostly effective. Its calculations and dashboard meet Greenway Lettings' core requirement of forecasting rental income. However, its reliability depends on agents entering correct data, which it currently does not enforce. Adding validation is the most important improvement, because an attractive dashboard is of little value if the figures behind it can be wrong."
+    }
+  ]
+}

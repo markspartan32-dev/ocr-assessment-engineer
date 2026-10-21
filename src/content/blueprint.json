@@ -1,0 +1,129 @@
+{
+  "qualification": "Cambridge OCR Level 3 Alternative Academic Qualification Cambridge Advanced National in IT: Data Analytics",
+  "entryCodes": { "certificate": "H019", "extendedCertificate": "H119" },
+  "specification": "OCR specification, Version 5 (June 2026)",
+  "examCommandWords": [
+    "Analyse", "Annotate", "Calculate", "Choose", "Compare", "Complete", "Describe", "Discuss",
+    "Draw", "Explain", "Give examples", "Identify", "Label", "Outline", "State"
+  ],
+  "neaCommandWords": [
+    "Adapt", "Analyse", "Assess", "Calculate", "Classify", "Compare", "Conclude", "Describe", "Discuss",
+    "Evaluate", "Examine", "Explain", "Interpret", "Investigate", "Justify", "Research", "Summarise"
+  ],
+  "units": [
+    {
+      "code": "F200",
+      "title": "Fundamentals of data analytics",
+      "glh": 75,
+      "assessment": "exam",
+      "assessmentDetail": "1 hour 15 minute written exam, 60 marks. Short contexts throughout; includes two 6-mark extended responses marked with a levels of response mark scheme.",
+      "status": { "certificate": "mandatory", "extendedCertificate": "mandatory" },
+      "extendedResponse": { "sixMark": 2, "nineMark": 0 },
+      "topicAreas": [
+        { "id": 1, "title": "Understanding data" },
+        { "id": 2, "title": "Managing data" },
+        { "id": 3, "title": "How data can be accessed and managed across platforms" },
+        { "id": 4, "title": "Legal considerations" },
+        { "id": 5, "title": "Job roles, skills and attributes in data analytics" }
+      ]
+    },
+    {
+      "code": "F201",
+      "title": "Big data and machine learning",
+      "glh": 70,
+      "assessment": "exam",
+      "assessmentDetail": "1 hour 30 minute written exam, 60 marks. A short scenario develops through the paper; includes one 6-mark and one 9-mark extended response marked with a levels of response mark scheme.",
+      "status": { "certificate": "not available", "extendedCertificate": "mandatory" },
+      "extendedResponse": { "sixMark": 1, "nineMark": 1 },
+      "topicAreas": [
+        { "id": 1, "title": "The scope of managing big data" },
+        { "id": 2, "title": "The infrastructure challenges of big data" },
+        { "id": 3, "title": "Big data, machine learning and artificial intelligence" },
+        { "id": 4, "title": "Legal and ethical issues in data management" },
+        { "id": 5, "title": "Environment and society" }
+      ]
+    },
+    {
+      "code": "F202",
+      "title": "Spreadsheet data modelling",
+      "glh": 75,
+      "assessment": "nea",
+      "assessmentDetail": "Non-examined assessment (OCR-set assignment). Questions here are exam-style checks of the underpinning knowledge for the assignment.",
+      "status": { "certificate": "mandatory", "extendedCertificate": "mandatory" },
+      "extendedResponse": { "sixMark": 1, "nineMark": 1 },
+      "topicAreas": [
+        { "id": 1, "title": "Principles of spreadsheet modelling" },
+        { "id": 2, "title": "Planning the design of a spreadsheet model" },
+        { "id": 3, "title": "Creating the spreadsheet model" },
+        { "id": 4, "title": "Delivering the outcomes" },
+        { "id": 5, "title": "Evaluation" }
+      ]
+    },
+    {
+      "code": "F203",
+      "title": "Relational database design",
+      "glh": 70,
+      "assessment": "nea",
+      "assessmentDetail": "Non-examined assessment (OCR-set assignment). Questions here are exam-style checks of the underpinning knowledge for the assignment.",
+      "status": { "certificate": "not available", "extendedCertificate": "optional" },
+      "extendedResponse": { "sixMark": 1, "nineMark": 1 },
+      "topicAreas": [
+        { "id": 1, "title": "Relational database concepts" },
+        { "id": 2, "title": "Plan relational database solutions" },
+        { "id": 3, "title": "Create relational databases" },
+        { "id": 4, "title": "Testing relational database solutions" },
+        { "id": 5, "title": "Evaluate database solutions" }
+      ]
+    },
+    {
+      "code": "F204",
+      "title": "Data and the Internet of Everything (IoE)",
+      "glh": 70,
+      "assessment": "nea",
+      "assessmentDetail": "Non-examined assessment (OCR-set assignment). Questions here are exam-style checks of the underpinning knowledge for the assignment.",
+      "status": { "certificate": "not available", "extendedCertificate": "optional" },
+      "extendedResponse": { "sixMark": 1, "nineMark": 1 },
+      "topicAreas": [
+        { "id": 1, "title": "IoE ecosystem" },
+        { "id": 2, "title": "Data collection, processing and storage methods and devices" },
+        { "id": 3, "title": "Connectivity and data transmission" },
+        { "id": 4, "title": "Human computer interfaces (HCIs)" },
+        { "id": 5, "title": "Securing IoE devices" },
+        { "id": 6, "title": "Documentation and audience communication" }
+      ]
+    },
+    {
+      "code": "F205",
+      "title": "Data visualisation",
+      "glh": 70,
+      "assessment": "nea",
+      "assessmentDetail": "Non-examined assessment (OCR-set assignment). Questions here are exam-style checks of the underpinning knowledge for the assignment.",
+      "status": { "certificate": "not available", "extendedCertificate": "optional" },
+      "extendedResponse": { "sixMark": 1, "nineMark": 1 },
+      "topicAreas": [
+        { "id": 1, "title": "The value and importance of data visualisation" },
+        { "id": 2, "title": "Planning for data dashboards" },
+        { "id": 3, "title": "Techniques for creating a data dashboard" },
+        { "id": 4, "title": "Communicating information and interpreting data" },
+        { "id": 5, "title": "Evaluating the effectiveness of visualisation solutions" }
+      ]
+    },
+    {
+      "code": "F206",
+      "title": "Data and digital marketing",
+      "glh": 70,
+      "assessment": "nea",
+      "assessmentDetail": "Non-examined assessment (OCR-set assignment). Questions here are exam-style checks of the underpinning knowledge for the assignment.",
+      "status": { "certificate": "not available", "extendedCertificate": "optional" },
+      "extendedResponse": { "sixMark": 1, "nineMark": 1 },
+      "topicAreas": [
+        { "id": 1, "title": "Digital marketing fundamentals" },
+        { "id": 2, "title": "Data driven digital marketing" },
+        { "id": 3, "title": "Planning digital marketing content" },
+        { "id": 4, "title": "Creating content for digital marketing campaigns" },
+        { "id": 5, "title": "Communicating to stakeholders" },
+        { "id": 6, "title": "Reflection and evaluation of working processes" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,368 @@
+{
+  "code": "F206",
+  "title": "Data and digital marketing",
+  "assessment": "nea",
+  "summary": "This unit covers how organisations use digital marketing tools and data to reach audiences, and how to plan a data-driven campaign. It also covers creating prototype content, pitching a campaign proposal to stakeholders and reflecting on the processes, tools and techniques used.",
+  "flashcards": [
+    {
+      "id": "F206-FC01",
+      "topicArea": 1,
+      "front": "What are the six purposes of digital marketing?",
+      "back": "The six purposes are raising awareness, increasing sales, building a brand or organisation, expanding or growing an organisation, repositioning an organisation and collecting market research. Repositioning means changing how customers see the organisation, for example moving from a budget image to a premium one. Market research can be collected through polls, comments, survey links and engagement data.",
+      "keyTerms": [
+        "raising awareness",
+        "repositioning",
+        "market research"
+      ]
+    },
+    {
+      "id": "F206-FC02",
+      "topicArea": 1,
+      "front": "Name the five stages of the digital marketing lifecycle in order and say what happens at each.",
+      "back": "1. Setup: build the online presence (website, social accounts, analytics).\n2. Traction: attract the first visitors and followers.\n3. Positioning: establish how the brand differs from its competitors.\n4. Conversion and expansion: turn visitors into paying customers and grow into new audiences.\n5. Viral growth: customers share and recommend the brand, so reach grows rapidly through word of mouth.",
+      "keyTerms": [
+        "setup",
+        "traction",
+        "positioning",
+        "viral growth"
+      ]
+    },
+    {
+      "id": "F206-FC03",
+      "topicArea": 1,
+      "front": "What is the difference between market segmentation and a customer persona?",
+      "back": "Segmentation divides a market into groups that share characteristics, such as age, location, income, interests or buying behaviour. A persona is a fictional but data-based profile of one typical customer in a segment. It has a name, goals, habits and pain points. Segmentation shows which groups to target, and a persona helps marketers write content that speaks directly to that type of person.",
+      "keyTerms": [
+        "segmentation",
+        "persona"
+      ]
+    },
+    {
+      "id": "F206-FC04",
+      "topicArea": 2,
+      "front": "In website marketing analytics, what do visitor, page view, session and traffic mean?",
+      "back": "A visitor is a person (device or browser) who comes to the website. A page view is recorded each time a page is loaded. A session is a group of interactions by one visitor in a single visit, and it ends when they leave or after a period of inactivity. Traffic is the overall volume of visits to the site, which can be broken down by channel and by device.",
+      "keyTerms": [
+        "visitor",
+        "page view",
+        "session",
+        "traffic"
+      ]
+    },
+    {
+      "id": "F206-FC05",
+      "topicArea": 3,
+      "front": "What is a unique selling point (USP) and why should a digital marketing campaign have one?",
+      "back": "A USP is the feature or benefit that makes a product or organisation different from, and better than, its competitors, such as being the only locally sourced brand. A clear USP gives the campaign a consistent core message and helps it stand out in crowded feeds. It also gives customers a reason to choose the brand, which can increase conversions and loyalty.",
+      "keyTerms": [
+        "USP",
+        "competitors"
+      ]
+    },
+    {
+      "id": "F206-FC06",
+      "topicArea": 3,
+      "front": "What is the difference between a metric and a key performance indicator (KPI)?",
+      "back": "A metric is any measurable value that can be tracked, such as page views, likes, shares or click-through rate. A KPI is a metric chosen as a key measure of whether a campaign objective has been met. It has a specific target and timescale, for example increasing email sign-ups by 20% in three months. Every KPI is a metric, but not every metric is a KPI.",
+      "keyTerms": [
+        "metric",
+        "KPI"
+      ]
+    },
+    {
+      "id": "F206-FC07",
+      "topicArea": 3,
+      "front": "What are the 7 Ps of the digital marketing mix?",
+      "back": "Product (what is sold and its features), Price (cost, discounts and pricing strategy), Place (where it is sold, such as a website or app), Promotion (how it is communicated, such as social media ads or email), People (staff and customer service, including online chat), Process (how customers buy and receive it, such as checkout and delivery) and Physical evidence (proof of quality, such as reviews, packaging and website design).",
+      "keyTerms": [
+        "7 Ps",
+        "physical evidence",
+        "process"
+      ]
+    },
+    {
+      "id": "F206-FC08",
+      "topicArea": 4,
+      "front": "What are the four purposes of digital marketing content? Give an example of each.",
+      "back": "Entertain: content people enjoy and share, such as a funny short video. Inspire: content that motivates people, such as customer success stories. Educate: content that informs, such as a how-to tutorial or infographic. Convince or persuade: content that pushes people to act, such as a limited-time offer with a clear call to action. Campaigns usually mix purposes to suit each stage of the funnel.",
+      "keyTerms": [
+        "entertain",
+        "inspire",
+        "educate",
+        "persuade"
+      ]
+    },
+    {
+      "id": "F206-FC09",
+      "topicArea": 5,
+      "front": "How can feedback be gathered from stakeholders after a campaign pitch, and how should it be used?",
+      "back": "Feedback can be gathered through a question-and-answer session, a feedback form or questionnaire, notes taken during discussion or a follow-up meeting or email. It should be analysed to find common themes, prioritised by importance to the client's requirements and then used to adapt the proposal. For example, the channels, content prototypes or timescales could be changed before the campaign launches.",
+      "keyTerms": [
+        "feedback",
+        "stakeholders",
+        "adapt"
+      ]
+    },
+    {
+      "id": "F206-FC10",
+      "topicArea": 6,
+      "front": "What are the three stages of Boud, Keogh and Walker's reflective model?",
+      "back": "1. Experience: the behaviour, ideas and feelings from the activity.\n2. Reflective process: returning to the experience, attending to the feelings it caused and re-evaluating it.\n3. Outcomes: new perspectives, changes in behaviour and a commitment to act differently in future.\nIt is used to evaluate the processes and tools used and to identify lessons learnt.",
+      "keyTerms": [
+        "experience",
+        "reflective process",
+        "outcomes"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "F206-Q01",
+      "topicArea": 1,
+      "commandWord": "Identify",
+      "marks": 2,
+      "question": "Identify two purposes of digital marketing, other than increasing sales.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Raising awareness (1)",
+          "Building a brand/organisation (1)",
+          "Expanding/growing an organisation (1)",
+          "Repositioning an organisation (1)",
+          "Collecting market research (1)"
+        ],
+        "guidance": "Award 1 mark for each correct purpose, up to a maximum of 2 marks. Do not accept increasing sales. Accept equivalent wording, for example 'brand building' or 'finding out what customers want' for market research."
+      },
+      "modelAnswer": "One purpose is raising awareness, so that more people know the organisation and its products exist. A second purpose is collecting market research, for example through online polls and engagement data."
+    },
+    {
+      "id": "F206-Q02",
+      "topicArea": 3,
+      "commandWord": "State",
+      "marks": 2,
+      "question": "State two sections of the post-purchase stage of the digital marketing funnel.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Adoption (1)",
+          "Retention (1)",
+          "Expansion (1)",
+          "Advocacy (1)"
+        ],
+        "guidance": "Award 1 mark for each correct section, up to a maximum of 2 marks. Do not accept pre-purchase sections such as engagement, education, research, evaluation, justification or purchase."
+      },
+      "modelAnswer": "One post-purchase section is retention, which means keeping customers so that they buy again. A second section is advocacy, where satisfied customers recommend the brand to other people."
+    },
+    {
+      "id": "F206-Q03",
+      "topicArea": 2,
+      "commandWord": "Describe",
+      "marks": 3,
+      "question": "Describe what is meant by a session in website marketing analytics.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "A session is a group of interactions by one visitor during a single visit to the website (1)",
+          "It begins when the visitor arrives and records their activity, such as page views and clicks (1)",
+          "It ends when the visitor leaves or after a set period of inactivity, often 30 minutes (1)",
+          "One visitor can have several sessions, so session counts are usually higher than visitor counts (1)"
+        ],
+        "guidance": "Award up to 3 marks. Do not accept answers that treat a session as the same thing as a page view or a visitor."
+      },
+      "modelAnswer": "A session is a group of interactions that one visitor makes during a single visit to a website. It starts when they arrive on the site and records everything they do, such as each page view and click. It ends when they leave the site or after a period of inactivity, often 30 minutes. This means one visitor can have several sessions in a day."
+    },
+    {
+      "id": "F206-Q04",
+      "topicArea": 5,
+      "commandWord": "Describe",
+      "marks": 4,
+      "question": "Describe two features of an executive summary for a proposed digital marketing campaign.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "States the purpose of the campaign (1), for example what the campaign aims to achieve, such as raising awareness of a new product (1)",
+          "Explains the impact on stakeholders (1), for example how the client, customers or staff will be affected, such as expected increases in sales or workload (1)",
+          "Is brief and concise (1), giving the key points on one page or less so that busy decision makers can understand the proposal quickly (1)",
+          "Summarises the main points of the proposal (1), such as target audience, channels, timescales and KPIs (1)"
+        ],
+        "guidance": "Award 1 mark for identifying each feature and 1 mark for a description that develops it, up to 2 features (maximum 4 marks)."
+      },
+      "modelAnswer": "One feature is that it states the purpose of the campaign. It explains clearly what the campaign is trying to achieve, such as raising awareness of a new product launch among 18 to 25 year olds.\n\nA second feature is that it sets out the impact on stakeholders. It explains how different groups will be affected. For example, the client can expect more online orders, and staff may need to handle more customer messages during the campaign."
+    },
+    {
+      "id": "F206-Q05",
+      "topicArea": 4,
+      "commandWord": "Explain",
+      "marks": 4,
+      "context": "Brew Box is an online shop that sells speciality coffee subscriptions to customers across the UK.",
+      "question": "Explain two ways that choosing the right keywords adds value to Brew Box's digital marketing campaign.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Keywords improve search engine optimisation (SEO) (1), so Brew Box's pages rank higher when people search terms such as 'coffee subscription UK', which brings more organic traffic (1)",
+          "Keywords can be bid on in pay per click advertising (1), so Brew Box's adverts appear only to people actively searching for coffee products, which reduces wasted spend (1)",
+          "Keywords match the language the target audience uses (1), so the content feels relevant and is more likely to be clicked or engaged with (1)",
+          "Keywords and hashtags on social media make posts discoverable (1), so they reach new potential customers who follow related topics (1)"
+        ],
+        "guidance": "Award 1 mark for each way identified and 1 mark for an explanation of its value, up to 2 ways (maximum 4 marks). Answers must refer to keywords."
+      },
+      "modelAnswer": "Firstly, using keywords such as 'coffee subscription UK' in Brew Box's web pages improves its SEO. This means its site ranks higher in search results, so more people find it through organic traffic without Brew Box paying for each visit.\n\nSecondly, Brew Box can bid on keywords in pay per click adverts. Its adverts are then shown only to people already searching for coffee products, so its budget is spent on people who are more likely to buy, which improves conversion."
+    },
+    {
+      "id": "F206-Q06",
+      "topicArea": 6,
+      "commandWord": "Explain",
+      "marks": 4,
+      "question": "Explain how Boud, Keogh and Walker's model could be used to reflect on the delivery of a campaign pitch to a client.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Experience: recall what happened in the pitch, including behaviour, ideas and feelings (1)",
+          "Reflective process: return to the experience and attend to feelings, for example nerves when answering questions (1)",
+          "Re-evaluate the experience by judging which parts of the delivery were effective, for example whether the slides were clear (1)",
+          "Outcomes: develop new perspectives or lessons learnt from the pitch (1)",
+          "Commit to action by identifying what will be done differently next time, for example rehearsing answers to likely questions (1)"
+        ],
+        "guidance": "Award up to 4 marks. Answers that only name the three stages without applying them to the pitch can be awarded a maximum of 2 marks."
+      },
+      "modelAnswer": "First, I would describe the experience: what happened during the pitch, including how I felt. For example, I was confident presenting the slides but nervous when the client asked about the budget.\n\nNext comes the reflective process. I would return to the experience, deal with those feelings and re-evaluate it. I would judge that the visual content was clear, but that my answers about costs were vague because I had not prepared them.\n\nFinally, the outcomes would be a new perspective and a commitment to act. Next time I would prepare a costs slide and rehearse answers to likely questions before the pitch."
+    },
+    {
+      "id": "F206-Q07",
+      "topicArea": 1,
+      "commandWord": "Compare",
+      "marks": 4,
+      "question": "Compare how digital marketing is used in a business to business (B2B) approach and a business to consumer (B2C) approach.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Both aim to attract customers and increase sales, and both use digital channels such as email and websites (1)",
+          "B2B targets a small number of professional decision makers, whereas B2C targets large numbers of individual members of the public (1)",
+          "B2B content is usually educational and detailed, such as white papers, webinars or case studies, whereas B2C content is often emotional or entertaining, such as short videos (1)",
+          "B2B often uses professional platforms such as LinkedIn, whereas B2C uses consumer platforms such as Instagram or TikTok (1)",
+          "B2B buying cycles are longer and focus on building relationships, whereas B2C purchases are quicker and often impulse-driven, so persuasive offers and calls to action are used (1)"
+        ],
+        "guidance": "Award up to 4 marks. To gain full marks, answers must include at least one similarity or make direct comparisons (for example using 'whereas'). Do not award marks for describing only one approach."
+      },
+      "modelAnswer": "Both approaches use digital channels such as email and websites to attract customers and increase sales. B2B marketing targets a small number of professional buyers, whereas B2C targets large numbers of individual consumers. B2B content tends to be detailed and educational, such as case studies and webinars shared on LinkedIn, whereas B2C content is more emotional and entertaining, such as short videos on TikTok or Instagram. B2B purchases take longer because several people make the decision, so marketing focuses on building relationships. B2C purchases are often quick, so marketing uses persuasive offers and a strong call to action."
+    },
+    {
+      "id": "F206-Q08",
+      "topicArea": 2,
+      "commandWord": "Interpret",
+      "marks": 5,
+      "context": "Crumb and Co, a bakery that takes online orders, has the following March website analytics. Visitors: 4,000. Traffic by device: mobile 72%, desktop 28%. Traffic per channel: Instagram 55%, organic search 25%, direct 15%, email 5%. Average session length: mobile 1 minute 10 seconds, desktop 3 minutes.",
+      "question": "Interpret what this data shows and the marketing decisions Crumb and Co could make as a result.",
+      "markScheme": {
+        "type": "points",
+        "points": [
+          "Most traffic comes from mobile devices (72%), so the website and landing pages should be optimised for mobile (1)",
+          "Mobile sessions are much shorter than desktop sessions, which suggests the mobile experience may be poor or the checkout difficult (1)",
+          "Crumb and Co should therefore simplify mobile navigation and checkout to keep mobile visitors on the site and increase conversions (1)",
+          "Instagram is the largest channel (55%), so it should remain the main channel, using image and short video content (1)",
+          "Email brings only 5% of traffic, so Crumb and Co could grow its mailing list or improve its emails, or move budget elsewhere (1)",
+          "Organic search brings 25% of traffic, so further SEO work with local keywords could increase it (1)"
+        ],
+        "guidance": "Award up to 5 marks. Answers must refer to the data provided. Award a maximum of 3 marks if no marketing decisions are suggested. The device and channel percentages are shares of traffic (visits), not of the 4,000 visitors; accept either wording but credit answers that make this distinction correctly."
+      },
+      "modelAnswer": "The data shows that 72% of Crumb and Co's website traffic came from mobile devices, so mobile is its main way of reaching customers. However, mobile sessions last only 1 minute 10 seconds, compared with 3 minutes on desktop. This suggests mobile visitors are leaving quickly, possibly because the site is hard to use on a phone. Crumb and Co should optimise its landing pages and checkout for mobile so that more visits turn into orders.\n\nInstagram brings over half of all traffic (55%), so it should stay the main channel, with more image and short video posts of its products. Email brings only 5% of traffic, so the bakery could grow its mailing list with a sign-up discount. Organic search provides 25%, so it could add local keywords such as 'fresh bakery delivery' to improve its SEO."
+    },
+    {
+      "id": "F206-Q09",
+      "topicArea": 3,
+      "commandWord": "Analyse",
+      "marks": 6,
+      "context": "Peak Trails is a small UK company that sells eco-friendly hiking boots made from recycled materials. Its target audience is 18 to 30 year olds who live in cities and are new to hiking. Its brand identity is adventurous, sustainable and friendly, with an earthy green logo.",
+      "question": "Analyse how Peak Trails' target audience and brand identity should influence the decisions made when planning its digital marketing campaign.",
+      "markScheme": {
+        "type": "levels",
+        "points": [
+          "The 18 to 30 audience makes heavy use of visual, short-form social platforms such as Instagram and TikTok, so these channels should be prioritised over print or channels used mainly by older audiences",
+          "Beginners need education, so content could include beginner hiking guides and boot-fitting videos for the education and research stages of the funnel",
+          "Mobile-first formats such as short videos and stories suit a young, city-based audience",
+          "Language should be clear, informal and encouraging, avoiding technical jargon, with a strong call to action",
+          "The sustainable brand identity supports a USP of recycled materials, which should be the core message and could appeal to environmentally aware young buyers",
+          "The adventurous and friendly identity should shape the imagery and tone: outdoor scenery, real people, consistent green colours and logo",
+          "The brand identity may influence partner choices, for example working with eco-conscious influencers",
+          "Data such as social media analytics should be used to confirm the audience's platform use and posting times"
+        ],
+        "levels": [
+          {
+            "level": 3,
+            "marks": [
+              5,
+              6
+            ],
+            "descriptor": "Detailed and accurate analysis of how both the target audience and the brand identity influence campaign decisions. Points are clearly applied to Peak Trails, with well-developed chains of reasoning linking each factor to specific decisions on channels, content, language or style. The answer is logically structured."
+          },
+          {
+            "level": 2,
+            "marks": [
+              3,
+              4
+            ],
+            "descriptor": "Sound knowledge of how the target audience and/or brand identity influence campaign decisions, with some application to Peak Trails. Reasoning is partly developed but may be uneven, or may focus mainly on one factor. The structure is mostly logical."
+          },
+          {
+            "level": 1,
+            "marks": [
+              1,
+              2
+            ],
+            "descriptor": "Basic knowledge of target audience or brand identity, with little or no application to Peak Trails. Points are mostly descriptive or listed, with limited reasoning. The structure may lack clarity."
+          }
+        ],
+        "guidance": "Award 0 marks for no creditworthy response. Answers that address only one of target audience or brand identity cannot achieve above Level 2. Credit any other valid, reasoned decisions."
+      },
+      "modelAnswer": "The target audience of 18 to 30 year olds who live in cities spend a lot of time on visual, mobile-first platforms such as Instagram and TikTok. Peak Trails should therefore choose these channels rather than print or email-heavy campaigns, and plan short vertical videos that suit how this audience consumes content. Because the audience is new to hiking, it will need reassurance before buying. Content at the education and research stages of the funnel, such as 'your first hike' guides and boot-fitting videos, would build trust and move people towards purchase. The language should be clear and informal, avoiding technical terms that could put beginners off, and should end with a direct call to action such as 'Find your first pair'.\n\nThe brand identity also shapes decisions. Because Peak Trails is sustainable, the recycled materials should be the USP and the central message of every post. This matters because many young consumers value ethical brands, so the message could become the reason they choose Peak Trails over larger competitors. The adventurous and friendly identity means imagery should show real young people outdoors, with consistent earthy green colours and the logo, so that the brand is instantly recognisable across channels. It could also guide partnerships, such as working with eco-conscious outdoor influencers whose values match the brand.\n\nOverall, the audience decides where and how Peak Trails communicates, while the brand identity decides what it says and how it looks. Together they keep the campaign relevant and consistent."
+    },
+    {
+      "id": "F206-Q10",
+      "topicArea": 6,
+      "commandWord": "Evaluate",
+      "marks": 9,
+      "context": "Priya planned a digital marketing campaign for GreenLeaf, a vegan café. She used spreadsheet pivot tables and charts to analyse sales data, a spreadsheet publishing schedule, an online design tool for prototypes and a slide presentation for her pitch. Client feedback said her prototypes did not use GreenLeaf's brand colours.",
+      "question": "Evaluate how effective the processes and tools Priya used were in developing a campaign that meets GreenLeaf's requirements.",
+      "markScheme": {
+        "type": "levels",
+        "points": [
+          "Pivot tables allowed fast summarising of sales data, for example by product or day, and charts made trends clear to identify audiences and best-selling items; however, sales data alone may not show online behaviour such as traffic per channel",
+          "The spreadsheet publishing schedule gave clear dates, times and content, which supports consistent posting and meeting timescales; however, it may be less visual or collaborative than dedicated planning tools",
+          "The online design tool enabled quick, professional-looking prototypes using templates; however, the prototypes did not match the brand colours, so the client requirement for brand identity was not met",
+          "The issue with the brand colours suggests the client requirements or brand guidelines were not checked during prototyping",
+          "The slide presentation communicated the proposal clearly and allowed feedback to be gathered; the feedback revealed a weakness, which shows that the process of gathering feedback was effective",
+          "Lessons learnt: create a brand style guide or custom colour palette before prototyping, check work against requirements, and include website or social analytics data",
+          "A supported judgement on how far the processes allowed the campaign to meet requirements overall"
+        ],
+        "levels": [
+          {
+            "level": 3,
+            "marks": [
+              7,
+              9
+            ],
+            "descriptor": "Detailed and accurate evaluation of a range of Priya's processes and tools, considering both strengths and weaknesses. Points are clearly applied to GreenLeaf's requirements and the feedback received. Well-developed reasoning leads to a supported judgement on overall effectiveness, with relevant lessons learnt. The answer is logically structured."
+          },
+          {
+            "level": 2,
+            "marks": [
+              4,
+              6
+            ],
+            "descriptor": "Sound evaluation of some processes and tools, with some application to GreenLeaf. Strengths and weaknesses are considered but may be unbalanced or partly developed. A judgement is given but is only partly supported. The structure is mostly logical."
+          },
+          {
+            "level": 1,
+            "marks": [
+              1,
+              3
+            ],
+            "descriptor": "Basic, mainly descriptive points about the processes or tools, with little application to GreenLeaf. There is little or no evaluation and no supported judgement. The structure may lack clarity."
+          }
+        ],
+        "guidance": "Award 0 marks for no creditworthy response. Answers without a conclusion or judgement cannot achieve Level 3. Credit any other valid evaluative points about the processes followed or tools used."
+      },
+      "modelAnswer": "Priya's analysis of data was largely effective. Pivot tables let her summarise GreenLeaf's sales quickly by product and day, and charts made trends easy to see, such as which dishes sold best at weekends. This gave her evidence for her content and timing decisions. However, she used only sales data. Without website or social media analytics, such as traffic per channel or by device, her channel choices were based partly on assumptions rather than evidence.\n\nHer campaign planning was also mostly effective. The spreadsheet publishing schedule set out the date, time and content of each post. This gave GreenLeaf a clear timescale and helped keep posting consistent. A limitation is that a spreadsheet is less visual than a calendar-based planning tool, so the client may have found the plan harder to follow.\n\nContent prototyping was the weakest process. The online design tool let Priya produce professional-looking prototypes quickly, but they did not use GreenLeaf's brand colours. Brand identity is a key client requirement, so in this respect the prototypes failed to meet the brief. This suggests she did not check her work against the brand guidelines during prototyping.\n\nCommunicating with stakeholders was effective. The slide presentation set out the proposal clearly, and gathering feedback identified the colour problem before the campaign launched, so it can be fixed.\n\nOverall, Priya's processes allowed her to develop a campaign that mostly meets GreenLeaf's requirements, because her data analysis, schedule and pitch were strong. However, the prototyping process undermined the brand identity. In future she should set up a custom colour palette from the client's brand guidelines before designing, and include web analytics data in her analysis."
+    }
+  ]
+}

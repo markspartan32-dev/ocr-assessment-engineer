@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "workflow": "node workflow.js",
+    "workflow:live": "node workflow.js --live",
+    "workflow:self-test": "node workflow.js --self-test"
   },
   "dependencies": {
     "framer-motion": "^14.5.0",

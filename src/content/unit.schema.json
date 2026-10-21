@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DataCommand unit content",
+  "description": "Ten flashcards and ten OCR exam-style questions for one unit. The structure is enforced here; scripts/workflow/content-rubric.js enforces the OCR examining rules.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["code", "title", "assessment", "summary", "flashcards", "questions"],
+  "properties": {
+    "code": { "type": "string", "enum": ["F200", "F201", "F202", "F203", "F204", "F205", "F206"] },
+    "title": { "type": "string" },
+    "assessment": { "type": "string", "enum": ["exam", "nea"] },
+    "summary": { "type": "string" },
+    "flashcards": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "topicArea", "front", "back", "keyTerms"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^F20[0-6]-FC(0[1-9]|10)$" },
+          "topicArea": { "type": "integer", "minimum": 1, "maximum": 6 },
+          "front": { "type": "string" },
+          "back": { "type": "string" },
+          "keyTerms": { "type": "array", "minItems": 1, "maxItems": 4, "items": { "type": "string" } }
+        }
+      }
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "topicArea", "commandWord", "marks", "question", "markScheme", "modelAnswer"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^F20[0-6]-Q(0[1-9]|10)$" },
+          "topicArea": { "type": "integer", "minimum": 1, "maximum": 6 },
+          "commandWord": { "type": "string" },
+          "marks": { "type": "integer", "minimum": 1, "maximum": 9 },
+          "context": { "type": "string" },
+          "question": { "type": "string" },
+          "markScheme": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "points"],
+            "properties": {
+              "type": { "type": "string", "enum": ["points", "levels"] },
+              "points": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+              "levels": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["level", "marks", "descriptor"],
+                  "properties": {
+                    "level": { "type": "integer", "minimum": 1, "maximum": 3 },
+                    "marks": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "integer" } },
+                    "descriptor": { "type": "string" }
+                  }
+                }
+              },
+              "guidance": { "type": "string" }
+            }
+          },
+          "modelAnswer": { "type": "string" }
+        }
+      }
+    }
+  }
+}
