@@ -297,8 +297,9 @@ async function runContentStage(opts, ctx) {
 const auditFindingsSchema = {
   type: 'object',
   additionalProperties: false,
-  required: ['summary', 'findings'],
+  required: ['reviewed', 'summary', 'findings'],
   properties: {
+    reviewed: { type: 'array', items: { type: 'string' } },
     summary: {
       type: 'object', additionalProperties: false, required: ['high', 'medium', 'low'],
       properties: { high: { type: 'integer' }, medium: { type: 'integer' }, low: { type: 'integer' } },
@@ -320,19 +321,30 @@ async function runAuditStage(opts, ctx) {
   heading('Stage 2+3 · Audit and auto-fix: security-qa-auditor ⇄ ui-ux-gamification');
   const liveAuditor = opts.live ? async () => {
     const { files, findings } = scanDirs(ROOT, AUDIT_DIRS);
+    const rel = files.map((f) => path.relative(ROOT, f));
     log('security-qa-auditor', `agent reviewing ${files.length} files (the scanner already found ${findings.length})…`);
+    // Every file goes in the prompt with line numbers, so the agent cannot skip one and can cite exact lines.
+    const sources = files.map((file, i) => {
+      const numbered = fs.readFileSync(file, 'utf8').split('\n').map((line, n) => `${String(n + 1).padStart(4)}| ${line}`).join('\n');
+      return `===== ${rel[i]} =====\n${numbered}`;
+    });
     const prompt = [
-      `Audit these DataCommand UI files for XSS and accessibility defects, following your instructions: ${files.map((f) => path.relative(ROOT, f)).join(', ')}.`,
-      'The deterministic scanner has already reported the findings below, so do not repeat them. Spend your effort on issues that need judgement: untrusted data reaching the DOM or store, URL parameters, focus management, live regions and misleading names.',
-      JSON.stringify(findings.map(({ fix, ...f }) => f), null, 2),
-      'Quote `evidence` verbatim from the cited line; findings whose evidence cannot be found are discarded. Return only the JSON defined in your output contract.',
+      'Audit every DataCommand UI file below for XSS and accessibility defects, following your instructions. Use Read or Grep if you need to follow an import (for example into src/lib or src/store).',
+      'The deterministic scanner has already reported the findings below, so do not repeat them. Spend your effort on issues that need judgement: untrusted data reaching the DOM or store, URL or hash parameters, focus management in dialogs, live regions, keyboard traps and misleading accessible names.',
+      `Scanner findings: ${JSON.stringify(findings.map(({ fix, ...f }) => f))}`,
+      'List every file you reviewed in `reviewed`. For each finding, quote `evidence` verbatim from the cited line (without the line-number prefix); findings whose evidence is not at that line are discarded. Return only the JSON defined in your output contract.',
+      sources.join('\n\n'),
     ].join('\n\n');
     const result = await ctx.agentCall('security-qa-auditor', prompt, auditFindingsSchema);
     if (!result.ok || !result.data) {
       log('security-qa-auditor', yellow(`agent audit unavailable: ${result.error || 'no JSON'}; continuing with the scanner only`));
       return [];
     }
-    log('security-qa-auditor', `agent reported ${result.data.findings.length} finding(s) (${Math.round(result.durationMs / 1000)}s, $${result.costUsd.toFixed(2)})`);
+    const reviewed = new Set((result.data.reviewed || []).map((f) => f.replace(/^\.\//, '')));
+    const missed = rel.filter((f) => !reviewed.has(f));
+    log('security-qa-auditor', `agent reviewed ${rel.length - missed.length}/${rel.length} files and reported ${result.data.findings.length} finding(s) (${result.turns ?? '?'} turns, ${Math.round(result.durationMs / 1000)}s, $${result.costUsd.toFixed(2)})`);
+    if (missed.length) log('security-qa-auditor', yellow(`agent did not confirm reviewing: ${missed.join(', ')}`));
+    ctx.agentAudit = { reviewed: rel.length - missed.length, files: rel.length, findings: result.data.findings.length, missed };
     return result.data.findings;
   } : undefined;
 

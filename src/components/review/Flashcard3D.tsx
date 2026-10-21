@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Eye } from "lucide-react";
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode, type Ref } from "react";
 import { topicTitle } from "@/lib/content";
 import type { Flashcard, Unit } from "@/lib/content-types";
 import type { ReviewKind } from "@/lib/srs/scheduler";
@@ -15,12 +15,14 @@ const KIND_LABEL: Record<ReviewKind, { text: string; className: string }> = {
   practice: { text: "Practice", className: "border-line-strong bg-surface-3 text-fg-muted" },
 };
 
-function Face({ side, hidden, children }: { side: "front" | "back"; hidden: boolean; children: ReactNode }) {
+function Face({ side, hidden, children, ref }: { side: "front" | "back"; hidden: boolean; children: ReactNode; ref: Ref<HTMLDivElement> }) {
   return (
     <div
+      ref={ref}
+      tabIndex={-1}
       aria-hidden={hidden}
       inert={hidden}
-      className={`card flex min-h-72 flex-col p-6 backface-hidden [grid-area:stack] sm:min-h-80 sm:p-8 ${side === "back" ? "rotate-y-180 border-accent/30" : ""}`}
+      className={`card flex min-h-72 flex-col p-6 outline-none backface-hidden [grid-area:stack] sm:min-h-80 sm:p-8 ${side === "back" ? "rotate-y-180 border-accent/30" : ""}`}
     >
       {children}
     </div>
@@ -29,10 +31,18 @@ function Face({ side, hidden, children }: { side: "front" | "back"; hidden: bool
 
 /**
  * A flashcard with a 3D flip. Both faces share one grid cell, so the card takes the height of
- * the taller face, and the hidden face is aria-hidden and inert so it is never read or focused.
+ * the taller face. The hidden face is aria-hidden and inert, so focus moves to the visible face:
+ * the answer once revealed, and (with `takeFocus`) the question of each new card.
  */
-export function Flashcard3D({ card, unit, kind, revealed, onReveal }: { card: Flashcard; unit: Unit; kind: ReviewKind; revealed: boolean; onReveal: () => void }) {
+export function Flashcard3D({ card, unit, kind, revealed, takeFocus, onReveal }: { card: Flashcard; unit: Unit; kind: ReviewKind; revealed: boolean; takeFocus: boolean; onReveal: () => void }) {
   const badge = KIND_LABEL[kind];
+  const front = useRef<HTMLDivElement>(null);
+  const back = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (revealed) back.current?.focus({ preventScroll: true });
+    else if (takeFocus) front.current?.focus({ preventScroll: true });
+  }, [revealed, takeFocus]);
   const header = (
     <div className="flex flex-wrap items-center gap-2 text-xs">
       <UnitCode code={unit.code} />
@@ -50,7 +60,7 @@ export function Flashcard3D({ card, unit, kind, revealed, onReveal }: { card: Fl
         animate={{ rotateY: revealed ? 180 : 0 }}
         transition={{ type: "spring", stiffness: 260, damping: 26 }}
       >
-        <Face side="front" hidden={revealed}>
+        <Face ref={front} side="front" hidden={revealed}>
           {header}
           <p className="eyebrow mt-6">Question</p>
           <h2 className="mt-2 text-xl font-semibold leading-snug text-balance sm:text-2xl">{card.front}</h2>
@@ -63,7 +73,7 @@ export function Flashcard3D({ card, unit, kind, revealed, onReveal }: { card: Fl
             </button>
           </div>
         </Face>
-        <Face side="back" hidden={!revealed}>
+        <Face ref={back} side="back" hidden={!revealed}>
           {header}
           <p className="eyebrow mt-6">Answer</p>
           <p className="mt-2 text-base leading-7 whitespace-pre-line text-fg sm:text-lg">{card.back}</p>

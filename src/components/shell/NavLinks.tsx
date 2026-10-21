@@ -30,13 +30,13 @@ function SidebarLinksInner({ pathname }: { pathname: string | null }) {
 function MobileLinksInner({ pathname }: { pathname: string | null }) {
   return (
     <ul className="grid grid-cols-5">
-      {NAV_ITEMS.filter((i) => i.mobile).map(({ href, short, label, icon: Icon }) => {
+      {NAV_ITEMS.filter((i) => i.mobile).map(({ href, short, icon: Icon }) => {
         const active = isActive(pathname, href);
         return (
           <li key={href}>
-            <Link href={href} aria-current={active ? "page" : undefined} aria-label={label} className={`flex flex-col items-center gap-1 py-2.5 text-[0.7rem] font-medium ${active ? "text-accent" : "text-fg-muted"}`}>
+            <Link href={href} aria-current={active ? "page" : undefined} className={`flex flex-col items-center gap-1 py-2.5 text-[0.7rem] font-medium ${active ? "text-accent" : "text-fg-muted"}`}>
               <Icon aria-hidden="true" className="size-5" />
-              <span aria-hidden="true">{short}</span>
+              <span>{short}</span>
             </Link>
           </li>
         );

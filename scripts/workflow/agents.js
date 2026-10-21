@@ -76,7 +76,7 @@ function extractJson(text) {
  * @param {string} [options.permissionMode] e.g. "acceptEdits" for the auto-fix agent.
  * @param {number} [options.maxBudgetUsd] Hard spend cap for this call.
  * @param {number} [options.timeoutMs]
- * @returns {Promise<{ ok: boolean, data?: any, text?: string, costUsd: number, durationMs: number, error?: string }>}
+ * @returns {Promise<{ ok: boolean, data?: any, text?: string, turns?: number, costUsd: number, durationMs: number, error?: string }>}
  */
 function runAgent(options) {
   const {
@@ -119,7 +119,7 @@ function runAgent(options) {
         return;
       }
       const data = envelope.structured_output !== undefined ? envelope.structured_output : extractJson(envelope.result);
-      resolve({ ok: true, data, text: envelope.result, costUsd, durationMs });
+      resolve({ ok: true, data, text: envelope.result, turns: envelope.num_turns, costUsd, durationMs });
     });
     child.stdin.end(prompt);
   });

@@ -227,7 +227,7 @@ export function ReviewSession({ unitCode }: { unitCode?: UnitCode }) {
             exit={{ opacity: 0, x: -24 }}
             transition={{ duration: 0.18 }}
           >
-            <Flashcard3D card={entry.card} unit={entry.unit} kind={current.kind} revealed={session.revealed} onReveal={reveal} />
+            <Flashcard3D card={entry.card} unit={entry.unit} kind={current.kind} revealed={session.revealed} takeFocus={session.graded.length > 0} onReveal={reveal} />
           </motion.div>
         </AnimatePresence>
         <AnimatePresence>
